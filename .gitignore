@@ -1,6 +1,5 @@
 node_modules/
 _site/
-dist/
 .env
 .env.*
 !.env.example
