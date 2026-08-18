@@ -50,7 +50,7 @@ export default function (eleventyConfig) {
 eleventyConfig.path
 
 	eleventyConfig.setInputDirectory("src");
-	eleventyConfig.setOutputDirectory("dist");
+	eleventyConfig.setOutputDirectory("docs");
 
 	eleventyConfig.setLayoutsDirectory("layouts");
 	eleventyConfig.setIncludesDirectory("includes");
@@ -133,14 +133,9 @@ eleventyConfig.path
 
   eleventyConfig.on("eleventy.after", async () => {
     await dynamicAssets.buildAll({
-      outputDir: "dist"
+      outputDir: "docs"
     });
-	 const checkPath = "./dist/assets/js";
-    if (fs.existsSync(checkPath)) {
-      console.log("✅ پوشه JS در مقصد ساخته شده است.");
-    } else {
-      console.error("❌ خطا: پوشه JS در مقصد یافت نشد!");
-    }
+	
   });
 
 

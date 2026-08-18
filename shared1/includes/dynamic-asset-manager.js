@@ -256,7 +256,7 @@ const files = record.css[layer] || []; // اطمینان از وجود آرای�
       .map((file) => {
 
  const href = this.buildCssHref({ file, page,buildVersion });
-       //return ` <link href="{% if url contains 'http://' or url contains 'https://' %}{{ file }}{% else %}{{ page | relative }}/dist/libs/{{ lib[1].npm }}/{{ file }}{% if environment != 'development %}?{{ 'now' | date: '%s' }}{% endif %}{% endif %}" rel="stylesheet"/>`;
+       //return ` <link href="{% if url contains 'http://' or url contains 'https://' %}{{ file }}{% else %}{{ page | relative }}/docs/libs/{{ lib[1].npm }}/{{ file }}{% if environment != 'development %}?{{ 'now' | date: '%s' }}{% endif %}{% endif %}" rel="stylesheet"/>`;
 
          return `<link rel="stylesheet" href="${href }">`;
       })
@@ -271,7 +271,7 @@ buildCssHref({ file, page, buildVersion }) {
 
   let finalPath = file;
 
-  // 2. اگر فایل Sass است، آدرس آن را به نسخه کامپایل شده در dist تغییر بده
+  // 2. اگر فایل Sass است، آدرس آن را به نسخه کامپایل شده در docs تغییر بده
   if (/\.(scss|sass)$/i.test(file)) {
     // حذف بخش src/assets/ و تبدیل آن به /assets/css/
     // اینطوری چه در scss/ باشد چه در admin/، مسیر خروجی تمیز می‌شود
@@ -625,7 +625,7 @@ writeJsEntry(files, recordKey, zone, layer, type, loading) {
 
       // (اختیاری) اگر فایل هنوز پیدا نشد، شاید باید 'src/' را به ابتدای آن اضافه کنی
       // اگر فایل‌هایت حتماً داخل 'src' هستند و مسیرهای داده شده شامل src نیستند:
-       const absoluteFile = path.join(process.cwd(), 'dist', relativePath);
+       const absoluteFile = path.join(process.cwd(), 'docs', relativePath);
 
       if (!fs.existsSync(absoluteFile)) {
         console.warn(`[DynamicAssets] Skipping missing file: ${absoluteFile}`);
