@@ -1,0 +1,31 @@
+import type { AgColumn, AgProvidedColumnGroup, ColumnEventType, ColumnMenuItemsSource } from 'ag-grid-community';
+import { Component } from 'ag-grid-community';
+import type { ColumnStateUpdateParams } from './updates/columnStateUpdateTypes';
+export declare class ToolPanelContextMenu extends Component {
+    private readonly column;
+    private readonly mouseEventOrTouch;
+    private readonly parentEl;
+    private readonly params;
+    private readonly eventType;
+    private readonly source;
+    private columns;
+    private allowScrollIntoView;
+    private allowGrouping;
+    private allowValues;
+    private allowPivoting;
+    private allowEditHeaderName;
+    private menuItemMap;
+    private displayName;
+    constructor(column: AgColumn | AgProvidedColumnGroup, mouseEventOrTouch: MouseEvent | Touch, parentEl: HTMLElement, params: ColumnStateUpdateParams, eventType: ColumnEventType, source: ColumnMenuItemsSource);
+    postConstruct(): void;
+    private mapMenuItems;
+    private initializeProperties;
+    private buildMenuItemMap;
+    private isColumnValidForScrollIntoView;
+    private addColumnsToList;
+    private removeColumnsFromList;
+    private displayContextMenu;
+    private isActive;
+    private getDefaultTokens;
+    private resolveToolPanelToken;
+}

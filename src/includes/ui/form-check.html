@@ -1,0 +1,36 @@
+{% assign control_id = include.id | default: include.name %}
+{% assign control_type = include.type | default: "checkbox" %}
+{% assign as_switch = include.sm_switch | default: true %}
+{% assign checked = include.checked | default: false %}
+
+{% assign check_class = "form-check-input" %}
+{% assign wrapper_class = "form-check" %}
+
+{% if as_switch %}
+  {% assign wrapper_class = wrapper_class | append: " form-switch" %}
+{% endif %}
+
+<div class="{{ wrapper_class }}">
+  <input
+    class="{{ check_class }}"
+    type="{{ control_type }}"
+    id="{{ control_id }}"
+    name="{{ include.name }}"
+    value="{{ include.value | default: "true" }}"
+    {% if checked %}checked{% endif %}
+  />
+
+  {% unless include.sm_ignore_label %}
+    {% if include.label %}
+      <label class="form-check-label" for="{{ control_id }}">
+        {{ include.label }}
+      </label>
+    {% endif %}
+  {% endunless %}
+
+  {% if include.sm_append_hint and include.hint %}
+    <small class="form-text text-muted d-block">
+      {{ include.hint }}
+    </small>
+  {% endif %}
+</div>

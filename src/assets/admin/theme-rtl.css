@@ -1,0 +1,207 @@
+@charset "UTF-8";
+/* Theme: Admin (RTL overrides)
+======================================== */
+[dir=rtl] .dropdown-menu {
+  inset-inline-start: auto;
+}
+[dir=rtl] .form-control {
+  --validation-icon-xpos: left;
+}
+[dir=rtl] select.form-control:not([multiple], [size]:not([size="1"])) {
+  background-position-x: 0.75rem;
+}
+[dir=rtl] .custom-select[multiple], [dir=rtl] .custom-select[size]:not([size="1"]) {
+  padding-left: 0.75rem;
+  padding-right: 0;
+}
+[dir=rtl] .custom-file-label::after {
+  left: 0;
+  right: initial;
+  border-right: 1px solid #dee2e6;
+  border-left: none;
+}
+
+[dir=rtl] .lrm:after {
+  content: "‎";
+}
+[dir=rtl] .bidi-embed {
+  unicode-bidi: embed;
+}
+[dir=rtl] .bidi-isolate {
+  unicode-bidi: isolate;
+}
+[dir=rtl] :is(td, th)[align=right] {
+  text-align: start;
+}
+[dir=rtl] :is(td, th)[align=left] {
+  text-align: end;
+}
+[dir=rtl] .form-floating > label {
+  transform-origin: 100% 0;
+}
+[dir=rtl] .form-check .form-check-input {
+  float: right;
+}
+@media (max-width: 767.98px) {
+  [dir=rtl] .nav-collapsible .nav-toggler:after {
+    content: "\f053";
+    transform: translateY(-50%) rotate(-90deg);
+  }
+  [dir=rtl] .nav-collapsible .nav-toggler.collapsed:after {
+    transform: translateY(-50%) rotate(0deg);
+  }
+}
+[dir=rtl] .pagination .page-nav:first-of-type {
+  margin-left: 0.25rem;
+  margin-right: initial;
+}
+[dir=rtl] .pagination .page-nav:last-of-type {
+  margin-right: 0.25rem;
+  margin-left: initial;
+}
+[dir=rtl] .star-rating:not(:checked) > label {
+  float: left;
+}
+[dir=rtl] .heading:before {
+  background: radial-gradient(ellipse at right, #fff 25%, rgba(0, 0, 0, 0.25) 100%);
+}
+[dir=rtl] .fa-angle-double-left:before {
+  content: "\f101";
+}
+[dir=rtl] .fa-angle-double-right:before {
+  content: "\f100";
+}
+[dir=rtl] .fa-angle-left:before {
+  content: "\f105";
+}
+[dir=rtl] .fa-angle-right:before {
+  content: "\f104";
+}
+[dir=rtl] .fa-arrow-circle-left:before {
+  content: "\f0a9";
+}
+[dir=rtl] .fa-arrow-circle-right:before {
+  content: "\f0a8";
+}
+[dir=rtl] .fa-arrow-circle-o-left:before {
+  content: "\f18e";
+}
+[dir=rtl] .fa-arrow-circle-o-right:before {
+  content: "\f190";
+}
+[dir=rtl] .fa-arrow-left:before {
+  content: "\f061";
+}
+[dir=rtl] .fa-arrow-right:before {
+  content: "\f060";
+}
+[dir=rtl] .fa-caret-left:before {
+  content: "\f0da";
+}
+[dir=rtl] .fa-caret-right:before {
+  content: "\f0d9";
+}
+[dir=rtl] .fa-caret-square-o-left:before {
+  content: "\f152";
+}
+[dir=rtl] .fa-caret-square-o-right:before {
+  content: "\f191";
+}
+[dir=rtl] .fa-chevron-circle-left:before {
+  content: "\f138";
+}
+[dir=rtl] .fa-chevron-circle-right:before {
+  content: "\f137";
+}
+[dir=rtl] .fa-chevron-left:before {
+  content: "\f054";
+}
+[dir=rtl] .fa-chevron-right:before {
+  content: "\f053";
+}
+[dir=rtl] .fa-hand-o-left:before {
+  content: "\f0a4";
+}
+[dir=rtl] .fa-hand-o-right:before {
+  content: "\f0a5";
+}
+[dir=rtl] .fa-long-arrow-left:before {
+  content: "\f178";
+}
+[dir=rtl] .fa-long-arrow-right:before {
+  content: "\f177";
+}
+[dir=rtl] .fa-toggle-left:before {
+  content: "\f152";
+}
+[dir=rtl] .fa-toggle-right:before {
+  content: "\f191";
+}
+
+[dir=rtl] .ctl-label {
+  padding-left: 2.5rem;
+  padding-right: initial;
+}
+[dir=rtl] .ctl-label > label {
+  padding-left: 0;
+  padding-right: initial;
+}
+[dir=rtl] .ctl-label > .hint {
+  left: 0;
+  right: auto;
+}
+@media (min-width: 768px) {
+  [dir=rtl] .adminContent:not(.adminContent-vertical) > tbody > tr:not(.wide) > .adminTitle, [dir=rtl] .adminContent:not(.adminContent-vertical) > tr:not(.wide) > .adminTitle, [dir=rtl] .adminContent:not(.adminContent-vertical) .adminRow:not(.wide) > .adminTitle {
+    text-align: left;
+    padding-left: 0 !important;
+  }
+  [dir=rtl] .adminContent:not(.adminContent-vertical) > tbody > tr:not(.wide) > .adminData, [dir=rtl] .adminContent:not(.adminContent-vertical) > tr:not(.wide) > .adminData, [dir=rtl] .adminContent:not(.adminContent-vertical) .adminRow:not(.wide) > .adminData {
+    padding-right: 0 !important;
+  }
+  [dir=rtl] .adminContent:not(.adminContent-vertical) > tbody > tr:not(.wide) > .adminData:not(.wide), [dir=rtl] .adminContent:not(.adminContent-vertical) > tr:not(.wide) > .adminData:not(.wide), [dir=rtl] .adminContent:not(.adminContent-vertical) .adminRow:not(.wide) > .adminData:not(.wide) {
+    padding-left: 0 !important;
+  }
+}
+[dir=rtl] #theme-list .theme-broken-badge {
+  left: 0;
+  right: auto;
+}
+[dir=rtl] .theme-editor .themevar-chain-info {
+  margin-right: 0.75rem;
+  margin-left: initial;
+}
+[dir=rtl] .locale-editor-content[data-rtl=false] input,
+[dir=rtl] .locale-editor-content[data-rtl=false] textarea,
+[dir=rtl] .locale-editor-content[data-rtl=false] select,
+[dir=rtl] .locale-editor-content[data-rtl=false] .locale-editor-control,
+[dir=rtl] .locale-editor-content[data-rtl=false] .note-editable,
+[dir=rtl] .locale-editor-content[data-rtl=false] .note-editor-preview:not(.empty) {
+  direction: ltr;
+  text-align: left;
+}
+[dir=rtl] .module-icon {
+  padding-right: 30px;
+  padding-left: initial;
+}
+[dir=rtl] .module-actions {
+  margin-right: auto;
+  margin-left: initial;
+}
+[dir=rtl] .module-info .attr-value {
+  padding-right: 0.15rem;
+  padding-left: initial;
+}
+[dir=rtl] .plugin-configuration > div:last-child {
+  padding-right: 2rem;
+  padding-left: initial;
+}
+[dir=rtl] .color-container {
+  padding-left: 0.5rem;
+  padding-right: initial;
+}
+[dir=rtl] .admin-config-group[data-toggle=collapse].collapsed:after {
+  transform: rotate(90deg);
+}
+[dir=rtl] .admin-config-group[data-toggle=collapse] .ml-auto {
+  margin-inline-end: 1rem !important;
+}

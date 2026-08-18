@@ -1,0 +1,22 @@
+{% assign name = include.name %}
+{% assign id = include.id | default: name %}
+{% assign checked = include.checked | default: false %}
+
+
+<div class="form-check form-check-solo form-check-warning form-switch form-switch-lg">
+
+    <input
+        type="checkbox" data-val="true" data-val-required=""
+        {%- if checked %} checked="checked"{% endif %}
+        id="{{ id }}"
+        name="{{ name }}"
+        value="true"
+        class="form-check-input"
+    />
+
+    <input
+        name="{{ name }}"
+        type="hidden"
+        value="false"
+    />
+</div>

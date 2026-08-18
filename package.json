@@ -1,0 +1,62 @@
+{
+  "name": "@tabler/preview",
+  "version": "1.4.0",
+  "private": true,
+  "scripts": {
+     "build": "pnpm run clean && pnpm run html",
+    "dev": "pnpm run clean && pnpm run watch",
+       "watch": "concurrently \"pnpm run watch-html\"",
+    "watch-html": "cross-env NODE_ENV=development eleventy --serve --port=3000 --incremental",
+    "watch-js": "",
+    "watch-css": "",
+    "css": "",
+    "css-compile": "",
+    "css-prefix": "postcss --config .build/postcss.config.mjs --replace \"dist/css/*.css\" \"!dist/css/*.rtl*.css\" \"!dist/css/*.min.css\"",
+    "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*rtl*.css\"",
+    "js": "",
+    "js-compile": "",
+    "js-minify": "",
+    "js-minify-demo": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/demo.js.map,includeSources,url=demo.min.js.map\" --output dist/js/demo.min.js dist/js/demo.js",
+    "clean": "shx rm -rf dist demo",
+    "html": "pnpm run html-build && pnpm run html-prettify",
+    "html-build": "eleventy",
+    "html-prettify": "prettier --write \"dist/**/*.html\" \"!dist/dist/**\"",
+    "svg-optimize": "svgo -f svg/brand --pretty",
+    "unused-files": "node .build/unused-files.mjs",
+    "download-images": "node .build/download-images.mjs",
+    "optimize-images": "for i in ./src/static/photos/*.jpg; do convert \"$i\" -quality 80% \"${i%.jpg}.jpg\"; done",
+    "svg-icons": "node .build/import-icons.mjs",
+    "import-illustrations": "node .build/import-illustrations.mjs",
+    "import-icons": "git checkout dev && BRANCH_NAME=\"dev-tabler-icons-`pnpm info @tabler/icons version`\" && git branch $BRANCH_NAME && git checkout $BRANCH_NAME && ncu -u @tabler/icons && pnpm install && pnpm run svg-icons && git add . && git commit -am \"update icons to v`pnpm info @tabler/icons version`\" && git push origin $BRANCH_NAME && git checkout dev",
+    "zip": "mkdir -p packages-zip && zip -r packages-zip/tabler-$(node -p \"require('./package.json').version\").zip demo/*"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@babel/core": "^8.0.1",
+    "@rollup/plugin-babel": "^7.1.0",
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "clean-css-cli": "^5.6.3",
+    "concurrently": "^10.0.4",
+    "cross-env": "^10.1.0",
+    "imageoptim-cli": "^3.1.9",
+    "nodemon": "^3.1.14",
+    "postcss-cli": "^11.0.1",
+    "prettier": "^3.9.6",
+    "request": "^2.88.2",
+    "rollup": "^4.62.3",
+    "sass": "^1.102.0",
+    "shx": "^0.4.0",
+    "terser": "^5.49.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "printWidth": 160
+  },
+  "dependencies": {
+    "glob": "^13.0.6"
+  }
+}

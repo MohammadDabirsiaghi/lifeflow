@@ -1,0 +1,215 @@
+{% assign element = include.element | default: "input" %}
+{% assign type = include.type | default: "text" %}
+{% assign as_switch = include.sm_switch | default: true %}
+
+
+
+
+{% if element == "select" %}
+    {% include "ui/forms/select.html",
+    options= include.options
+    custom-class=include.custom-class
+    control-size=include.control-size
+    multiple=include.multiple
+    data-select=include.data-select
+    data-select-lazy=include.data-select-lazy
+    data-select-init-text=include.data-select-init-text
+    data-select-url = include.data-select-url
+    %}
+{% elsif element == "textarea" %}
+    {% include "ui/forms/textarea.html", include: include %}
+{% elsif element == "input" %}
+    {% if type == "checkbox" and as_switch %}
+        {% include "ui/forms/form-switch.html", include: include %}
+    {% elsif type == "checkbox" or type == "radio" %}
+        {% include "ui/forms/form-check.html", include: include %}
+    {% elsif type != "file" and type != "hidden" %}
+        {% include "ui/forms/input.html", include: include %}
+    {% else %}
+        <input type="{{ type }}" name="{{ include.name }}" value="{{ include.value }}">
+    {% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+{% assign element = include.element | default: "input" %}
+{% assign type = include.type | default: "text" %}
+{% assign name = include.name %}
+{% assign control_id = include.id | default: name %}
+{% assign is_required = include.sm_required | default: false %}
+{% assign as_switch = include.sm_switch | default: true %}
+
+
+
+
+
+
+
+
+
+{% assign element = include.element | default: "input" %}
+{% assign input_type = include.type | default: "text" %}
+{% assign as_switch = include.sm-switch | default: true %}
+
+{% assign control_name = include.name %}
+{% assign control_id = include.id | default: control_name %}
+
+{% assign sm_plaintext = include.sm_plaintext | default: false %}
+{% assign is_required = include.sm_required | default: false %}
+
+{% assign control_value = include.value | default: "" %}
+{% assign control_class = include.class | default: "" %}
+
+{% assign sm_append_hint = include.sm_append_hint | default: false %}
+{% assign sm_control_size = include.sm_control_size %}
+{% assign placeholder = include.placeholder %}
+{% assign label = include.label %}
+{% assign hint = include.hint %}
+
+{% assign control_classes = control_class %}
+
+{% if sm_plaintext %}
+  {% assign control_classes = control_classes | append: " form-control-plaintext" %}
+{% else %}
+  {% assign control_classes = control_classes | append: " form-control" %}
+{% endif %}
+
+{% if sm_control_size == "small" %}
+  {% assign control_classes = control_classes | append: " form-control-sm" %}
+{% elsif sm_control_size == "large" %}
+  {% assign control_classes = control_classes | append: " form-control-lg" %}
+{% endif %}
+
+
+
+{% if element == "select" or element == "textarea" %}
+
+  {% comment %} case "select" / "textarea": ProcessFormControl {% endcomment %}
+  {% include "ui/forms/form-control.html",
+    element: element,
+    type: type,
+    name: name,
+    id: control_id,
+    value: include.value,
+    label: include.label,
+    placeholder: include.placeholder,
+    sm_required: is_required,
+    sm_plaintext: include.sm_plaintext,
+    sm_control_size: include.sm_control_size,
+    sm_append_hint: include.sm_append_hint,
+    hint: include.hint
+  %}
+
+{% elsif element == "input" and type == "checkbox" and as_switch %}
+
+  {% comment %} case "input" + checkbox + AsSwitch: ProcessSwitch {% endcomment %}
+  {% include "ui/forms/form-switch.html",
+    name: name,
+    id: control_id,
+    label: include.label,
+    checked: include.checked,
+    sm_ignore_label: include.sm_ignore_label
+  %}
+
+{% elsif element == "input" %}
+
+  {% comment %} case "input" + checkbox/radio: ProcessCheckRadio {% endcomment %}
+  {% include "ui/forms/form-check.html",
+    name: name,
+    id: control_id,
+    type: type,
+    label: include.label,
+    checked: include.checked,
+    sm_ignore_label: include.sm_ignore_label,
+    sm_append_hint: include.sm_append_hint,
+    hint: include.hint
+  %}
+
+{% elsif element == "input" and type != "file" and type != "hidden" %}
+
+  {% comment %} case "input" + سایر type ها: ProcessFormControl {% endcomment %}
+  {% include "ui/forms/form-control.html",
+    element: element,
+    type: type,
+    name: name,
+    id: control_id,
+    value: include.value,
+    label: include.label,
+    placeholder: include.placeholder,
+    sm_required: is_required,
+    sm_plaintext: include.sm_plaintext,
+    sm_control_size: include.sm_control_size,
+    sm_append_hint: include.sm_append_hint,
+    hint: include.hint
+  %}
+
+{% else %}
+
+  {% comment %} case "input" + file/hidden: فقط input خام {% endcomment %}
+  <input
+    type="{{ type }}"
+    id="{{ control_id }}"
+    name="{{ name }}"
+    value="{{ include.value | escape }}"
+  />
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if element == "select" %}
+ 
+     <p>Select</p>
+
+{% elsif element == "textarea" %}
+     <p>textarea</p>
+
+
+{% elsif element == "input" %}
+
+    {% if input_type == "checkbox" and as_switch  %}
+      {% include "ui/forms/switch.html" name=control_name id=control_id  %} 
+    
+    {% elsif input_type == "checkbox" or input_type == "radio" %}
+      {% include "ui/forms/switch.html" name=control_name id=control_id  %}   
+    {% elsif input_type == "file" %}
+      <p>input-file</p>
+    {% endif %}
+{% endif %}
+

@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html>
+<html class="not-ready loading" data-pnotify-firstpos1="0" lang="fa" dir="rtl">
+<head>
+
+    <meta name='accept-language' content='fa-IR'/>
+    <title>مدیریت فروشگاه هوشمند</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="HandheldFriendly" content="true">
+    <meta property="sm:root" content="/" />
+ 
+
+
+    {% addCss "/assets/lib/fontastic/fontastic.css", "layout" %}
+    {% addCss "/assets/lib/fa7/css/all.css", "layout" %}
+    {% addCss "/assets/lib/pnotify/css/pnotify.css", "layout" %}
+    {% addCss "/assets/lib/pnotify/css/pnotify.mobile.css", "layout" %}
+    {% addCss "/assets/lib/pnotify/css/pnotify.buttons.css", "layout" %}
+
+    {% addCss "/assets/admin/theme.css", "layout" %} 
+    {% addCss "/assets/admin/theme-rtl.css", "layout" %} 
+
+
+    
+    {% addJs "/assets/lib/jquery/jquery-3.7.1.js", "head_scripts", "layout" %} 
+    {% addJs "/assets/lib/vue/vue.js", "head_scripts", "layout" %} 
+    {% addJs "/assets/lib/aggrid/ag-grid-enterprise.js", "head_scripts", "layout" %} 
+
+
+    {% addJs "/assets/admin/js/jquery-shims.js", "scripts", "layout" %} 
+    {% addJs "/assets/admin/js/jquery-shims.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/underscore/underscore.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery/jquery.addeasing.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery-ui/effect.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery-ui/effect-transfer.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery-ui/position.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery/jquery.unobtrusive-ajax.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery/jquery.validate.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery/jquery.validate.unobtrusive.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/jquery/jquery.serializeToJSON.min.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/sortable/sortable.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/sortable/jquery-sortable.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/moment/moment.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/datetimepicker/js/tempusdominus-bootstrap-4.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/colorpicker/js/bootstrap-colorpicker.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/colorpicker/js/bootstrap-colorpicker-globalinit.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/select2/js/select2.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/pnotify/js/pnotify.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/pnotify/js/pnotify.mobile.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/pnotify/js/pnotify.buttons.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/pnotify/js/pnotify.animate.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/aos/js/aos.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/popper/popper.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/bootstrap/js/bootstrap.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/underscore.mixins.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.system.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.touchevents.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.jquery.utils.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.globalization.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/jquery.validate.unobtrusive.custom.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.viewport.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.scrollto.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.ajax.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.eventbroker.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.common.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.globalinit.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.tabs.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.dialogs.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.selectwrapper.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.throbber.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.thumbzoomer.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.entitypicker.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.rangeslider.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.numberinput.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.tree.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.media.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.editortemplates.js", "scripts", "layout" %} 
+    {% addJs "/assets/js/smartstore.offcanvas.js", "scripts", "layout" %} 
+    {% addJs "/assets/admin/js/admin.common.js", "scripts", "layout" %} 
+    {% addJs "/assets/admin/js/admin.media.js", "scripts", "layout" %} 
+    {% addJs "/assets/admin/js/admin.globalinit.js", "scripts", "layout" %} 
+    {% addJs "/assets/admin/js/admin.ai.js", "scripts", "layout" %} 
+
+
+    {% addJs "/assets/config.js", "scripts", "layout" %} 
+    {% addJs "/assets/api.js", "scripts", "layout" %} 
+
+
+          {% renderCss "layout" %}   
+                  {% renderCss "page" %}   
+        {% renderScripts "head_scripts","layout" %}   
+
+</head>
+
+<body class="">
+
+	    {{ content }}
+     
+   {% renderScripts "scripts","layout" %}   
+           {% renderScripts "scripts","page" %}   
+</body>
+
+    
+    
+
+</html>

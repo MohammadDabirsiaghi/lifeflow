@@ -1,0 +1,96 @@
+---
+title: سلام
+layout: adminlayout
+page-libs: [admin-common]
+roundOrderTotalDenominators:
+  - text: "5"
+    value: "0.05"
+  - text: "10"
+    value: "0.10"
+  - text: "50"
+    value: "0.50"
+  - text: "100"
+    value: "1.00"
+---
+
+{% addJs "/assets/lib/jstree/dist/jstree.js", "scripts", "page" %} 
+{% addCss "/assets/lib/jstree/dist/themes/default/style.css", "page" %}
+
+{% addJs "/assets/tree.js", "scripts", "page" %} 
+
+
+{% addJs "/static/main2.js", "scripts", "page" %} 
+
+
+
+ <div id="myGrid" style="height: 500px"></div>
+
+<div class="section-header">
+    <div class="title">
+        <i class="fa fa-sitemap"></i>
+        <span>دسته بندی های آمازون</span>
+
+		<div class="btn-group ml-2">
+			<a class="btn btn-outline-secondary btn-sm tooltip-toggle active" style="cursor:default" href="javascript:void(0)">
+				<i class="fa fa-bars"></i>
+			</a>
+			<a class="btn btn-outline-secondary btn-sm tooltip-toggle" title="switch to tree view" href="/backend/admin/category/tree/">
+				<i class="fa fa-sitemap"></i>
+			</a>
+		</div>
+    </div>
+    <div class="options">
+		
+		
+    </div>
+</div>
+<form>
+	<div class="adminContent">
+    	<div class="adminRow">
+        	<div class="adminTitle">
+            
+        	</div>
+        	<div class="adminData">
+            	{% include "ui/forms/form-control.html"
+				element= "select" 
+				options= roundOrderTotalDenominators 
+				custom-class= "autowidth"
+				control-size="small"
+  				custom-style= "width: 150px" 
+    		 	data-select=true
+     			data-select-lazy=true
+    			data-select-init-text= "parentCategoryBreadcrumb"
+    			data-select-url = "/Category/AllCategories"
+				%} 
+
+
+				{% include "ui/forms/switch.html"
+    				name= "Published"
+    				checked= false
+				%}
+            	<span asp-validation-for="Email"></span>
+        	</div>
+    	</div>
+		<div class="adminRow">
+        	<div class="adminTitle">
+            
+        	</div>
+        	<div class="adminData">
+            	 
+            	<span asp-validation-for="Email"></span>
+        	</div>
+    	</div>
+	</div>
+  
+
+
+
+
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary">
+      ذخیره
+    </button>
+  </div>
+</form>
+
+<div id="projectsTree"  class="project-tree"></div>
