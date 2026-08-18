@@ -1,0 +1,116 @@
+﻿
+        /* container اصلی درخت */
+        .project-tree {
+            min-height: 260px;
+         /*   max-height: 65vh;*/
+            /*overflow: auto;*/
+            padding: 6px;
+            min-width: 0;
+        }
+
+            /* برای اسکرول */
+            .project-tree::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
+
+            .project-tree::-webkit-scrollbar-thumb {
+                background: #d1d5db;
+                border-radius: 999px;
+            }
+
+            .project-tree::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            /* هر نود */
+            .project-tree .jstree-node {
+                min-width: 100%;
+            }
+
+            /* آیکن و فلش expand/collapse */
+            .project-tree .jstree-icon {
+                vertical-align: top;
+                margin-top: 4px;
+            }
+
+            /* متن هر نود - چندخطی */
+            .project-tree .jstree-anchor {
+                display: inline-block;
+                width: calc(100% - 32px);
+                white-space: normal;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                text-overflow: unset;
+                line-height: 1.55;
+                height: auto !important;
+                min-height: 32px;
+                vertical-align: top;
+                padding: 6px 10px;
+                margin: 2px 0;
+                border-radius: 10px;
+                color: #1f2937;
+                text-decoration: none;
+                transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            }
+
+            /* استایل پیش‌فرض jstree را override می‌کنیم */
+            .project-tree .jstree-default .jstree-anchor {
+                height: auto !important;
+                line-height: 1.55 !important;
+            }
+
+            /* hover */
+            .project-tree .jstree-anchor:hover,
+            .project-tree .jstree-hovered {
+                background: #f3f4f6 !important;
+                color: #111827 !important;
+                box-shadow: none !important;
+                text-decoration: none !important;
+            }
+
+            /* selected */
+            .project-tree .jstree-clicked {
+                background: #e8f1ff !important;
+                color: #0d6efd !important;
+                border: 1px solid #cfe2ff;
+                box-shadow: none !important;
+            }
+
+            /* غیرفعال کردن background سراسری wholerow تا فقط خود نود استایل بگیرد */
+            .project-tree .jstree-wholerow-hovered,
+            .project-tree .jstree-wholerow-clicked {
+                background: transparent !important;
+            }
+
+        /* اگر card/flex داری، این مانع overflow عجیب می‌شود */
+  
+        .project-tree {
+            min-width: 0;
+        }
+
+        /* موبایل و تبلت */
+        @media (max-width: 991.98px) {
+            .project-tree {
+               /* max-height: 320px;*/
+            }
+        }
+
+        /* موبایل کوچک */
+        @media (max-width: 575.98px) {
+            .project-tree {
+                padding: 4px;
+            }
+
+                .project-tree .jstree-anchor {
+                    width: calc(100% - 28px);
+                    padding: 6px 8px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    border-radius: 8px;
+                }
+
+                .project-tree .jstree-icon {
+                    margin-top: 3px;
+                }
+        }

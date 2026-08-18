@@ -1,0 +1,40 @@
+import type { BeanCollection, IAdvancedFilterCtrl, IPinnedSectionCompHost } from 'ag-grid-community';
+import { BeanStub } from 'ag-grid-community';
+type AdvancedFilterCtrlEvent = 'advancedFilterBuilderClosed';
+export declare class AdvancedFilterCtrl extends BeanStub<AdvancedFilterCtrlEvent> implements IAdvancedFilterCtrl {
+    private enabled;
+    private ctrlsSvc;
+    private popupSvc;
+    private advFilterExpSvc;
+    private environment;
+    wireBeans(beans: BeanCollection): void;
+    private eHeaderComp;
+    private headerCompHost;
+    private eFilterComp;
+    private disconnectFilterComp;
+    private hasAdvancedFilterParent;
+    private eBuilderComp;
+    private eBuilderDialog;
+    private builderDestroySource?;
+    constructor(enabled: boolean);
+    postConstruct(): void;
+    mountTopSectionComp(host: IPinnedSectionCompHost): void;
+    focusHeaderComp(): boolean;
+    refreshComp(): void;
+    refreshBuilderComp(): void;
+    getHeaderHeight(): number;
+    setInputDisabled(disabled: boolean): void;
+    toggleFilterBuilder(params: {
+        source: 'api' | 'ui';
+        force?: boolean;
+        eventSource?: HTMLElement;
+    }): void;
+    private dispatchFilterBuilderVisibleChangedEvent;
+    private getBuilderDialogSize;
+    private onEnabledChanged;
+    private updateComps;
+    private setAdvancedFilterComp;
+    private syncHeaderComp;
+    private destroyFilterComp;
+}
+export {};

@@ -1,0 +1,31 @@
+import type { AgCoreBeanCollection, BaseEvents, BaseProperties, IPropertiesService, WithoutCommon } from 'ag-stack';
+import { AgTabGuardComp } from 'ag-stack';
+import type { AgMenuItemCallbacks, AgMenuItemComponentEvent, AgMenuItemDef } from './agMenuItemComponent';
+type AgMenuListEvent = AgMenuItemComponentEvent;
+export declare class AgMenuList<TBeanCollection extends AgCoreBeanCollection<TProperties, TGlobalEvents, TCommon, TPropertiesService>, TProperties extends BaseProperties, TGlobalEvents extends BaseEvents, TCommon, TPropertiesService extends IPropertiesService<TProperties, TCommon>, TComponentSelectorType extends string, TMenuActionParams extends TCommon> extends AgTabGuardComp<TBeanCollection, TProperties, TGlobalEvents, TCommon, TPropertiesService, TComponentSelectorType, AgMenuListEvent> {
+    private readonly level;
+    private readonly menuActionParams;
+    private readonly callbacks;
+    private readonly menuItems;
+    private activeMenuItem;
+    private itemsReady;
+    constructor(level: number | undefined, menuActionParams: WithoutCommon<TCommon, TMenuActionParams>, callbacks: AgMenuItemCallbacks<TBeanCollection, TMenuActionParams, TCommon>);
+    postConstruct(): void;
+    private onTabKeyDown;
+    private handleKeyDown;
+    private handleFocusIn;
+    private handleFocusOut;
+    clearActiveItem(): void;
+    addMenuItems(menuItems?: (AgMenuItemDef<TMenuActionParams, TCommon> | string)[]): void;
+    private addItem;
+    focusInto(): boolean;
+    activateFirstItem(): void;
+    private createSeparator;
+    private handleNavKey;
+    private clearNoFocusRing;
+    private closeIfIsChild;
+    private openChild;
+    private findNextItem;
+    destroy(): void;
+}
+export {};

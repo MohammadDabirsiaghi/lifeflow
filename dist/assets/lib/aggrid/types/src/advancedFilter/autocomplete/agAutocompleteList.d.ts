@@ -1,0 +1,50 @@
+import { AgPopupComponent } from 'ag-stack';
+import type { AgComponentSelectorType, AgEventTypeParams, AgGridCommon, BeanCollection, Component, GridOptionsService, GridOptionsWithDefaults } from 'ag-grid-community';
+import type { AutocompleteEntry } from './autocompleteParams';
+type AutocompleteRowComponent = Component & {
+    updateSelected(selected: boolean): void;
+    setSearchString(searchString: string): void;
+};
+export declare class AgAutocompleteList extends AgPopupComponent<BeanCollection, GridOptionsWithDefaults, AgEventTypeParams, AgGridCommon<any, any>, GridOptionsService, AgComponentSelectorType> {
+    private readonly params;
+    private readonly eList;
+    private virtualList;
+    private autocompleteEntries;
+    private selectedValue;
+    private searchString;
+    private lastAutoListHeight;
+    constructor(params: {
+        autocompleteEntries: AutocompleteEntry[];
+        onConfirmed: () => void;
+        useFuzzySearch?: boolean;
+        useStartsWithSearch?: boolean;
+        autoSizeList?: boolean;
+        maxVisibleItems?: number;
+        onListHeightChanged?: () => void;
+        rowComponentCreator?: (value: AutocompleteEntry, selected: boolean) => AutocompleteRowComponent;
+        forceLastSelection?: (lastSelection: AutocompleteEntry, searchString: string) => boolean;
+        onActiveOptionChanged?: (optionId: string | null) => void;
+    });
+    postConstruct(): void;
+    getActiveOptionId(): string | null;
+    getListId(): string;
+    onNavigationKeyDown(event: any, key: string): void;
+    setSearch(searchString: string): void;
+    private runContainsSearch;
+    private runStartsWithSearch;
+    private runSearch;
+    private updateSearchInList;
+    private updateListHeight;
+    private checkSetSelectedValue;
+    private refreshVirtualList;
+    private setSelectedValue;
+    private refreshRenderedRowsAria;
+    private refreshActiveDescendant;
+    private updateRowAriaProperties;
+    private getOptionId;
+    private createRowComponent;
+    private onMouseMove;
+    afterGuiAttached(): void;
+    getSelectedValue(): AutocompleteEntry | null;
+}
+export {};

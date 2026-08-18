@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<html class="not-ready loading" data-pnotify-firstpos1="0" lang="fa" dir="rtl">
+<head>
+
+    <meta name='accept-language' content='fa-IR'/>
+    <title>مدیریت فروشگاه هوشمند</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="HandheldFriendly" content="true">
+    <meta property="sm:root" content="/" />
+ 
+
+
+    
+    
+    
+    
+    
+
+     
+     
+
+
+    
+     
+     
+     
+
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+
+     
+     
+
+
+          <link rel="stylesheet" href="/assets/lib/fontastic/fontastic.css?v=1787046064246">
+<link rel="stylesheet" href="/assets/lib/fa7/css/all.css?v=1787046064246">
+<link rel="stylesheet" href="/assets/lib/pnotify/css/pnotify.css?v=1787046064246">
+<link rel="stylesheet" href="/assets/lib/pnotify/css/pnotify.mobile.css?v=1787046064246">
+<link rel="stylesheet" href="/assets/lib/pnotify/css/pnotify.buttons.css?v=1787046064246">
+<link rel="stylesheet" href="/assets/admin/theme.css?v=1787046064246">
+<link rel="stylesheet" href="/assets/admin/theme-rtl.css?v=1787046064246">   
+                     
+        <script src="/assets/lib/jquery/jquery-3.7.1.js?v=1787046064246"></script>
+<script src="/assets/lib/vue/vue.js?v=1787046064246"></script>
+<script src="/assets/lib/aggrid/ag-grid-enterprise.js?v=1787046064246"></script>   
+
+</head>
+
+<body class="">
+
+	    
+    
+
+
+<div id="page">
+    <div class="canvas-blocker canvas-slidable"></div>
+    <div class="page-main canvas-slidable">
+        <header id="header" class="dispensable">
+            
+                
+                     <nav id="navbar" class="navbar navbar-slide navbar-dark navbar-expand">
+    <!-- برند و لوگوی LifeFlow -->
+    <a class="navbar-brand mx-0 mr-2 mr-sm-3" href="/admin/">
+        <span class="font-weight-bold text-white d-none d-lg-inline-block" style="font-size: 1.15rem; letter-spacing: 0.5px;">
+            <i class="icm icm-leaf text-success mr-1"></i> LifeFlow
+        </span>
+        <span class="font-weight-bold text-white d-lg-none">LF</span>
+    </a>
+
+    <div id="navbar-menu" class="collapse navbar-collapse mr-auto">
+        <ul class="navbar-nav">
+            
+            <!-- ۱. داشبورد و مرور اجمالی -->
+            <li data-id="nav-dashboard" class="nav-item dropdown d-none d-md-block">
+                <a class="nav-link" href="/admin/">
+                    <i class="icm icm-home navbar-icon"></i>
+                    <span class="navbar-label d-none d-lg-block">داشبورد</span>
+                </a>
+            </li>
+
+            <!-- ۲. سیستم GTD و پروژه‌ها -->
+            <li data-id="nav-gtd" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+                    <i class="icm icm-tree navbar-icon"></i>
+                    <span class="navbar-label d-none d-lg-block">پروژه‌ها و GTD</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li data-id="gtd-tree">
+                        <a class="dropdown-item" href="/admin/gtd/tree/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#diagram-3"></use></svg>
+                            درخت پروژه‌ها (Tree View)
+                        </a>
+                    </li>
+                    <li data-id="gtd-inbox">
+                        <a class="dropdown-item" href="/admin/gtd/inbox/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#inbox"></use></svg>
+                            صندوق ورودی (Inbox)
+                        </a>
+                    </li>
+                    <li data-id="gtd-next-actions">
+                        <a class="dropdown-item" href="/admin/gtd/actions/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#check2-square"></use></svg>
+                            اقدامات بعدی (Next Actions)
+                        </a>
+                    </li>
+                    <li data-id="gtd-contexts">
+                        <a class="dropdown-item" href="/admin/gtd/contexts/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#tags"></use></svg>
+                            زمینه‌ها (Contexts)
+                        </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li data-id="gtd-reviews-header" class="dropdown-header h6">مرورها</li>
+                    <li data-id="gtd-weekly-review">
+                        <a class="dropdown-item" href="/admin/gtd/weekly-review/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#calendar-check"></use></svg>
+                            مرور هفتگی (Weekly Review)
+                        </a>
+                    </li>
+                    <li data-id="gtd-someday-maybe">
+                        <a class="dropdown-item" href="/admin/gtd/someday/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#hourglass-split"></use></svg>
+                            شاید / زمانی دیگر
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- ۳. کانال‌های فروش، مارکت‌پلیس و گجت‌ها -->
+            <li data-id="nav-commerce" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+                    <i class="icm icm-cube navbar-icon"></i>
+                    <span class="navbar-label d-none d-lg-block">فروشگاه و مارکت‌پلیس</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li data-id="marketplace-dk">
+                        <a class="dropdown-item" href="/admin/marketplace/digikala/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#shop"></use></svg>
+                            پنل دیجی‌کالا و همگام‌سازی
+                        </a>
+                    </li>
+                    <li data-id="nexgadget-products">
+                        <a class="dropdown-item" href="/admin/product/list/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#box-seam"></use></svg>
+                            کاتالوگ محصولات (گجت‌ها)
+                        </a>
+                    </li>
+                    <li data-id="categories-list">
+                        <a class="dropdown-item" href="/admin/category/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#folder2-open"></use></svg>
+                            دسته‌بندی‌ها
+                        </a>
+                    </li>
+                    <li data-id="sales-orders">
+                        <a class="dropdown-item" href="/admin/order/list/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#receipt"></use></svg>
+                            سفارشات و محموله‌ها
+                        </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li data-id="inventory-pricing" class="dropdown-header h6">موجودی و قیمت‌گذاری</li>
+                    <li data-id="stockreport">
+                        <a class="dropdown-item" href="/admin/product/lowstockreport/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#sort-numeric-down"></use></svg>
+                            گزارش کسری موجودی
+                        </a>
+                    </li>
+                    <li data-id="market-research">
+                        <a class="dropdown-item" href="/admin/market-research/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#graph-up-arrow"></use></svg>
+                            تحقیق بازار و رقبا
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- ۴. تولید محتوا، آموزش و استودیو -->
+            <li data-id="nav-studio" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+                    <i class="icm icm-camera navbar-icon"></i>
+                    <span class="navbar-label d-none d-lg-block">استودیو و آموزش</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li data-id="course-curriculum">
+                        <a class="dropdown-item" href="/admin/courses/curriculum/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#journal-bookmark"></use></svg>
+                            سرفصل دوره‌ها و درس‌ها
+                        </a>
+                    </li>
+                    <li data-id="recording-pipeline">
+                        <a class="dropdown-item" href="/admin/courses/pipeline/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#camera-video"></use></svg>
+                            خط تولید ویدیو (تجهیزات و ضبط)
+                        </a>
+                    </li>
+                    <li data-id="presentation-assets">
+                        <a class="dropdown-item" href="/admin/courses/assets/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#easel"></use></svg>
+                            اسلایدها و دارایی‌های مدیا
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- ۵. مدیریت مالی و درآمدها -->
+            <li data-id="nav-finance" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+                    <i class="icm icm-coins navbar-icon"></i>
+                    <span class="navbar-label d-none d-lg-block">مدیریت مالی</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li data-id="finance-overview">
+                        <a class="dropdown-item" href="/admin/finance/overview/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#wallet2"></use></svg>
+                            داشبورد درآمد و هزینه‌ها
+                        </a>
+                    </li>
+                    <li data-id="finance-streams">
+                        <a class="dropdown-item" href="/admin/finance/streams/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#cash-stack"></use></svg>
+                            جریان‌های درآمدی
+                        </a>
+                    </li>
+                    <li data-id="finance-settlement">
+                        <a class="dropdown-item" href="/admin/finance/settlements/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#credit-card"></use></svg>
+                            تسویه‌حساب‌ها و گردش نقدینگی
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- ۶. سیستم، اتوماسیون و GAS -->
+            <li data-id="nav-system" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+                    <i class="icm icm-equalizer navbar-icon"></i>
+                    <span class="navbar-label d-none d-lg-block">سیستم و اتوماسیون</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li data-id="gas-sync">
+                        <a class="dropdown-item" href="/admin/integrations/gas/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#file-earmark-spreadsheet"></use></svg>
+                            اتصالات Google Apps Script
+                        </a>
+                    </li>
+                    <li data-id="scheduled-tasks">
+                        <a class="dropdown-item" href="/admin/scheduling/list/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#clock-history"></use></svg>
+                            وظایف زمان‌بندی‌شده
+                        </a>
+                    </li>
+                    <li data-id="api-logs">
+                        <a class="dropdown-item" href="/admin/log/list/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#lightning"></use></svg>
+                            لاگ‌های سیستم و API
+                        </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li data-id="system-settings">
+                        <a class="dropdown-item" href="/admin/setting/generalcommon/">
+                            <svg class="dropdown-icon bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#sliders2-vertical"></use></svg>
+                            تنظیمات سامانه
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- ابزارهای سمت چپ هدر -->
+    <div class="collapse navbar-collapse ml-auto">
+        <ul class="navbar-nav ml-auto">
+            <!-- اقدامات سریع و کش -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle navbar-tool" href="javascript:;" title="اقدامات سیستم" data-toggle="dropdown">
+                    <i class="icm icm-cog navbar-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" id="sync-gas" href="javascript:;">
+                        <svg class="bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#arrow-repeat"></use></svg>
+                        همگام‌سازی فوری داده‌ها
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" id="clear-cache" href="javascript:;" data-url="/admin/maintenance/clearcache/?silent=True">
+                        <svg class="bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#trash"></use></svg>
+                        پاکسازی حافظه پنهان (Cache)
+                    </a>
+                    <a class="dropdown-item" href="/admin/maintenance/restartapplication/">
+                        <svg class="bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#power"></use></svg>
+                        راه‌اندازی مجدد برنامه
+                    </a>
+                </div>
+            </li>
+
+            <!-- زبان -->
+            <li class="nav-item dropdown d-none d-md-block">
+                <a class="nav-link dropdown-toggle navbar-tool" href="javascript:void(0)" title="فارسی" data-toggle="dropdown">
+                    <i class="icm icm-earth navbar-icon"></i>
+                    <span class="pl-1">FA</span>
+                </a>
+                <div id="language-selector" class="dropdown-menu dropdown-menu-right">
+                    <a href="javascript:void(0)" class="dropdown-item disabled">
+                        <img src="/images/flags/ir.png" alt="فارسی" /> فارسی
+                    </a>
+                    <a href="javascript:void(0)" class="dropdown-item">
+                        <img src="/images/flags/us.png" alt="English" /> English
+                    </a>
+                </div>
+            </li>
+
+            <!-- پروفایل کاربر -->
+            <li class="nav-item dropdown ml-md-3">
+                <a id="current-user" class="nav-link dropdown-toggle navbar-tool" data-toggle="dropdown" title="dabirsiaghim@gmail.com" href="/admin/customer/edit/1/">
+                    <i class="icm icm-user navbar-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="/admin/customer/edit/1/">
+                        <svg class="bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#person-circle"></use></svg>
+                        <span>پروفایل کاربری</span> 
+                        <small class="text-muted d-block text-truncate">dabirsiaghim@gmail.com</small>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="/logout/">
+                        <svg class="bi-fw bi" fill="currentColor" height="1em" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#box-arrow-left"></use></svg>
+                        خروج از حساب
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+ 
+
+
+
+
+
+                
+            
+
+            <div id="breadcrumb">
+                
+            </div>
+        </header>
+
+        
+
+        
+
+        <div id="content">
+            <div class="cph">
+                	
+
+
+
+ 
+
+
+
+ <div id="myGrid" style="height: 500px"></div>
+
+<div class="section-header">
+    <div class="title">
+        <i class="fa fa-sitemap"></i>
+        <span>دسته بندی های آمازون</span>
+
+		<div class="btn-group ml-2">
+			<a class="btn btn-outline-secondary btn-sm tooltip-toggle active" style="cursor:default" href="javascript:void(0)">
+				<i class="fa fa-bars"></i>
+			</a>
+			<a class="btn btn-outline-secondary btn-sm tooltip-toggle" title="switch to tree view" href="/backend/admin/category/tree/">
+				<i class="fa fa-sitemap"></i>
+			</a>
+		</div>
+    </div>
+    <div class="options">
+		
+		
+    </div>
+</div>
+<form>
+	<div class="adminContent">
+    	<div class="adminRow">
+        	<div class="adminTitle">
+            
+        	</div>
+        	<div class="adminData">
+            	
+            	<span asp-validation-for="Email"></span>
+        	</div>
+    	</div>
+		<div class="adminRow">
+        	<div class="adminTitle">
+            
+        	</div>
+        	<div class="adminData">
+            	 
+            	<span asp-validation-for="Email"></span>
+        	</div>
+    	</div>
+	</div>
+  
+
+
+
+
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary">
+      ذخیره
+    </button>
+  </div>
+</form>
+
+
+            </div>
+                
+            <div id="ajax-busy">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    
+</div>
+
+
+
+    
+
+    
+    
+     
+   <script src="/assets/admin/js/jquery-shims.js?v=1787046064246"></script>
+<script src="/assets/lib/underscore/underscore.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery/jquery.addeasing.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery-ui/effect.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery-ui/effect-transfer.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery-ui/position.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery/jquery.unobtrusive-ajax.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery/jquery.validate.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery/jquery.validate.unobtrusive.js?v=1787046064246"></script>
+<script src="/assets/lib/jquery/jquery.serializeToJSON.min.js?v=1787046064246"></script>
+<script src="/assets/lib/sortable/sortable.js?v=1787046064246"></script>
+<script src="/assets/lib/sortable/jquery-sortable.js?v=1787046064246"></script>
+<script src="/assets/lib/moment/moment.js?v=1787046064246"></script>
+<script src="/assets/lib/datetimepicker/js/tempusdominus-bootstrap-4.js?v=1787046064246"></script>
+<script src="/assets/lib/colorpicker/js/bootstrap-colorpicker.js?v=1787046064246"></script>
+<script src="/assets/lib/colorpicker/js/bootstrap-colorpicker-globalinit.js?v=1787046064246"></script>
+<script src="/assets/lib/select2/js/select2.js?v=1787046064246"></script>
+<script src="/assets/lib/pnotify/js/pnotify.js?v=1787046064246"></script>
+<script src="/assets/lib/pnotify/js/pnotify.mobile.js?v=1787046064246"></script>
+<script src="/assets/lib/pnotify/js/pnotify.buttons.js?v=1787046064246"></script>
+<script src="/assets/lib/pnotify/js/pnotify.animate.js?v=1787046064246"></script>
+<script src="/assets/lib/aos/js/aos.js?v=1787046064246"></script>
+<script src="/assets/lib/popper/popper.js?v=1787046064246"></script>
+<script src="/assets/lib/bootstrap/js/bootstrap.js?v=1787046064246"></script>
+<script src="/assets/js/underscore.mixins.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.system.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.touchevents.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.jquery.utils.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.globalization.js?v=1787046064246"></script>
+<script src="/assets/js/jquery.validate.unobtrusive.custom.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.viewport.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.scrollto.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.ajax.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.eventbroker.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.common.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.globalinit.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.tabs.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.dialogs.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.selectwrapper.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.throbber.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.thumbzoomer.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.entitypicker.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.rangeslider.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.numberinput.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.tree.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.media.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.editortemplates.js?v=1787046064246"></script>
+<script src="/assets/js/smartstore.offcanvas.js?v=1787046064246"></script>
+<script src="/assets/admin/js/admin.common.js?v=1787046064246"></script>
+<script src="/assets/admin/js/admin.media.js?v=1787046064246"></script>
+<script src="/assets/admin/js/admin.globalinit.js?v=1787046064246"></script>
+<script src="/assets/admin/js/admin.ai.js?v=1787046064246"></script>
+<script src="/assets/config.js?v=1787046064246"></script>
+<script src="/assets/api.js?v=1787046064246"></script>   
+           <script src="/static/obligations/index.js?v=1787046064246"></script>   
+</body>
+
+    
+    
+
+</html>
