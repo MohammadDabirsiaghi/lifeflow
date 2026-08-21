@@ -1,4 +1,121 @@
 
+
+<!DOCTYPE html>
+<html class="not-ready loading" data-pnotify-firstpos1="0" lang="fa" dir="rtl">
+<head>
+
+    <meta name='accept-language' content='fa-IR'/>
+    <title>مدیریت فروشگاه هوشمند</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="HandheldFriendly" content="true">
+    <meta property="sm:root" content="/" />
+ 
+
+
+    
+    
+    
+    
+    
+
+     
+     
+
+
+    
+     
+     
+     
+
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+
+
+     
+     
+
+
+          <link rel="stylesheet" href="/lifeflow/assets/lib/fontastic/fontastic.css?v=1787338089027">
+<link rel="stylesheet" href="/lifeflow/assets/lib/fa7/css/all.css?v=1787338089027">
+<link rel="stylesheet" href="/lifeflow/assets/lib/pnotify/css/pnotify.css?v=1787338089027">
+<link rel="stylesheet" href="/lifeflow/assets/lib/pnotify/css/pnotify.mobile.css?v=1787338089027">
+<link rel="stylesheet" href="/lifeflow/assets/lib/pnotify/css/pnotify.buttons.css?v=1787338089027">
+<link rel="stylesheet" href="/lifeflow/assets/admin/theme.css?v=1787338089027">
+<link rel="stylesheet" href="/lifeflow/assets/admin/theme-rtl.css?v=1787338089027">   
+                     
+        <script src="/lifeflow/assets/lib/jquery/jquery-3.7.1.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/vue/vue.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/aggrid/ag-grid-enterprise.js?v=1787338089027"></script>   
+
+</head>
+
+<body class="">
+
+	    
+    
+
+
+<div id="page">
+    <div class="canvas-blocker canvas-slidable"></div>
+    <div class="page-main canvas-slidable">
+        <header id="header" class="dispensable">
+            
+                
+                     
 <nav id="navbar" class="navbar navbar-slide navbar-dark navbar-expand">
     <a class="navbar-brand mx-0 mr-2 mr-sm-3" href="/admin/">
         <img class="navbar-img d-none d-lg-block" src="/images/smartstore.svg" alt="لایف فلو" />
@@ -12,7 +129,7 @@
 
 <ul class="navbar-nav">
         <li data-id="nav-dashboard" class="nav-item dropdown d-none d-md-block">
-            <a class="nav-link" href="{{ '/' | url }}">
+            <a class="nav-link" href="/lifeflow/">
                         <i class="icm icm-home navbar-icon"></i>
                 <span class="navbar-label d-none d-lg-block">داشبورد</span>
             </a>
@@ -26,7 +143,7 @@
                
                
                 <li data-id="regional-settings">
-                    <a class="dropdown-item" href="{{ '/projects/list.html' | url }}">
+                    <a class="dropdown-item" href="/lifeflow/projects/list.html">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#globe-americas"></use></svg>
                       پروژه ها
                     </a>
@@ -391,7 +508,7 @@
                     </a>
         <ul class="dropdown-menu">
                 <li data-id="countries">
-                    <a class="dropdown-item" href="{{ '/financial/accounts/list.html' | url }}">
+                    <a class="dropdown-item" href="/lifeflow/financial/accounts/list.html">
                         حساب ها
                     </a>
                 </li>
@@ -432,7 +549,7 @@
         </ul>
                 </li>
                 <li data-id="payment-methods">
-                    <a class="dropdown-item" href="{{ '/financial/traffic-fines/list.html' | url }}">
+                    <a class="dropdown-item" href="/lifeflow/financial/traffic-fines/list.html">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#credit-card"></use></svg>
                        خلافی های ماشین
                     </a>
@@ -693,3 +810,180 @@
         </ul>
     </div>
 </nav>
+ 
+
+
+
+
+
+                
+            
+
+            <div id="breadcrumb">
+                
+            </div>
+        </header>
+
+        
+
+        
+
+        <div id="content">
+            <div class="cph">
+                	
+
+
+ 
+
+
+
+
+     
+
+    <div class="section-header">
+        <div class="title">
+            <a sm-backto asp-action="List"></a>
+            <span>حساب ها</span>
+        </div>
+
+          
+        <div class="options">
+            
+   
+
+
+
+
+
+
+
+
+<button
+  type="submit"
+  name="save"
+  id="save"
+  value=""
+  class="btn btn-danger "
+>
+  
+    <i class="fa fa-check" aria-hidden="true"></i>
+  
+
+  <span>ذخیییره</span>
+</button> 
+	
+
+
+
+
+
+
+
+
+<button
+  type="submit"
+  name="save"
+  id="save"
+  value=""
+  class="btn btn-primary "
+>
+  
+    <i class="fa fa-check" aria-hidden="true"></i>
+  
+
+  <span>ذخبببیره</span>
+</button> 
+
+        </div>
+    
+
+     
+    </div> 
+
+ <div id="myGrid" style="height: 500px"></div>
+
+
+
+            </div>
+                
+            <div id="ajax-busy">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    
+</div>
+
+
+
+    
+
+    
+    
+     
+   <script src="/lifeflow/assets/admin/js/jquery-shims.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/underscore/underscore.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery/jquery.addeasing.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery-ui/effect.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery-ui/effect-transfer.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery-ui/position.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery/jquery.unobtrusive-ajax.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery/jquery.validate.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery/jquery.validate.unobtrusive.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/jquery/jquery.serializeToJSON.min.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/sortable/sortable.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/sortable/jquery-sortable.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/moment/moment.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/datetimepicker/js/tempusdominus-bootstrap-4.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/colorpicker/js/bootstrap-colorpicker.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/colorpicker/js/bootstrap-colorpicker-globalinit.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/select2/js/select2.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/pnotify/js/pnotify.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/pnotify/js/pnotify.mobile.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/pnotify/js/pnotify.buttons.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/pnotify/js/pnotify.animate.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/aos/js/aos.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/popper/popper.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/lib/bootstrap/js/bootstrap.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/underscore.mixins.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.system.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.touchevents.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.jquery.utils.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.globalization.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/jquery.validate.unobtrusive.custom.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.viewport.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.scrollto.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.ajax.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.eventbroker.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.common.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.globalinit.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.tabs.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.dialogs.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.selectwrapper.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.throbber.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.thumbzoomer.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.entitypicker.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.rangeslider.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.numberinput.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.tree.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.media.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.editortemplates.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/js/smartstore.offcanvas.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/admin/js/admin.common.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/admin/js/admin.media.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/admin/js/admin.globalinit.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/admin/js/admin.ai.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/config.js?v=1787338089027"></script>
+<script src="/lifeflow/assets/api.js?v=1787338089027"></script>   
+           <script src="/lifeflow/static/financial/traffic-fines/list.js?v=1787338089027"></script>   
+</body>
+
+    
+    
+
+</html>
