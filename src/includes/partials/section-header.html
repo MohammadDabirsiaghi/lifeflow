@@ -1,0 +1,16 @@
+     {% assign title = include.title | default: "" %}
+
+    <div class="section-header">
+        <div class="title">
+            <a sm-backto asp-action="List"></a>
+            <span>{{title}}</span>
+        </div>
+
+          {% if section-header-options %}
+        <div class="options">
+            {{ section-header-options }}
+        </div>
+    {% endif %}
+
+     
+    </div>
