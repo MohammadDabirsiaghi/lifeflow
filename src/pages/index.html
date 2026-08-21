@@ -3,98 +3,199 @@ title: سلام
 layout: adminlayout
 page-libs: [admin-common]
 permalink: /index.html
-roundOrderTotalDenominators:
-  - text: "5"
-    value: "0.05"
-  - text: "10"
-    value: "0.10"
-  - text: "50"
-    value: "0.50"
-  - text: "100"
-    value: "1.00"
+
 ---
+{% addJs "/static/dashboard.js", "scripts", "page" %} 
 
-{% addJs "/assets/lib/jstree/dist/jstree.js", "scripts", "page" %} 
-{% addCss "/assets/lib/jstree/dist/themes/default/style.css", "page" %}
-
-{% addJs "/assets/tree.js", "scripts", "page" %} 
-
-
-{% addJs "/static/main2.js", "scripts", "page" %} 
-
-
-{% capture section-header-options %}
-   {% include "ui/button.html"
-			name= "save" 
-			type="submit"
-			value="save"
-			color="danger"
-			icon="check"
-			text="ذخیییره"
-				%} 
-	{% include "ui/button.html"
-			name= "save" 
-			type="submit"
-			value="save"
-			color="primary"
-			icon="check"
-			text="ذخبببیره"
-				%} 
-{% endcapture  %}
-
-{% include "partials/section-header.html"
-			title="عنوان"
-				%} 
-
- <div id="myGrid" style="height: 500px"></div>
-
-<form>
-	<div class="adminContent">
-    	<div class="adminRow">
-        	<div class="adminTitle">
-            
-        	</div>
-        	<div class="adminData">
-            	{% include "ui/forms/form-control.html"
-				element= "select" 
-				options= roundOrderTotalDenominators 
-				custom-class= "autowidth"
-				control-size="small"
-  				custom-style= "width: 150px" 
-    		 	data-select=true
-     			data-select-lazy=true
-    			data-select-init-text= "parentCategoryBreadcrumb"
-    			data-select-url = "/Category/AllCategories"
-				%} 
-
-
-				{% include "ui/forms/switch.html"
-    				name= "Published"
-    				checked= false
-				%}
-            	<span asp-validation-for="Email"></span>
-        	</div>
-    	</div>
-		<div class="adminRow">
-        	<div class="adminTitle">
-            
-        	</div>
-        	<div class="adminData">
-            	 
-            	<span asp-validation-for="Email"></span>
-        	</div>
-    	</div>
-	</div>
-  
-
-
-
-
-  <div class="mt-3">
-    <button type="submit" class="btn btn-primary">
-      ذخیره
-    </button>
+<div class="page-header d-print-none">
+  <div class="container-fluid px-4">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+        <div class="page-pretitle">نمای کلی LifeFlow</div>
+        <h2 class="page-title">داشبورد و گزارش جامع</h2>
+      </div>
+      <!-- دکمه‌های عملیاتی -->
+      <div class="col-auto ms-auto d-print-none">
+        <div class="btn-list">
+          <button class="btn btn-outline-secondary" id="btnSyncData">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
+            همگام‌سازی شیت
+          </button>
+          <a href="/transactions/new.html" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+            تراکنش جدید
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-</form>
+</div>
 
-<div id="projectsTree"  class="project-tree"></div>
+<div class="page-body">
+  <div class="container-fluid px-4">
+    
+    <!-- لایه ۱: کارت‌های شاخص‌های کلیدی (KPI Cards) -->
+    <div class="row row-deck row-cards mb-3">
+      
+      <!-- درآمد کل -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">درآمد خالص ماه</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-green-lt">+۱۲.۵٪</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2" id="kpiTotalIncome">۰ تومان</div>
+            <div class="text-secondary small">مجموع پروژه‌ها و ناوگان</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- کارکرد ناوگان / اسنپ -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">کارکرد ناوگان (اسنپ)</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-blue-lt">فعال</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2" id="kpiSnappIncome">۰ تومان</div>
+            <div class="text-secondary small" id="kpiSnappRides">۰ سفر ثبت شده</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- هزینه‌ها -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">کل هزینه‌ها</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-yellow-lt">جاری</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2 text-warning" id="kpiTotalExpense">۰ تومان</div>
+            <div class="text-secondary small">جاری، خودرو و شخصی</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- جرایم معوق (Traffic Fines) -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">جرایم پرداخت‌نشده</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-red-lt" id="kpiUnpaidFinesCount">۰ مورد</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2 text-danger" id="kpiUnpaidFinesAmount">۰ تومان</div>
+            <div class="text-secondary small">نیاز به تسویه فوری</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- لایه ۲: نمودارهای تحلیلی -->
+    <div class="row row-cards mb-3">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">روند جریان نقدی ماهانه (Cash Flow)</h3>
+          </div>
+          <div class="card-body">
+            <div id="chart-income-expense" style="min-height: 280px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">سهم هزینه‌ها بر اساس دسته</h3>
+          </div>
+          <div class="card-body">
+            <div id="chart-expense-categories" style="min-height: 280px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- لایه ۳: جرایم فوری + وظایف GTD -->
+    <div class="row row-cards mb-3">
+      
+      <!-- مینی‌جدول جرایم پرداخت‌نشده -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between">
+            <h3 class="card-title text-danger">جرایم رانندگی پرداخت‌نشده</h3>
+            <a href="/traffic-fines.html" class="btn btn-sm btn-outline-danger">مشاهده</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table card-table table-vcenter text-nowrap datatable">
+              <thead>
+                <tr>
+                  <th>نوع تخلف</th>
+                  <th>محل</th>
+                  <th>مبلغ</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody id="unpaidFinesTableBody">
+                <tr><td colspan="4" class="text-center text-muted py-3">در حال بارگذاری اطلاعات...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ترمینال اقدامات و وظایف مالی GTD -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">اقدامات مالی پیش‌رو (Next Actions)</h3>
+          </div>
+          <div class="list-group list-group-flush" id="gtdActionsList">
+            <div class="list-group-item d-flex align-items-center">
+              <input type="checkbox" class="form-check-input me-3" id="task1">
+              <label for="task1" class="form-check-label flex-fill">
+                تسویه جرایم بالای ۳۰۰ هزار تومان
+                <span class="d-block text-secondary small">اولویت بالا • خودرو</span>
+              </label>
+              <span class="badge bg-red-lt">فوری</span>
+            </div>
+            <div class="list-group-item d-flex align-items-center">
+              <input type="checkbox" class="form-check-input me-3" id="task2">
+              <label for="task2" class="form-check-label flex-fill">
+                تطبیق کارکرد هفتگی اسنپ با واریزی شبا
+                <span class="d-block text-secondary small">هفتگی • مالی</span>
+              </label>
+              <span class="badge bg-blue-lt">روتین</span>
+            </div>
+            <div class="list-group-item d-flex align-items-center">
+              <input type="checkbox" class="form-check-input me-3" id="task3">
+              <label for="task3" class="form-check-label flex-fill">
+                انتقال درصد ثابت به حساب سرمایه‌گذاری
+                <span class="d-block text-secondary small">برنامه‌ریزی ماهانه</span>
+              </label>
+              <span class="badge bg-green-lt">هدف</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/assets/js/dashboard.js"></script>
+

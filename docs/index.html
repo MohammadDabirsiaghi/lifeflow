@@ -96,7 +96,7 @@
 <link rel="stylesheet" href="/lifeflow/assets/lib/pnotify/css/pnotify.buttons.css?v=1787339043226">
 <link rel="stylesheet" href="/lifeflow/assets/admin/theme.css?v=1787339043226">
 <link rel="stylesheet" href="/lifeflow/assets/admin/theme-rtl.css?v=1787339043226">   
-                  <link rel="stylesheet" href="/lifeflow/assets/lib/jstree/dist/themes/default/style.css?v=1787339043226">   
+                     
         <script src="/lifeflow/assets/lib/jquery/jquery-3.7.1.js?v=1787339043226"></script>
 <script src="/lifeflow/assets/lib/vue/vue.js?v=1787339043226"></script>
 <script src="/lifeflow/assets/lib/aggrid/ag-grid-enterprise.js?v=1787339043226"></script>   
@@ -152,57 +152,20 @@
                 <li data-id="payment-methods">
                     <a class="dropdown-item" href="/admin/payment/providers/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#credit-card"></use></svg>
-                        روش های پرداخت
+                       کارها
                     </a>
                 </li>
-                <li data-id="list-settings" class="dropdown-group">
-                    <a class="dropdown-item" href="javascript:void(0)">
-                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#view-list"></use></svg>
-                        لیست ها
-                    </a>
-        <ul class="dropdown-menu">
-                <li data-id="delivery-times">
-                    <a class="dropdown-item" href="/admin/deliverytime/list/">
-                        زمان تحویل
-                    </a>
-                </li>
-                <li data-id="quantity-units">
-                    <a class="dropdown-item" href="/admin/quantityunit/list/">
-                        واحدهای کمیت
-                    </a>
-                </li>
-                <li data-id="weights">
-                    <a class="dropdown-item" href="/admin/measure/weights/">
-                        وزن ها
-                    </a>
-                </li>
-                <li data-id="dimensions">
-                    <a class="dropdown-item" href="/admin/measure/dimensions/">
-                        ابعاد
-                    </a>
-                </li>
-                <li data-id="price-labels">
-                    <a class="dropdown-item" href="/admin/pricelabel/list/">
-                        برچسب های قیمت
-                    </a>
-                </li>
-                <li data-id="collection-groups">
-                    <a class="dropdown-item" href="/admin/collectiongroup/list/">
-                        Collection Groups
-                    </a>
-                </li>
-        </ul>
-                </li>
+
                 <li data-id="email-accounts">
                     <a class="dropdown-item" href="/admin/emailaccount/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#envelope"></use></svg>
-                        حساب های ایمیل
+                       قالب برنامه ریزی روز
                     </a>
                 </li>
                 <li data-id="activity-types">
                     <a class="dropdown-item" href="/admin/activitylog/activitylogtypes/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#eye-fill"></use></svg>
-                        انواع فعالیت
+                       قالب برنامه ریزی هفته
                     </a>
                 </li>
                     <li class="dropdown-divider"></li>
@@ -210,13 +173,13 @@
                 <li data-id="import">
                     <a class="dropdown-item" href="/admin/import/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#database-up "></use></svg>
-                        واردات
+                        ذهن خالی کن
                     </a>
                 </li>
                 <li data-id="export">
                     <a class="dropdown-item" href="/admin/export/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#database-down "></use></svg>
-                        صادرات
+                        روتین ها
                     </a>
                 </li>
                     <li class="dropdown-divider"></li>
@@ -224,7 +187,13 @@
                 <li data-id="themes">
                     <a class="dropdown-item" href="/admin/theme/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#palette"></use></svg>
-                        تم ها
+                       قوانین
+                    </a>
+                </li>
+                <li data-id="themes">
+                    <a class="dropdown-item" href="/admin/theme/list/">
+                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#palette"></use></svg>
+                       حوزه های مسئولیت
                     </a>
                 </li>
         </ul>
@@ -253,40 +222,21 @@
                         حساب ها
                     </a>
                 </li>
-                <li data-id="languages">
-                    <a class="dropdown-item" href="/admin/language/list/">
-                        زبان ها
-                    </a>
-                </li>
-                <li data-id="currencies">
-                    <a class="dropdown-item" href="/admin/currency/list/">
-                        ارزها
-                    </a>
-                </li>
+               
                     <li class="dropdown-divider"></li>
-                    <li data-id="shipping-header" class="dropdown-header h6">حمل و نقل</li>
+                    <li data-id="shipping-header" class="dropdown-header h6"> تست</li>
                 <li data-id="shipping-methods">
                     <a class="dropdown-item" href="/admin/shipping/methods/">
-                        روش های حمل و نقل
+                       دسته چک
                     </a>
                 </li>
                 <li data-id="shipping-providers">
                     <a class="dropdown-item" href="/admin/shipping/providers/">
-                        روش های محاسبه نرخ حمل و نقل
+                     تست
                     </a>
                 </li>
-                    <li class="dropdown-divider"></li>
-                    <li data-id="tax-header" class="dropdown-header h6">مالیات</li>
-                <li data-id="tax-providers">
-                    <a class="dropdown-item" href="/admin/tax/providers/">
-                        ارائه دهندگان مالیات
-                    </a>
-                </li>
-                <li data-id="tax-categories">
-                    <a class="dropdown-item" href="/admin/tax/list/">
-                        دسته های مالیاتی
-                    </a>
-                </li>
+                   
+              
         </ul>
                 </li>
                  <li data-id="payment-methods">
@@ -301,54 +251,17 @@
                        خلافی های ماشین
                     </a>
                 </li>
-                <li data-id="list-settings" class="dropdown-group">
-                    <a class="dropdown-item" href="javascript:void(0)">
-                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#view-list"></use></svg>
-                        لیست ها
-                    </a>
-        <ul class="dropdown-menu">
-                <li data-id="delivery-times">
-                    <a class="dropdown-item" href="/admin/deliverytime/list/">
-                        زمان تحویل
-                    </a>
-                </li>
-                <li data-id="quantity-units">
-                    <a class="dropdown-item" href="/admin/quantityunit/list/">
-                        واحدهای کمیت
-                    </a>
-                </li>
-                <li data-id="weights">
-                    <a class="dropdown-item" href="/admin/measure/weights/">
-                        وزن ها
-                    </a>
-                </li>
-                <li data-id="dimensions">
-                    <a class="dropdown-item" href="/admin/measure/dimensions/">
-                        ابعاد
-                    </a>
-                </li>
-                <li data-id="price-labels">
-                    <a class="dropdown-item" href="/admin/pricelabel/list/">
-                        برچسب های قیمت
-                    </a>
-                </li>
-                <li data-id="collection-groups">
-                    <a class="dropdown-item" href="/admin/collectiongroup/list/">
-                        Collection Groups
-                    </a>
-                </li>
-        </ul>
-                </li>
+      
                 <li data-id="email-accounts">
                     <a class="dropdown-item" href="/admin/emailaccount/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#envelope"></use></svg>
-                        حساب های ایمیل
+                       بودجه بندی
                     </a>
                 </li>
                 <li data-id="activity-types">
                     <a class="dropdown-item" href="/admin/activitylog/activitylogtypes/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#eye-fill"></use></svg>
-                        انواع فعالیت
+                       دوره مالی
                     </a>
                 </li>
                     <li class="dropdown-divider"></li>
@@ -356,13 +269,13 @@
                 <li data-id="import">
                     <a class="dropdown-item" href="/admin/import/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#database-up "></use></svg>
-                        واردات
+                        تراکنش ها
                     </a>
                 </li>
                 <li data-id="export">
                     <a class="dropdown-item" href="/admin/export/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#database-down "></use></svg>
-                        صادرات
+                        گزارش ها
                     </a>
                 </li>
                     <li class="dropdown-divider"></li>
@@ -370,7 +283,13 @@
                 <li data-id="themes">
                     <a class="dropdown-item" href="/admin/theme/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#palette"></use></svg>
-                        تم ها
+                       پیامک ها
+                    </a>
+                </li>
+                 <li data-id="themes">
+                    <a class="dropdown-item" href="/admin/theme/list/">
+                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#palette"></use></svg>
+                     پرداخت های زماندار
                     </a>
                 </li>
         </ul>
@@ -485,403 +404,200 @@
 
         <div id="content">
             <div class="cph">
-                	
- 
+                	 
 
-
- 
-
-
- 
-
-
-
-
-     
-
-    <div class="section-header">
-        <div class="title">
-            <a sm-backto asp-action="List"></a>
-            <span>عنوان</span>
+<div class="page-header d-print-none">
+  <div class="container-fluid px-4">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+        <div class="page-pretitle">نمای کلی LifeFlow</div>
+        <h2 class="page-title">داشبورد و گزارش جامع</h2>
+      </div>
+      <!-- دکمه‌های عملیاتی -->
+      <div class="col-auto ms-auto d-print-none">
+        <div class="btn-list">
+          <button class="btn btn-outline-secondary" id="btnSyncData">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg>
+            همگام‌سازی شیت
+          </button>
+          <a href="/transactions/new.html" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+            تراکنش جدید
+          </a>
         </div>
-
-          
-        <div class="options">
-            
-   
-
-
-
-
-
-
-
-
-<button
-  type="submit"
-  name="save"
-  id="save"
-  value=""
-  class="btn btn-danger "
->
-  
-    <i class="fa fa-check" aria-hidden="true"></i>
-  
-
-  <span>ذخیییره</span>
-</button> 
-	
-
-
-
-
-
-
-
-
-<button
-  type="submit"
-  name="save"
-  id="save"
-  value=""
-  class="btn btn-primary "
->
-  
-    <i class="fa fa-check" aria-hidden="true"></i>
-  
-
-  <span>ذخبببیره</span>
-</button> 
-
-        </div>
-    
-
-     
-    </div> 
-
- <div id="myGrid" style="height: 500px"></div>
-
-<form>
-	<div class="adminContent">
-    	<div class="adminRow">
-        	<div class="adminTitle">
-            
-        	</div>
-        	<div class="adminData">
-            	
-
-
-
-
-
-
-
-    
-
-
-
-  
-
-    
-      
-    
-
-
-
-  
-
-
-<select
-  class="form-control form-control-sm autowidth"   
-  data-select="true"
-  data-select-lazy="true"
-  data-select-init-text="parentCategoryBreadcrumb"
-  data-select-url="/Category/AllCategories"
->
-
-
-  
-    <option
-      value="0.05"
-      
-      
-    >5</option>
-  
-    <option
-      value="0.10"
-      
-      
-    >10</option>
-  
-    <option
-      value="0.50"
-      
-      
-    >50</option>
-  
-    <option
-      value="1.00"
-      
-      
-    >100</option>
-  
-</select>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-  <input
-    type="text"
-    id=""
-    name=""
-    value=""
-  />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-				
-
-
-
-
-<div class="form-check form-check-solo form-check-warning form-switch form-switch-lg">
-
-    <input
-        type="checkbox" data-val="true" data-val-required=""
-        id="Published"
-        name="Published"
-        value="true"
-        class="form-check-input"
-    />
-
-    <input
-        name="Published"
-        type="hidden"
-        value="false"
-    />
+      </div>
+    </div>
+  </div>
 </div>
 
-            	<span asp-validation-for="Email"></span>
-        	</div>
-    	</div>
-		<div class="adminRow">
-        	<div class="adminTitle">
-            
-        	</div>
-        	<div class="adminData">
-            	 
-            	<span asp-validation-for="Email"></span>
-        	</div>
-    	</div>
-	</div>
-  
+<div class="page-body">
+  <div class="container-fluid px-4">
+    
+    <!-- لایه ۱: کارت‌های شاخص‌های کلیدی (KPI Cards) -->
+    <div class="row row-deck row-cards mb-3">
+      
+      <!-- درآمد کل -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">درآمد خالص ماه</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-green-lt">+۱۲.۵٪</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2" id="kpiTotalIncome">۰ تومان</div>
+            <div class="text-secondary small">مجموع پروژه‌ها و ناوگان</div>
+          </div>
+        </div>
+      </div>
 
+      <!-- کارکرد ناوگان / اسنپ -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">کارکرد ناوگان (اسنپ)</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-blue-lt">فعال</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2" id="kpiSnappIncome">۰ تومان</div>
+            <div class="text-secondary small" id="kpiSnappRides">۰ سفر ثبت شده</div>
+          </div>
+        </div>
+      </div>
 
+      <!-- هزینه‌ها -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">کل هزینه‌ها</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-yellow-lt">جاری</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2 text-warning" id="kpiTotalExpense">۰ تومان</div>
+            <div class="text-secondary small">جاری، خودرو و شخصی</div>
+          </div>
+        </div>
+      </div>
 
+      <!-- جرایم معوق (Traffic Fines) -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="subheader">جرایم پرداخت‌نشده</div>
+              <div class="ms-auto lh-1">
+                <span class="badge bg-red-lt" id="kpiUnpaidFinesCount">۰ مورد</span>
+              </div>
+            </div>
+            <div class="h1 mb-2 mt-2 text-danger" id="kpiUnpaidFinesAmount">۰ تومان</div>
+            <div class="text-secondary small">نیاز به تسویه فوری</div>
+          </div>
+        </div>
+      </div>
 
-  <div class="mt-3">
-    <button type="submit" class="btn btn-primary">
-      ذخیره
-    </button>
+    </div>
+
+    <!-- لایه ۲: نمودارهای تحلیلی -->
+    <div class="row row-cards mb-3">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">روند جریان نقدی ماهانه (Cash Flow)</h3>
+          </div>
+          <div class="card-body">
+            <div id="chart-income-expense" style="min-height: 280px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">سهم هزینه‌ها بر اساس دسته</h3>
+          </div>
+          <div class="card-body">
+            <div id="chart-expense-categories" style="min-height: 280px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- لایه ۳: جرایم فوری + وظایف GTD -->
+    <div class="row row-cards mb-3">
+      
+      <!-- مینی‌جدول جرایم پرداخت‌نشده -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between">
+            <h3 class="card-title text-danger">جرایم رانندگی پرداخت‌نشده</h3>
+            <a href="/traffic-fines.html" class="btn btn-sm btn-outline-danger">مشاهده</a>
+          </div>
+          <div class="table-responsive">
+            <table class="table card-table table-vcenter text-nowrap datatable">
+              <thead>
+                <tr>
+                  <th>نوع تخلف</th>
+                  <th>محل</th>
+                  <th>مبلغ</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody id="unpaidFinesTableBody">
+                <tr><td colspan="4" class="text-center text-muted py-3">در حال بارگذاری اطلاعات...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ترمینال اقدامات و وظایف مالی GTD -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">اقدامات مالی پیش‌رو (Next Actions)</h3>
+          </div>
+          <div class="list-group list-group-flush" id="gtdActionsList">
+            <div class="list-group-item d-flex align-items-center">
+              <input type="checkbox" class="form-check-input me-3" id="task1">
+              <label for="task1" class="form-check-label flex-fill">
+                تسویه جرایم بالای ۳۰۰ هزار تومان
+                <span class="d-block text-secondary small">اولویت بالا • خودرو</span>
+              </label>
+              <span class="badge bg-red-lt">فوری</span>
+            </div>
+            <div class="list-group-item d-flex align-items-center">
+              <input type="checkbox" class="form-check-input me-3" id="task2">
+              <label for="task2" class="form-check-label flex-fill">
+                تطبیق کارکرد هفتگی اسنپ با واریزی شبا
+                <span class="d-block text-secondary small">هفتگی • مالی</span>
+              </label>
+              <span class="badge bg-blue-lt">روتین</span>
+            </div>
+            <div class="list-group-item d-flex align-items-center">
+              <input type="checkbox" class="form-check-input me-3" id="task3">
+              <label for="task3" class="form-check-label flex-fill">
+                انتقال درصد ثابت به حساب سرمایه‌گذاری
+                <span class="d-block text-secondary small">برنامه‌ریزی ماهانه</span>
+              </label>
+              <span class="badge bg-green-lt">هدف</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
-</form>
+</div>
 
-<div id="projectsTree"  class="project-tree"></div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/assets/js/dashboard.js"></script>
+
 
             </div>
                 
@@ -959,9 +675,7 @@
 <script src="/lifeflow/assets/admin/js/admin.ai.js?v=1787339043226"></script>
 <script src="/lifeflow/assets/config.js?v=1787339043226"></script>
 <script src="/lifeflow/assets/api.js?v=1787339043226"></script>   
-           <script src="/lifeflow/assets/lib/jstree/dist/jstree.js?v=1787339043226"></script>
-<script src="/lifeflow/assets/tree.js?v=1787339043226"></script>
-<script src="/lifeflow/static/main2.js?v=1787339043226"></script>   
+           <script src="/lifeflow/static/dashboard.js?v=1787339043226"></script>   
 </body>
 
     
