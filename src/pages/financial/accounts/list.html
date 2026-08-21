@@ -1,0 +1,37 @@
+---
+title: حساب ها
+layout: adminlayout
+permalink: /financial/accounts/list.html
+---
+
+
+
+{% addJs "/static/financial/accounts/list.js", "scripts", "page" %} 
+
+
+{% capture section-header-options %}
+   {% include "ui/button.html"
+			name= "save" 
+			type="submit"
+			value="save"
+			color="danger"
+			icon="check"
+			text="ذخیییره"
+				%} 
+	{% include "ui/button.html"
+			name= "save" 
+			type="submit"
+			value="save"
+			color="primary"
+			icon="check"
+			text="ذخبببیره"
+				%} 
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="حساب ها"
+				%} 
+
+ <div id="myGrid" style="height: 500px"></div>
+
+
