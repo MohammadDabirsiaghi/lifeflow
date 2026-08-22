@@ -12,7 +12,7 @@
     <meta name="HandheldFriendly" content="true">
     <meta property="sm:root" content="/" />
  
-
+   {% include "partials/client-res.html" %} 
 
     {% addCss "/assets/lib/fontastic/fontastic.css", "layout" %}
     {% addCss "/assets/lib/fa7/css/all.css", "layout" %}
@@ -95,7 +95,7 @@
 
 </head>
 
-<body class="">
+<body{% if bodyClasses %} class="{{ bodyClasses | join: ' ' }}"{% endif %}>
 
 	    {{ content }}
      

@@ -1,0 +1,520 @@
+
+---
+title: حساب ها
+layout: adminlayout
+permalink: /financial/accounts/create.html
+---
+
+
+<form id="state-regions" action="/backend/admin/country/statecreatepopup/?btnId=btnRefresh&amp;formId=state-regions" method="post">
+    <div class="section-header">
+        <div class="title">
+            Add a new state/province
+        </div>
+        <div class="options">
+            <button type="submit" name="save" value="save" class="btn btn-primary">
+                <i class="fa fa-check"></i>
+                <span>Save</span>
+            </button>
+        </div>
+    </div>
+
+    
+<div class="validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+<input type="hidden" data-val="true" data-val-required="" id="Id" name="Id" value="0" />
+<input type="hidden" data-val="true" data-val-required="" id="CountryId" name="CountryId" value="1" />
+
+<div class="locale-editor" style="--tab-caption-display-xl: inline">
+<div class="nav-locales tabbable" id="state-localized"><ul class="nav nav-tabs" role="tablist"><li class="nav-item-master nav-item" role="presentation"><a aria-controls="state-localized-0" aria-selected="true" class="nav-link active btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-0" id="state-localized-0-tab" role="tab"><i class="fa fa-globe nav-icon"></i><span class="tab-caption">Standard</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="German"><a aria-controls="state-localized-1" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-1" id="state-localized-1-tab" role="tab"><img alt="Icon" src="/backend/images/flags/de.png"></img><span class="tab-caption">German</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="English"><a aria-controls="state-localized-2" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-2" id="state-localized-2-tab" role="tab"><img alt="Icon" src="/backend/images/flags/us.png"></img><span class="tab-caption">English</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Dutch"><a aria-controls="state-localized-3" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-3" id="state-localized-3-tab" role="tab"><img alt="Icon" src="/backend/images/flags/nl.png"></img><span class="tab-caption">Dutch</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="French"><a aria-controls="state-localized-4" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-4" id="state-localized-4-tab" role="tab"><img alt="Icon" src="/backend/images/flags/fr.png"></img><span class="tab-caption">French</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Russian"><a aria-controls="state-localized-5" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-5" id="state-localized-5-tab" role="tab"><img alt="Icon" src="/backend/images/flags/ru.png"></img><span class="tab-caption">Russian</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Japanese"><a aria-controls="state-localized-6" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-6" id="state-localized-6-tab" role="tab"><img alt="Icon" src="/backend/images/flags/jp.png"></img><span class="tab-caption">Japanese</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Español"><a aria-controls="state-localized-7" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-7" id="state-localized-7-tab" role="tab"><img alt="Icon" src="/backend/images/flags/es.png"></img><span class="tab-caption">Español</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Arabic (Saudi Arabia)"><a aria-controls="state-localized-8" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-8" id="state-localized-8-tab" role="tab"><img alt="Icon" src="/backend/images/flags/sa.png"></img><span class="tab-caption">Arabic (Saudi Arabia)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Hindi (India)"><a aria-controls="state-localized-9" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-9" id="state-localized-9-tab" role="tab"><img alt="Icon" src="/backend/images/flags/in.png"></img><span class="tab-caption">Hindi (India)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Turkish (Turkey)"><a aria-controls="state-localized-10" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-10" id="state-localized-10-tab" role="tab"><img alt="Icon" src="/backend/images/flags/tr.png"></img><span class="tab-caption">Turkish (Turkey)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Italian (Italy)"><a aria-controls="state-localized-11" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-11" id="state-localized-11-tab" role="tab"><img alt="Icon" src="/backend/images/flags/it.png"></img><span class="tab-caption">Italian (Italy)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Polish (Poland)"><a aria-controls="state-localized-12" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-12" id="state-localized-12-tab" role="tab"><img alt="Icon" src="/backend/images/flags/pl.png"></img><span class="tab-caption">Polish (Poland)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Portuguese (Portugal)"><a aria-controls="state-localized-13" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-13" id="state-localized-13-tab" role="tab"><img alt="Icon" src="/backend/images/flags/pt.png"></img><span class="tab-caption">Portuguese (Portugal)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Greek (Greece)"><a aria-controls="state-localized-14" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-14" id="state-localized-14-tab" role="tab"><img alt="Icon" src="/backend/images/flags/gr.png"></img><span class="tab-caption">Greek (Greece)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Thai (Thailand)"><a aria-controls="state-localized-15" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-15" id="state-localized-15-tab" role="tab"><img alt="Icon" src="/backend/images/flags/th.png"></img><span class="tab-caption">Thai (Thailand)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Vietnamese (Vietnam)"><a aria-controls="state-localized-16" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-16" id="state-localized-16-tab" role="tab"><img alt="Icon" src="/backend/images/flags/vn.png"></img><span class="tab-caption">Vietnamese (Vietnam)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Korean (Korea)"><a aria-controls="state-localized-17" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-17" id="state-localized-17-tab" role="tab"><img alt="Icon" src="/backend/images/flags/kr.png"></img><span class="tab-caption">Korean (Korea)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Swedish (Sweden)"><a aria-controls="state-localized-18" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-18" id="state-localized-18-tab" role="tab"><img alt="Icon" src="/backend/images/flags/se.png"></img><span class="tab-caption">Swedish (Sweden)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Portuguese (Brazil)"><a aria-controls="state-localized-19" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-19" id="state-localized-19-tab" role="tab"><img alt="Icon" src="/backend/images/flags/br.png"></img><span class="tab-caption">Portuguese (Brazil)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Hebrew (Israel)"><a aria-controls="state-localized-20" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-20" id="state-localized-20-tab" role="tab"><img alt="Icon" src="/backend/images/flags/il.png"></img><span class="tab-caption">Hebrew (Israel)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Czech (Czech Republic)"><a aria-controls="state-localized-21" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-21" id="state-localized-21-tab" role="tab"><img alt="Icon" src="/backend/images/flags/cz.png"></img><span class="tab-caption">Czech (Czech Republic)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Danish (Denmark)"><a aria-controls="state-localized-22" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-22" id="state-localized-22-tab" role="tab"><img alt="Icon" src="/backend/images/flags/dk.png"></img><span class="tab-caption">Danish (Denmark)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Romanian (Romania)"><a aria-controls="state-localized-23" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-23" id="state-localized-23-tab" role="tab"><img alt="Icon" src="/backend/images/flags/ro.png"></img><span class="tab-caption">Romanian (Romania)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Estonian (Estonia)"><a aria-controls="state-localized-24" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-24" id="state-localized-24-tab" role="tab"><img alt="Icon" src="/backend/images/flags/ee.png"></img><span class="tab-caption">Estonian (Estonia)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Bulgarian (Bulgaria)"><a aria-controls="state-localized-25" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-25" id="state-localized-25-tab" role="tab"><img alt="Icon" src="/backend/images/flags/bg.png"></img><span class="tab-caption">Bulgarian (Bulgaria)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Finnish (Finland)"><a aria-controls="state-localized-26" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-26" id="state-localized-26-tab" role="tab"><img alt="Icon" src="/backend/images/flags/fi.png"></img><span class="tab-caption">Finnish (Finland)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Latvian (Latvia)"><a aria-controls="state-localized-27" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-27" id="state-localized-27-tab" role="tab"><img alt="Icon" src="/backend/images/flags/lv.png"></img><span class="tab-caption">Latvian (Latvia)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Lithuanian (Lithuania)"><a aria-controls="state-localized-28" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-28" id="state-localized-28-tab" role="tab"><img alt="Icon" src="/backend/images/flags/lt.png"></img><span class="tab-caption">Lithuanian (Lithuania)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Hungarian (Hungary)"><a aria-controls="state-localized-29" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-29" id="state-localized-29-tab" role="tab"><img alt="Icon" src="/backend/images/flags/hu.png"></img><span class="tab-caption">Hungarian (Hungary)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Slovakian (Slovakia)"><a aria-controls="state-localized-30" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-30" id="state-localized-30-tab" role="tab"><img alt="Icon" src="/backend/images/flags/sk.png"></img><span class="tab-caption">Slovakian (Slovakia)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Slovenian (Slovenia)"><a aria-controls="state-localized-31" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-31" id="state-localized-31-tab" role="tab"><img alt="Icon" src="/backend/images/flags/si.png"></img><span class="tab-caption">Slovenian (Slovenia)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Ukrainian (Ukraine)"><a aria-controls="state-localized-32" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-32" id="state-localized-32-tab" role="tab"><img alt="Icon" src="/backend/images/flags/ua.png"></img><span class="tab-caption">Ukrainian (Ukraine)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Chinese (Simplified)"><a aria-controls="state-localized-33" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-33" id="state-localized-33-tab" role="tab"><img alt="Icon" src="/backend/images/flags/cn.png"></img><span class="tab-caption">Chinese (Simplified)</span></a></li><li class="nav-item-locale nav-item" role="presentation" title="Norwegian Bokmål"><a aria-controls="state-localized-34" aria-selected="false" class="nav-link btn btn-light btn-sm" data-loaded="true" data-toggle="tab" href="#state-localized-34" id="state-localized-34-tab" role="tab"><img alt="Icon" src="/backend/images/flags/no.png"></img><span class="tab-caption">Norwegian Bokmål</span></a></li></ul><div class="tab-content">
+<div aria-labelledby="state-localized-0-tab" class="tab-pane fade show active" data-tab-name="" id="state-localized-0" role="tabpanel"><div class="locale-editor-content" data-lang="de-DE" data-lang-id="1" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="text" class="form-control" data-val="true" data-val-required="" id="Name" name="Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-1-tab" class="tab-pane fade" data-tab-name="" id="state-localized-1" role="tabpanel"><div class="locale-editor-content" data-lang="de-DE" data-lang-id="1" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_0__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_0__LanguageId" name="Locales[0].LanguageId" value="1" />
+            <input type="text" class="form-control" id="Locales_0__Name" name="Locales[0].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[0].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-2-tab" class="tab-pane fade" data-tab-name="" id="state-localized-2" role="tabpanel"><div class="locale-editor-content" data-lang="en-US" data-lang-id="2" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_1__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_1__LanguageId" name="Locales[1].LanguageId" value="2" />
+            <input type="text" class="form-control" id="Locales_1__Name" name="Locales[1].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[1].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-3-tab" class="tab-pane fade" data-tab-name="" id="state-localized-3" role="tabpanel"><div class="locale-editor-content" data-lang="nl-NL" data-lang-id="3" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_2__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_2__LanguageId" name="Locales[2].LanguageId" value="3" />
+            <input type="text" class="form-control" id="Locales_2__Name" name="Locales[2].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[2].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-4-tab" class="tab-pane fade" data-tab-name="" id="state-localized-4" role="tabpanel"><div class="locale-editor-content" data-lang="fr-FR" data-lang-id="4" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_3__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_3__LanguageId" name="Locales[3].LanguageId" value="4" />
+            <input type="text" class="form-control" id="Locales_3__Name" name="Locales[3].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[3].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-5-tab" class="tab-pane fade" data-tab-name="" id="state-localized-5" role="tabpanel"><div class="locale-editor-content" data-lang="ru-RU" data-lang-id="5" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_4__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_4__LanguageId" name="Locales[4].LanguageId" value="5" />
+            <input type="text" class="form-control" id="Locales_4__Name" name="Locales[4].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[4].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-6-tab" class="tab-pane fade" data-tab-name="" id="state-localized-6" role="tabpanel"><div class="locale-editor-content" data-lang="ja-JP" data-lang-id="6" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_5__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_5__LanguageId" name="Locales[5].LanguageId" value="6" />
+            <input type="text" class="form-control" id="Locales_5__Name" name="Locales[5].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[5].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-7-tab" class="tab-pane fade" data-tab-name="" id="state-localized-7" role="tabpanel"><div class="locale-editor-content" data-lang="es-ES" data-lang-id="7" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_6__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_6__LanguageId" name="Locales[6].LanguageId" value="7" />
+            <input type="text" class="form-control" id="Locales_6__Name" name="Locales[6].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[6].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-8-tab" class="tab-pane fade" data-tab-name="" id="state-localized-8" role="tabpanel"><div class="locale-editor-content" data-lang="ar-SA" data-lang-id="8" data-rtl="true"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_7__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_7__LanguageId" name="Locales[7].LanguageId" value="8" />
+            <input type="text" class="form-control" id="Locales_7__Name" name="Locales[7].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[7].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-9-tab" class="tab-pane fade" data-tab-name="" id="state-localized-9" role="tabpanel"><div class="locale-editor-content" data-lang="hi-IN" data-lang-id="9" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_8__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_8__LanguageId" name="Locales[8].LanguageId" value="9" />
+            <input type="text" class="form-control" id="Locales_8__Name" name="Locales[8].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[8].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-10-tab" class="tab-pane fade" data-tab-name="" id="state-localized-10" role="tabpanel"><div class="locale-editor-content" data-lang="tr-TR" data-lang-id="10" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_9__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_9__LanguageId" name="Locales[9].LanguageId" value="10" />
+            <input type="text" class="form-control" id="Locales_9__Name" name="Locales[9].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[9].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-11-tab" class="tab-pane fade" data-tab-name="" id="state-localized-11" role="tabpanel"><div class="locale-editor-content" data-lang="it-IT" data-lang-id="12" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_10__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_10__LanguageId" name="Locales[10].LanguageId" value="12" />
+            <input type="text" class="form-control" id="Locales_10__Name" name="Locales[10].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[10].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-12-tab" class="tab-pane fade" data-tab-name="" id="state-localized-12" role="tabpanel"><div class="locale-editor-content" data-lang="pl-PL" data-lang-id="13" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_11__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_11__LanguageId" name="Locales[11].LanguageId" value="13" />
+            <input type="text" class="form-control" id="Locales_11__Name" name="Locales[11].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[11].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-13-tab" class="tab-pane fade" data-tab-name="" id="state-localized-13" role="tabpanel"><div class="locale-editor-content" data-lang="pt-PT" data-lang-id="14" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_12__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_12__LanguageId" name="Locales[12].LanguageId" value="14" />
+            <input type="text" class="form-control" id="Locales_12__Name" name="Locales[12].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[12].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-14-tab" class="tab-pane fade" data-tab-name="" id="state-localized-14" role="tabpanel"><div class="locale-editor-content" data-lang="el-GR" data-lang-id="15" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_13__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_13__LanguageId" name="Locales[13].LanguageId" value="15" />
+            <input type="text" class="form-control" id="Locales_13__Name" name="Locales[13].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[13].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-15-tab" class="tab-pane fade" data-tab-name="" id="state-localized-15" role="tabpanel"><div class="locale-editor-content" data-lang="th-TH" data-lang-id="16" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_14__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_14__LanguageId" name="Locales[14].LanguageId" value="16" />
+            <input type="text" class="form-control" id="Locales_14__Name" name="Locales[14].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[14].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-16-tab" class="tab-pane fade" data-tab-name="" id="state-localized-16" role="tabpanel"><div class="locale-editor-content" data-lang="vi-VN" data-lang-id="17" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_15__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_15__LanguageId" name="Locales[15].LanguageId" value="17" />
+            <input type="text" class="form-control" id="Locales_15__Name" name="Locales[15].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[15].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-17-tab" class="tab-pane fade" data-tab-name="" id="state-localized-17" role="tabpanel"><div class="locale-editor-content" data-lang="ko-KR" data-lang-id="18" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_16__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_16__LanguageId" name="Locales[16].LanguageId" value="18" />
+            <input type="text" class="form-control" id="Locales_16__Name" name="Locales[16].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[16].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-18-tab" class="tab-pane fade" data-tab-name="" id="state-localized-18" role="tabpanel"><div class="locale-editor-content" data-lang="sv-SE" data-lang-id="19" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_17__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_17__LanguageId" name="Locales[17].LanguageId" value="19" />
+            <input type="text" class="form-control" id="Locales_17__Name" name="Locales[17].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[17].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-19-tab" class="tab-pane fade" data-tab-name="" id="state-localized-19" role="tabpanel"><div class="locale-editor-content" data-lang="pt-BR" data-lang-id="20" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_18__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_18__LanguageId" name="Locales[18].LanguageId" value="20" />
+            <input type="text" class="form-control" id="Locales_18__Name" name="Locales[18].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[18].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-20-tab" class="tab-pane fade" data-tab-name="" id="state-localized-20" role="tabpanel"><div class="locale-editor-content" data-lang="he-IL" data-lang-id="21" data-rtl="true"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_19__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_19__LanguageId" name="Locales[19].LanguageId" value="21" />
+            <input type="text" class="form-control" id="Locales_19__Name" name="Locales[19].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[19].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-21-tab" class="tab-pane fade" data-tab-name="" id="state-localized-21" role="tabpanel"><div class="locale-editor-content" data-lang="cs-CZ" data-lang-id="22" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_20__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_20__LanguageId" name="Locales[20].LanguageId" value="22" />
+            <input type="text" class="form-control" id="Locales_20__Name" name="Locales[20].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[20].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-22-tab" class="tab-pane fade" data-tab-name="" id="state-localized-22" role="tabpanel"><div class="locale-editor-content" data-lang="da-DK" data-lang-id="23" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_21__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_21__LanguageId" name="Locales[21].LanguageId" value="23" />
+            <input type="text" class="form-control" id="Locales_21__Name" name="Locales[21].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[21].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-23-tab" class="tab-pane fade" data-tab-name="" id="state-localized-23" role="tabpanel"><div class="locale-editor-content" data-lang="ro-RO" data-lang-id="24" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_22__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_22__LanguageId" name="Locales[22].LanguageId" value="24" />
+            <input type="text" class="form-control" id="Locales_22__Name" name="Locales[22].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[22].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-24-tab" class="tab-pane fade" data-tab-name="" id="state-localized-24" role="tabpanel"><div class="locale-editor-content" data-lang="et-EE" data-lang-id="25" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_23__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_23__LanguageId" name="Locales[23].LanguageId" value="25" />
+            <input type="text" class="form-control" id="Locales_23__Name" name="Locales[23].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[23].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-25-tab" class="tab-pane fade" data-tab-name="" id="state-localized-25" role="tabpanel"><div class="locale-editor-content" data-lang="bg-BG" data-lang-id="26" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_24__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_24__LanguageId" name="Locales[24].LanguageId" value="26" />
+            <input type="text" class="form-control" id="Locales_24__Name" name="Locales[24].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[24].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-26-tab" class="tab-pane fade" data-tab-name="" id="state-localized-26" role="tabpanel"><div class="locale-editor-content" data-lang="fi-FI" data-lang-id="27" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_25__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_25__LanguageId" name="Locales[25].LanguageId" value="27" />
+            <input type="text" class="form-control" id="Locales_25__Name" name="Locales[25].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[25].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-27-tab" class="tab-pane fade" data-tab-name="" id="state-localized-27" role="tabpanel"><div class="locale-editor-content" data-lang="lv-LV" data-lang-id="28" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_26__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_26__LanguageId" name="Locales[26].LanguageId" value="28" />
+            <input type="text" class="form-control" id="Locales_26__Name" name="Locales[26].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[26].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-28-tab" class="tab-pane fade" data-tab-name="" id="state-localized-28" role="tabpanel"><div class="locale-editor-content" data-lang="lt-LT" data-lang-id="29" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_27__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_27__LanguageId" name="Locales[27].LanguageId" value="29" />
+            <input type="text" class="form-control" id="Locales_27__Name" name="Locales[27].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[27].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-29-tab" class="tab-pane fade" data-tab-name="" id="state-localized-29" role="tabpanel"><div class="locale-editor-content" data-lang="hu-HU" data-lang-id="30" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_28__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_28__LanguageId" name="Locales[28].LanguageId" value="30" />
+            <input type="text" class="form-control" id="Locales_28__Name" name="Locales[28].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[28].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-30-tab" class="tab-pane fade" data-tab-name="" id="state-localized-30" role="tabpanel"><div class="locale-editor-content" data-lang="sk-SK" data-lang-id="31" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_29__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_29__LanguageId" name="Locales[29].LanguageId" value="31" />
+            <input type="text" class="form-control" id="Locales_29__Name" name="Locales[29].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[29].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-31-tab" class="tab-pane fade" data-tab-name="" id="state-localized-31" role="tabpanel"><div class="locale-editor-content" data-lang="sl-SI" data-lang-id="32" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_30__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_30__LanguageId" name="Locales[30].LanguageId" value="32" />
+            <input type="text" class="form-control" id="Locales_30__Name" name="Locales[30].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[30].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-32-tab" class="tab-pane fade" data-tab-name="" id="state-localized-32" role="tabpanel"><div class="locale-editor-content" data-lang="uk-UA" data-lang-id="33" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_31__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_31__LanguageId" name="Locales[31].LanguageId" value="33" />
+            <input type="text" class="form-control" id="Locales_31__Name" name="Locales[31].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[31].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-33-tab" class="tab-pane fade" data-tab-name="" id="state-localized-33" role="tabpanel"><div class="locale-editor-content" data-lang="zh-Hans-CN" data-lang-id="35" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_32__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_32__LanguageId" name="Locales[32].LanguageId" value="35" />
+            <input type="text" class="form-control" id="Locales_32__Name" name="Locales[32].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[32].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div><div aria-labelledby="state-localized-34-tab" class="tab-pane fade" data-tab-name="" id="state-localized-34" role="tabpanel"><div class="locale-editor-content" data-lang="nb-NO" data-lang-id="36" data-rtl="false"><div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Locales_33__Name">Name</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="The name of the state."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="hidden" data-val="true" data-val-required="" id="Locales_33__LanguageId" name="Locales[33].LanguageId" value="36" />
+            <input type="text" class="form-control" id="Locales_33__Name" name="Locales[33].Name" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Locales[33].Name" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+</div></div></div>
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-0' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-1' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-2' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-3' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-4' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-5' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-6' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-7' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-8' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-9' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-10' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-11' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-12' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-13' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-14' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-15' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-16' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-17' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-18' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-19' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-20' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-21' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-22' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-23' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-24' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-25' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-26' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-27' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-28' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-29' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-30' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-31' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-32' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-33' />
+<input type='hidden' class='loaded-tab-name' name='LoadedTabs' value='state-localized-34' />
+</div></div>
+
+<div class="adminContent">
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Abbreviation">Abbreviation</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="An abbreviation for this state/province."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <input type="text" class="form-control" id="Abbreviation" name="Abbreviation" value="" />
+            <span class="field-validation-valid" data-valmsg-for="Abbreviation" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="Published">Published</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="Determines whether this state is published."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            <div class="form-check form-check-solo form-check-warning form-switch form-switch-lg"><input type="checkbox" data-val="true" data-val-required="" id="Published" name="Published" value="true" class="form-check-input" /><input name="Published" type="hidden" value="false" /></div>
+            <span class="field-validation-valid" data-valmsg-for="Published" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+    <div class="adminRow">
+        <div class="adminTitle">
+            <div class="ctl-label"><label for="DisplayOrder">Display order</label><a class="hint" href="#" onclick="return false;" tabindex="-1" title="Specifies display order. 1 represents the top of the list."><i class="fa fa-question-circle"></i></a></div>
+        </div>
+        <div class="adminData">
+            
+
+<div class="numberinput-group input-group edit-control numberinput-default" data-editor="number">
+<input type="number" step="1" placeholder="Empty" class="form-control numberinput" data-val="true" data-val-required="" id="DisplayOrder" name="DisplayOrder" value="0" data-editor="numberinput" required aria-required="true" /><input name="__Invariant" type="hidden" value="DisplayOrder" /><span class='numberinput-formatted'></span><a href='javascript:;' class='numberinput-stepper numberinput-down' tabindex='-1' aria-hidden='true'><i class='fas fa-chevron-down'></i></a><a href='javascript:;' class='numberinput-stepper numberinput-up' tabindex='-1' aria-hidden='true'><i class='fas fa-chevron-up'></i></a></div>
+            <span class="field-validation-valid" data-valmsg-for="DisplayOrder" data-valmsg-replace="true" role="alert"></span>
+        </div>
+    </div>
+</div>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8Hnkh7280pFAsU3GKGV2UJOByVLjs49KR_9sDXZvO-ive7sliDxmBaaV4GSmB2DadlvsxNKa-Yh2I0_4nye_KtRY6Alhjq-6s9E06GYSsDIvDJckQMI-XWqu-xnbIbhl_Q8W8BkRkkjhm_uNrsiXOXOYDRkullp8uoTPSInHIrk-YsYsYBxA3b8FZPJ80KVSTg" />
+</form>

@@ -118,4 +118,20 @@ async function initTreeGrid() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', initTreeGrid);
+document.addEventListener('DOMContentLoaded',  () => {
+    initTreeGrid();
+    initButtons();
+});
+function initButtons() {
+     document.getElementById('btnAdd')?.addEventListener('click', handleAddCheckoutAttributeValue);
+}
+function handleAddCheckoutAttributeValue(btn, e) {
+    debugger;
+    console.log(btn);
+    // console.log(e);
+    //  e.preventDefault();
+
+
+    openPopup('/financial/accounts/create.html');
+     return true;
+}
