@@ -9,7 +9,7 @@ import { fileURLToPath } from "url";
 import dynamicAssets from "./shared1/includes/dynamic-asset-manager.js";
 import  fs  from "fs";
 const buildVersion = Date.now().toString();
-const isGitHubPages = process.env.DEPLOY_TARGET === "github";
+const isGitHubPages =true;// process.env.DEPLOY_TARGET === "github";
 
 /** @type {import('@11ty/eleventy').LocalConfig} */
 export default function (eleventyConfig) {
