@@ -23,8 +23,10 @@ export default function (eleventyConfig) {
 	const environment = process.env.NODE_ENV || "production";
 	  const pathPrefix = isGitHubPages ? "/lifeflow/" : "/";
 
-  dynamicAssets.setPathPrefix(pathPrefix);
 
+
+dynamicAssets.setPathPrefix(pathPrefix);
+eleventyConfig.addGlobalData("pathPrefix", pathPrefix);
 
 	eleventyConfig.on("eleventy.before", () => {
     dynamicAssets.clearAll();

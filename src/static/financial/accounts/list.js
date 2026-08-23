@@ -132,6 +132,6 @@ function handleAddCheckoutAttributeValue(btn, e) {
     //  e.preventDefault();
 
 
-    openPopup('/financial/accounts/create.html');
+    openPopup(window.appUrl('/financial/accounts/create.html'));
      return true;
 }
