@@ -33,12 +33,29 @@
 
                 </li>
                 <li data-id="payment-methods">
-                    <a class="dropdown-item" href="/admin/payment/providers/">
+                    <a class="dropdown-item" href="{{ '/tasks/list.html' | url }}">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#credit-card"></use></svg>
                        کارها
                     </a>
                 </li>
-
+                <li data-id="email-accounts">
+                    <a class="dropdown-item" href="{{ '/dailyplan/list.html' | url }}">
+                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#envelope"></use></svg>
+                    کارهای روز
+                    </a>
+                </li>
+                <li data-id="email-accounts">
+                    <a class="dropdown-item" href="{{ '/weeklytasks/list.html' | url }}">
+                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#envelope"></use></svg>
+                    کارهای هغفته
+                    </a>
+                </li>
+                <li data-id="email-accounts">
+                    <a class="dropdown-item" href="{{ '/terminals/list.html' | url }}">
+                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#envelope"></use></svg>
+                      ترمینال ها
+                    </a>
+                </li>
                 <li data-id="email-accounts">
                     <a class="dropdown-item" href="/admin/emailaccount/list/">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#envelope"></use></svg>
@@ -51,16 +68,22 @@
                        قالب برنامه ریزی هفته
                     </a>
                 </li>
+                 <li data-id="activity-types">
+                    <a class="dropdown-item" href="{{ '/sprints/list.html' | url }}">
+                                    <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#eye-fill"></use></svg>
+                      اسپرینت ها
+                    </a>
+                </li>
                     <li class="dropdown-divider"></li>
                     
                 <li data-id="import">
-                    <a class="dropdown-item" href="/admin/import/list/">
+                    <a class="dropdown-item" href="{{ '/inbox-items/list.html' | url }}">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#database-up "></use></svg>
                         ذهن خالی کن
                     </a>
                 </li>
                 <li data-id="export">
-                    <a class="dropdown-item" href="/admin/export/list/">
+                    <a class="dropdown-item" href="{{ '/routines/list.html' | url }}">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#database-down "></use></svg>
                         روتین ها
                     </a>

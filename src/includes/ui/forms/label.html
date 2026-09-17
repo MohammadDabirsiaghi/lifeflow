@@ -1,0 +1,9 @@
+{% assign name = include.name | default: "Name" %}
+{% assign text = include.text | default: "Text" %}
+{% assign hint = include.hint | default: "Hint" %}
+<div class="ctl-label">
+    <label for="{{name}}">{{text}}</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="{{hint}}">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>

@@ -7,6 +7,7 @@
 
 {% if element == "select" %}
     {% include "ui/forms/select.html",
+    name= include.name
     options= include.options
     custom-class=include.custom-class
     control-size=include.control-size
@@ -17,14 +18,25 @@
     data-select-url = include.data-select-url
     %}
 {% elsif element == "textarea" %}
-    {% include "ui/forms/textarea.html", include: include %}
+      {% include "ui/forms/textarea.html",
+    name= name
+  %}
 {% elsif element == "input" %}
     {% if type == "checkbox" and as_switch %}
-        {% include "ui/forms/form-switch.html", include: include %}
+        {% include "ui/forms/switch.html", include: include %}
     {% elsif type == "checkbox" or type == "radio" %}
-        {% include "ui/forms/form-check.html", include: include %}
+        {% include "ui/forms/check-radio.html", include: include %}
+    {% elsif type == "number" %}
+        {% include "ui/forms/number.html"
+          name= name
+        
+        %}    
     {% elsif type != "file" and type != "hidden" %}
-        {% include "ui/forms/input.html", include: include %}
+        {% include "ui/forms/input.html"
+            type= type
+            name= name
+            value= include.value
+        %}
     {% else %}
         <input type="{{ type }}" name="{{ include.name }}" value="{{ include.value }}">
     {% endif %}
@@ -88,128 +100,4 @@
   {% assign control_classes = control_classes | append: " form-control-lg" %}
 {% endif %}
 
-
-
-{% if element == "select" or element == "textarea" %}
-
-  {% comment %} case "select" / "textarea": ProcessFormControl {% endcomment %}
-  {% include "ui/forms/form-control.html",
-    element: element,
-    type: type,
-    name: name,
-    id: control_id,
-    value: include.value,
-    label: include.label,
-    placeholder: include.placeholder,
-    sm_required: is_required,
-    sm_plaintext: include.sm_plaintext,
-    sm_control_size: include.sm_control_size,
-    sm_append_hint: include.sm_append_hint,
-    hint: include.hint
-  %}
-
-{% elsif element == "input" and type == "checkbox" and as_switch %}
-
-  {% comment %} case "input" + checkbox + AsSwitch: ProcessSwitch {% endcomment %}
-  {% include "ui/forms/form-switch.html",
-    name: name,
-    id: control_id,
-    label: include.label,
-    checked: include.checked,
-    sm_ignore_label: include.sm_ignore_label
-  %}
-
-{% elsif element == "input" %}
-
-  {% comment %} case "input" + checkbox/radio: ProcessCheckRadio {% endcomment %}
-  {% include "ui/forms/form-check.html",
-    name: name,
-    id: control_id,
-    type: type,
-    label: include.label,
-    checked: include.checked,
-    sm_ignore_label: include.sm_ignore_label,
-    sm_append_hint: include.sm_append_hint,
-    hint: include.hint
-  %}
-
-{% elsif element == "input" and type != "file" and type != "hidden" %}
-
-  {% comment %} case "input" + سایر type ها: ProcessFormControl {% endcomment %}
-  {% include "ui/forms/form-control.html",
-    element: element,
-    type: type,
-    name: name,
-    id: control_id,
-    value: include.value,
-    label: include.label,
-    placeholder: include.placeholder,
-    sm_required: is_required,
-    sm_plaintext: include.sm_plaintext,
-    sm_control_size: include.sm_control_size,
-    sm_append_hint: include.sm_append_hint,
-    hint: include.hint
-  %}
-
-{% else %}
-
-  {% comment %} case "input" + file/hidden: فقط input خام {% endcomment %}
-  <input
-    type="{{ type }}"
-    id="{{ control_id }}"
-    name="{{ name }}"
-    value="{{ include.value | escape }}"
-  />
-
-{% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% if element == "select" %}
- 
-     <p>Select</p>
-
-{% elsif element == "textarea" %}
-     <p>textarea</p>
-
-
-{% elsif element == "input" %}
-
-    {% if input_type == "checkbox" and as_switch  %}
-      {% include "ui/forms/switch.html" name=control_name id=control_id  %} 
-    
-    {% elsif input_type == "checkbox" or input_type == "radio" %}
-      {% include "ui/forms/switch.html" name=control_name id=control_id  %}   
-    {% elsif input_type == "file" %}
-      <p>input-file</p>
-    {% endif %}
-{% endif %}
 

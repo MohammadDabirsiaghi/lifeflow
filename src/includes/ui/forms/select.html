@@ -2,7 +2,8 @@
 {% assign custom-class = include.custom-class | default: "" %}
 {% assign class-list = "form-control" %}
 {% assign multiple = include.multiple | default: false %}
-  
+{% assign name = include.name %}
+{% assign id = include.id | default: name %}  
 {% if control-size != "medium" %}
     {% if control-size == "small" %}
       {% assign class-list = class-list | append: " form-control-sm" %}
@@ -15,7 +16,8 @@
   {% assign class-list = class-list | append: " " | append: custom-class %}
 {% endif %}
 {{include.data-attrs | json}}
-<select
+<select         id="{{ id }}"
+        name="{{ name }}"
   class="{{ class-list }}"  {% if multiple %}multiple="multiple"{% endif %} 
   {% if include.data-select %}data-select="true"{% endif %}
   {% if include.data-select-lazy %}data-select-lazy="true"{% endif %}

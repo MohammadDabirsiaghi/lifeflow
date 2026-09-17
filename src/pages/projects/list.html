@@ -3,6 +3,8 @@ title: سلام
 layout: adminlayout
 page-libs: [admin-common]
 permalink: /projects/list.html
+bodyClasses:
+  - spa-layout1
 roundOrderTotalDenominators:
   - text: "5"
     value: "0.05"
@@ -13,26 +15,12 @@ roundOrderTotalDenominators:
   - text: "100"
     value: "1.00"
 ---
-
-{% addJs "/assets/lib/jstree/dist/jstree.js", "scripts", "page" %} 
-{% addCss "/assets/lib/jstree/dist/themes/default/style.css", "page" %}
-
-{% addJs "/assets/tree.js", "scripts", "page" %} 
-
-
-{% addJs "/static/main2.js", "scripts", "page" %} 
+{% addJs "/static/projects/list.js", "scripts", "page" %} 
 
 
 {% capture section-header-options %}
-   {% include "ui/button.html"
-			name= "save" 
-			type="submit"
-			value="save"
-			color="danger"
-			icon="check"
-			text="ذخیییره"
-				%} 
-	{% include "ui/button.html"
+
+	{% include "ui/buttons/button.html"
 			name= "save" 
 			type="submit"
 			value="save"
@@ -43,10 +31,59 @@ roundOrderTotalDenominators:
 {% endcapture  %}
 
 {% include "partials/section-header.html"
-			title="عنوان"
+			title="پروژه ها"
 				%} 
+<style>
+	/* ردیف‌های سرگروه (تیره/متمایزتر) */
+.ag-row.grid-row-group {
+    background-color: #f8fafc !important;
+    font-weight: 600;
+}
 
- <div id="myGrid" style="height: 500px"></div>
+.ag-row.grid-row-group .ag-cell {
+    color: #1e293b;
+}
+
+/* ردیف‌های اجرایی */
+.ag-row.grid-row-actionable {
+    background-color: #d8cccc; /* پس‌زمینه سفید برای پروژه‌های اجرایی */
+    font-weight: 600; /* فونت ضخیم‌تر */
+    color: #1e3a8a; /* رنگ متن تیره‌تر */
+} 
+
+/* بج‌های نوع پروژه */
+.type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.type-badge-group {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+
+.type-badge-exec {
+    background-color: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+
+.badge-icon {
+    margin-left: 6px;
+    display: inline-block;
+}
+
+</style>
+
+
+<div id="myGrid" class="ag-theme-alpine" style="width: 100%; height: calc(100vh - 60px);"></div>
+
 
 <form>
 	<div class="adminContent">
@@ -97,4 +134,4 @@ roundOrderTotalDenominators:
   </div>
 </form>
 
-<div id="projectsTree"  class="project-tree"></div>
+

@@ -89,8 +89,18 @@
     {% addJs "/assets/admin/js/admin.ai.js", "scripts", "layout" %} 
 
 
-    {% addJs "/assets/config.js", "scripts", "layout" %} 
-    {% addJs "/assets/api.js", "scripts", "layout" %} 
+    <!-- ۱. فایل تنظیمات -->
+{% addJs "/assets/config.js", "scripts", "layout" %} 
+
+<!-- ۲. کلاینت اصلی (Core) -->
+{% addJs "/assets/ApiClient1.js", "scripts", "layout" %} 
+
+<!-- ۳. پرووایدرها -->
+{% addJs "/assets/ApiClient1.AppsScript.js", "scripts", "layout" %} 
+{% addJs "/assets/ApiClient1.AspNet.js", "scripts", "layout" %} 
+
+
+
 
 
           {% renderCss "layout" %}   
@@ -99,7 +109,8 @@
 
 </head>
 
-<body{% if bodyClasses %} class="{{ bodyClasses | join: ' ' }}"{% endif %}>
+<body class="{{ bodyClasses | join: ' ' | default: 'spa-layout' }}">
+
 
 	    {{ content }}
      

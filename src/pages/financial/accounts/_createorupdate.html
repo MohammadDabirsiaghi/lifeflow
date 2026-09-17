@@ -1,0 +1,241 @@
+<input type="hidden" id="Id" name="Id" />
+<input type="hidden" id="ParentId" name="ParentId" />
+
+
+<div class="adminContent">
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Name"
+        text="عنوان"
+        hint="عنوان حساب را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Name"
+        type="text"
+        element="input"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Name"
+				%}
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "ParentId"
+        text="پدر"
+        hint="عنوان حساب را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+     {% include "ui/forms/form-control.html"
+				element= "select" 
+			name= "ParentId"
+				custom-class= "autowidth"
+				control-size="small"
+  				custom-style= "width: 150px" 
+    		 	data-select=true
+     			data-select-lazy=true
+    			data-select-init-text= "parentCategoryBreadcrumb"
+    			data-select-url = "listAccounts"
+				%} 
+        {% include "ui/forms/field-validation.html"
+        name= "ParentId"
+				%}
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Description"
+        text="توضیحات"
+        hint="توضیحات را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Description"
+        element="textarea"
+				%}
+         <span asp-validation-for="ColorHexValue"></span>
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "DisplayOrder"
+        text="جایگاه"
+        hint="جایگاه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "DisplayOrder"
+        element="input"
+        type="number"
+				%}
+         <span asp-validation-for="ColorHexValue"></span>
+     </div>
+  </div>
+   <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "IsActive"
+        text="فعال"
+        hint="فعال را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "IsActive"
+        element="input"
+        type="checkbox"
+        sm_switch=true
+				%}
+         <span asp-validation-for="ColorHexValue"></span>
+     </div>
+  </div>
+</div>
+
+    <!-- نام حساب والد (جهت نمایش نمایشی در صورت وجود) -->
+    <div class="mb-3" id="parentInfoWrapper" >
+      <label class="form-label text-muted">حساب والد</label>
+      <input type="text" id="parent_title" class="form-control-plaintext text-primary fw-bold" readonly tabindex="-1" />
+    </div>
+
+
+      
+
+<!-- <script>
+  const form = document.getElementById("accountForm");
+  const btnSave = document.getElementById("btnSave");
+  const btnCancel = document.getElementById("btnCancel");
+
+  function setFormMode(mode) {
+    btnSave.textContent = mode === "edit" ? "ذخیره تغییرات" : "ثبت حساب";
+  }
+
+  function setFormData(data) {
+    document.getElementById("id").value = data?.id || "";
+    document.getElementById("parent_id").value = data?.parent_id || "";
+    document.getElementById("title").value = data?.title || "";
+    document.getElementById("description").value = data?.description || "";
+  }
+
+  async function submitAccountForm(e) {
+    e.preventDefault();
+debugger;
+    const payload1 = {
+      title: document.getElementById("title").value.trim(),
+      parent_id: document.getElementById("parent_id").value.trim(),
+      description: document.getElementById("description").value.trim()
+    };
+  const payload = {
+        id: document.getElementById("id").value.trim(),
+        title: document.getElementById("title").value.trim(),
+        parent_id:  null,
+        description: document.getElementById("description").value.trim(),
+        is_active:  true,
+        display_order:  12
+    };
+    if (!payload.title) {
+      alert("عنوان حساب الزامی است.");
+      return;
+    }
+
+    btnSave.disabled = true;
+
+    try {
+      const isEdit = !!payload.id;
+
+      const response = isEdit
+        ? await window.ApiClient1.post({
+            action: "updateAccount",
+            ...payload
+          })
+        :   await window.ApiClient1.post(
+            "createAccount", 
+            payload, 
+            {
+                requestPrefix: "account",
+                endpoint: "/accounts" // مسیر آماده برای مهاجرت آینده به ASP.NET Core
+            }
+        );
+
+      if (!response || response.ok === false) {
+        throw new Error(response?.error || "عملیات با خطا مواجه شد.");
+      }
+
+      if (window.opener && typeof window.opener.reloadAccounts === "function") {
+        window.opener.reloadAccounts();
+      }
+
+      window.close();
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "خطا در ذخیره اطلاعات");
+    } finally {
+      btnSave.disabled = false;
+    }
+  }
+  async function submitAccountForm2(e) {
+    e.preventDefault();
+
+    const payload = {
+      id: document.getElementById("id").value.trim(),
+      title: document.getElementById("title").value.trim(),
+      parent_id: document.getElementById("parent_id").value.trim(),
+      description: document.getElementById("description").value.trim()
+    };
+
+    if (!payload.title) {
+      alert("عنوان حساب الزامی است.");
+      return;
+    }
+
+    btnSave.disabled = true;
+
+    try {
+      const isEdit = !!payload.id;
+
+      const response = isEdit
+        ? await window.ApiClient.post({
+            action: "updateAccount",
+            ...payload
+          })
+        : await window.ApiClient.post({
+            action: "createAccount",
+            ...payload
+          });
+
+      if (!response || response.ok === false) {
+        throw new Error(response?.error || "عملیات با خطا مواجه شد.");
+      }
+
+      if (window.opener && typeof window.opener.reloadAccounts === "function") {
+        window.opener.reloadAccounts();
+      }
+
+      window.close();
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "خطا در ذخیره اطلاعات");
+    } finally {
+      btnSave.disabled = false;
+    }
+  }
+
+  form.addEventListener("submit", submitAccountForm);
+
+  btnCancel.addEventListener("click", () => {
+    window.close();
+  });
+
+  window.accountFormApi = {
+    setFormMode,
+    setFormData
+  };
+</script> -->

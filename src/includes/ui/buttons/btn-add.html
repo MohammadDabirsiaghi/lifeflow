@@ -1,0 +1,13 @@
+{% assign text = include.text | default: "افزودن جدید" %}
+{% assign color = include.color | default: "success" %}
+{% assign icon = include.icon | default: "plus" %}
+{% assign type = include.type | default: "button" %}
+
+{% include ui/buttons/button.html 
+    text=text 
+    color=color 
+    icon=icon 
+    type=type 
+    id=include.id 
+    class=include.class 
+%}

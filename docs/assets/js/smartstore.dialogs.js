@@ -368,10 +368,32 @@
             iframe.attr('src', opts.url);
         }
 
+        // if (_.isFunction(opts.onMessage)) {
+        //     $(iframe.get(0).contentWindow).on('message', function (e) {
+        //         var result = e.originalEvent.data;
+        //         opts.onMessage.apply(this, [result]);
+        //     });
+        // }
+// ==========================================
+        // ✅ بخش اصلاح‌شده و بهینه گوش دادن به پیام‌ها
+        // ==========================================
         if (_.isFunction(opts.onMessage)) {
-            $(iframe.get(0).contentWindow).on('message', function (e) {
-                var result = e.originalEvent.data;
-                opts.onMessage.apply(this, [result]);
+            var messageHandler = function (e) {
+                var rawEvent = e.originalEvent || e;
+                var sourceWin = iframe.get(0) ? iframe.get(0).contentWindow : null;
+
+                // امنیت و دقت: فقط پیامی که از همین آی‌فریم آمده پردازش شود
+                if (sourceWin && rawEvent.source === sourceWin) {
+                    opts.onMessage.apply(this, [rawEvent.data]);
+                }
+            };
+
+            // لیسنر را به پنجره والد (window اصلی) وصل می‌کنیم
+            $(window).on('message', messageHandler);
+
+            // هنگام بسته شدن مدال، لیسنر را حذف می‌کنیم تا روی حافظه نماند
+            modal.one('hidden.bs.modal', function () {
+                $(window).off('message', messageHandler);
             });
         }
 

@@ -1,0 +1,6 @@
+{% assign name = include.name %}
+{% assign id = include.id | default: name %}
+
+<textarea class="form-control" data-val="true" data-val-length="" data-val-length-max="4100" data-val-length-min="0" 
+    id="{{id}}" name="{{name}}">
+</textarea>

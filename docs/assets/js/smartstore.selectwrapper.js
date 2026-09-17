@@ -16,16 +16,41 @@
     var lists = [];
 
     function load(url, selectedId, callback) {
-        $.ajax({
-            url: url,
-            dataType: 'json',
-            async: true,
-            data: { selectedId: selectedId || 0 },
-            success: function (data, status, jqXHR) {
-                lists[url] = data;
-                callback(data);
-            }
+          window.ApiClient1.get({
+            action: url,
+            selectedId: selectedId || 0
+        })
+        .then(function (response) {
+            // هندل کردن هر دو فرمت خروجی مرسوم: دیتای مستقیم یا ساختار { ok: true, data: [...] }
+            var data = Array.isArray(response) ? response : (response.data || response.results || []);
+            lists[url] =  data
+            .filter(function (item) {
+        return item.Id !== null &&
+               item.Id !== undefined &&
+               String(item.Id).trim() !== '';
+    })
+            .map(function (item) {
+    return {
+        id: String(item.Id ?? ''),
+        text: String(item.Name ?? '')
+    };
+});;
+            callback( lists[url] );
+        })
+        .catch(function (err) {
+            console.error("خطا در دریافت اطلاعات دراپ‌داون:", err);
+            callback([]);
         });
+        // $.ajax({
+        //     url: url,
+        //     dataType: 'json',
+        //     async: true,
+        //     data: { selectedId: selectedId || 0 },
+        //     success: function (data, status, jqXHR) {
+        //         lists[url] = data;
+        //         callback(data);
+        //     }
+        // });
     }
 
     function initLoad(select, url) {

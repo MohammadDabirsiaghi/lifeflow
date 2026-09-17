@@ -1,0 +1,27 @@
+{% assign name = include.name %}
+{% assign id = include.id | default: name %}
+
+{% assign type = include.type | default: "button" %}
+
+
+{% assign text = include.text | default: "ثبت" %}
+{% assign color = include.color | default: "primary" %}
+{% assign class = include.class | default: "" %}
+{% assign icon = include.icon | default: "" %}
+{% assign disabled = include.disabled | default: false %}
+<button
+  type="{{ type }}"
+  {% if name != "" %}name="{{ name }}"{% endif %}
+  {% if id != "" %}id="{{ id }}"{% endif %}
+  {% if value != "" %}value="{{ value }}"{% endif %}
+  class="btn btn-{{color}} {{ class }}"
+  {% if disabled %}disabled{% endif %}
+>
+  {% if icon != "" %}
+    <i class="fa fa-{{icon}}" aria-hidden="true"></i>
+  {% endif %}
+
+  {% if text != "" %}
+    <span>{{ text }}</span>
+  {% endif %}
+</button>

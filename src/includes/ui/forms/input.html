@@ -1,0 +1,6 @@
+{% assign name = include.name %}
+{% assign id = include.id | default: name %}
+{% assign type = include.type | default: "text" %}
+
+ <input type="{{type}}" id="{{ id }}" name="{{ name }}" class="form-control" data-val="true" data-val-length="" data-val-length-max="400" 
+    data-val-length-min="0" data-val-required="" value="" />
