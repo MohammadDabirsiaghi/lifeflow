@@ -3,9 +3,12 @@
   "version": "1.4.0",
   "private": true,
   "scripts": {
-     "build": "pnpm run clean && pnpm run html",
+    "update-api": "cd ../backend-api/src/LifeFlow.HttpApi.Host && abp generate-proxy -t js -u https://localhost:44305 -m app && copy \"wwwroot\\client-proxies\\app-proxy.js\" \"..\\..\\..\\web-client\\src\\assets\\js\\app-proxy.js\"",
+    "build": "pnpm run clean && pnpm run html",
+    "cap:sync": "cap sync android",
+    "android:prepare": "pnpm run build && cap sync android",
     "dev": "pnpm run clean && pnpm run watch",
-       "watch": "concurrently \"pnpm run watch-html\"",
+    "watch": "concurrently \"pnpm run watch-html\"",
     "watch-html": "cross-env NODE_ENV=development eleventy --serve --port=3000 --incremental",
     "watch-js": "",
     "watch-css": "",
@@ -33,6 +36,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
     "@babel/core": "^8.0.1",
+    "@capacitor/cli": "^8.6.0",
     "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
@@ -57,6 +61,12 @@
     "printWidth": 160
   },
   "dependencies": {
+    "@abp/aspnetcore.mvc.ui.theme.leptonxlite": "~5.6.1",
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
     "glob": "^13.0.6"
+  },
+  "resolutions": {
+    "jquery": "3.7.1"
   }
 }

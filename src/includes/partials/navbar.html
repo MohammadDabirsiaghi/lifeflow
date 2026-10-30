@@ -97,7 +97,7 @@
                     </a>
                 </li>
                 <li data-id="themes">
-                    <a class="dropdown-item" href="/admin/theme/list/">
+                    <a class="dropdown-item" href="{{ '/areas/list.html' | url }}">
                                     <svg class="dropdown-icon bi-fw bi" fill="currentColor" focusable="false" height="1em" role="img" width="1em"><use xlink:href="/lib/bi/bootstrap-icons.svg?v=66f036ec#palette"></use></svg>
                        حوزه های مسئولیت
                     </a>
@@ -124,11 +124,25 @@
                     </a>
         <ul class="dropdown-menu">
                 <li data-id="countries">
-                    <a class="dropdown-item" href="{{ '/financial/accounts/list.html' | url }}">
+                    <a class="dropdown-item" href="{{ '/accounts/list.html' | url }}">
                         حساب ها
                     </a>
                 </li>
-               
+                   <li data-id="countries">
+                    <a class="dropdown-item" href="{{ '/contacts/list.html' | url }}">
+                       طرف حساب ها
+                    </a>
+                </li>
+                   <li data-id="countries">
+                    <a class="dropdown-item" href="{{ '/tags/list.html' | url }}">
+                      برچسب ها
+                    </a>
+                </li>
+                 <li data-id="countries">
+                    <a class="dropdown-item" href="{{ '/categories/list.html' | url }}">
+                      دسته ها
+                    </a>
+                </li>
                     <li class="dropdown-divider"></li>
                     <li data-id="shipping-header" class="dropdown-header h6"> تست</li>
                 <li data-id="shipping-methods">

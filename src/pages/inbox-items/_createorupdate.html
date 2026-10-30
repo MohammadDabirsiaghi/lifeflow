@@ -1,0 +1,153 @@
+{% capture prioritieslist_json %}
+[
+  { "text": "نرمال", "value": "1" },
+  { "text": "بالا", "value": "2" }
+]
+{% endcapture %}
+{% assign prioritiesList = prioritieslist_json | from_json  %}
+
+
+{% capture statuslist_json %}
+[
+  { "text": "جدید", "value": "1" },
+  { "text": "در مرحله انجام", "value": "2" },
+    { "text": "انجام شده", "value": "3" }
+]
+{% endcapture %}
+{% assign statusList = statuslist_json | from_json  %}
+
+
+{% capture contextlist_json %}
+[
+  { "text": "تعمیر وسایل", "value": "1" },
+  { "text": "خرید", "value": "2" },
+  { "text": "تماس تلفنی", "value": "3" }
+]
+{% endcapture %}
+{% assign contextList = contextlist_json | from_json  %}
+
+
+{% capture energylevellist_json %}
+[
+  { "text": "اوج تمرکز", "value": "1" },
+  { "text": "بدون پیچیدگی", "value": "2" },
+  { "text": "برون‌سیستمی", "value": "3" }
+]
+{% endcapture %}
+{% assign energylevelList = energylevellist_json | from_json  %}
+<input type="hidden" id="task-id" name="Id">
+
+
+
+
+<div class="adminContent">
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Title"
+        text="عنوان"
+        hint="عنوان تسک را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Title"
+        type="text"
+        element="input"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Title"
+				%}
+     </div>
+  </div>
+
+
+
+
+
+
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Description"
+        text="توضیحات"
+        hint="توضیحات را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Description"
+        element="textarea"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Description"
+				%}
+     </div>
+  </div>
+
+    <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Type"
+        text="نوع"
+        hint="اولویت کار را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+     {% include "ui/forms/form-control.html"
+				element= "select" 
+			  name= "Type"
+				custom-class= "autowidth"
+				control-size="small"
+       	  data-select=true
+     			data-select-lazy=true
+    			data-select-init-text= "parentCategoryBreadcrumb"
+    			data-select-url = "getLookupsByType?type=INBOX_TYPE"
+  				custom-style= "width: 150px" 
+				%} 
+        {% include "ui/forms/field-validation.html"
+        name= "Type"
+				%}
+     </div>
+  </div>
+
+
+
+
+
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "DisplayOrder"
+        text="جایگاه"
+        hint="جایگاه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "DisplayOrder"
+        element="input"
+        type="number"
+				%}
+        {% include "ui/forms/field-validation.html" name= "DisplayOrder" %}
+     </div>
+  </div>
+   <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "IsActive"
+        text="فعال"
+        hint="فعال را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "IsActive"
+        element="input"
+        type="checkbox"
+        sm_switch=true
+				%}
+        {% include "ui/forms/field-validation.html" name= "IsActive" %}
+     </div>
+  </div>
+</div>

@@ -1,0 +1,953 @@
+
+
+
+<!-- finance/transactions/_createorupdate.html -->
+<form id="transaction-form" novalidate autocomplete="off">
+    <input type="hidden" id="transaction-id" name="Id" />
+
+
+    <!-- بخش ۱: اطلاعات پایه تراکنش -->
+    <div class="card mb-3 border">
+        <div class="card-header bg-light fw-bold">
+            <i class="bi bi-wallet2 me-1"></i> مشخصات اصلی تراکنش
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <!-- حساب مالی مبدأ -->
+                <div class="col-md-4">
+
+
+                    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="AccountId">حساب مبدأ / پرداختی</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+ <div class="adminData">
+      
+
+
+
+
+
+<div id="link-builder-AccountId" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="AccountId" 
+     data-picker-url="/transactions/accounts-list-modal.html">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="AccountId" 
+           name="AccountId" 
+           class="picker-value" 
+           value="">
+
+    
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="AccountIdTitle" 
+                        name="AccountIdTitle" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('AccountId');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear " 
+                            onclick="entityPickerClear('AccountId');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+
+                    <!-- <label for="transaction-account-id" class="form-label required">حساب مبدأ / پرداختی</label>
+                    <select class="form-select" id="transaction-account-id" name="AccountId" required>
+                        <option value="">-- انتخاب حساب --</option>
+                    </select> -->
+                </div>
+                <div class="col-md-4">
+
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Amount">مبلغ نهایی تراکنش</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="جایگاه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+    
+        
+
+
+<div class="numberinput-group input-group edit-control numberinput-default" data-editor="number">
+    <input type="number" step="1" placeholder="Empty" data-decimals="0" class="form-control numberinput" data-val="true" data-val-required="" id="Amount" name="Amount" value="0" data-editor="numberinput" required aria-required="true" />
+    <input name="__Invariant" type="hidden" value="Amount" />
+    <span class='numberinput-formatted'></span>
+    <a href='javascript:;' class='numberinput-stepper numberinput-down' tabindex='-1' aria-hidden='true'>
+        <i class='fas fa-chevron-down'></i>
+    </a>
+    <a href='javascript:;' class='numberinput-stepper numberinput-up' tabindex='-1' aria-hidden='true'>
+        <i class='fas fa-chevron-up'></i>
+    </a>
+</div>    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Amount" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+                </div>
+                <!-- نوع تراکنش -->
+                <div class="col-md-4">
+                  <div class="adminRow">
+    <div class="adminTitle">
+        
+
+
+<div class="ctl-label">
+    <label for="Type">نوع تراکنش</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="نوع تراکنش مالی (هزینه، درآمد یا انتقال) را انتخاب نمایید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+    <div class="adminData">
+        
+
+
+
+
+
+
+
+    
+
+
+
+
+  
+
+    
+      
+    
+
+
+
+  
+
+
+<select         id="Type"
+        name="Type"
+  class="form-control form-control-sm autowidth"   
+  
+  
+  
+  
+>
+
+
+  
+    <option
+      value="1"
+      
+      
+    >هزینه</option>
+  
+    <option
+      value="2"
+      
+      
+    >درآمد</option>
+  
+    <option
+      value="3"
+      
+      
+    >انتقال بین‌حساب‌ها</option>
+  
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Type" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+</div>
+                </div>
+
+                <!-- تاریخ شمسی -->
+                <div class="col-md-4">
+
+                      <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="PersianDate">زمان </label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان تسک را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+    
+        
+
+
+
+ <input type="text" id="PersianDate" name="PersianDate" class="form-control" data-val="true" data-val-length="" data-val-length-max="400" 
+    data-val-length-min="0"   value="" placeholder="1405/07/08 12:12" dir="ltr" />
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="PersianDate" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+
+
+               
+                </div>
+                 <!-- سطر حساب مقصد برای حالت انتقال -->
+                <div class="col-md-4">
+
+
+                    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="TargetAccountId">حساب مقصد (انتقال)</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+ <div class="adminData">
+      
+
+
+
+
+
+<div id="link-builder-TargetAccountId" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="TargetAccountId" 
+     data-picker-url="/transactions/accounts-list-modal.html">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="TargetAccountId" 
+           name="TargetAccountId" 
+           class="picker-value" 
+           value="">
+
+    
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="TargetAccountIdTitle" 
+                        name="TargetAccountIdTitle" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('TargetAccountId');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear " 
+                            onclick="entityPickerClear('TargetAccountId');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="TargetAccountId" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+
+                  
+                </div>
+               
+
+                <!-- طرف حساب / فروشگاه -->
+                <div class="col-md-4">
+
+                      <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="ContactId">شخص / طرف حساب</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+      <div class="adminData">
+      
+
+
+
+
+
+<div id="link-builder-ContactId" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="ContactId" 
+     data-picker-url="/transactions/contacts-list-modal.html">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="ContactId" 
+           name="ContactId" 
+           class="picker-value" 
+           value="">
+
+    
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="ContactIdTitle" 
+                        name="ContactIdTitle" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('ContactId');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear " 
+                            onclick="entityPickerClear('ContactId');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+                    <!-- <label for="transaction-contact-id" class="form-label">شخص / طرف حساب</label>
+                    <select class="form-select" id="transaction-contact-id" name="ContactId">
+                        <option value="">-- انتخاب مخاطب --</option>
+                    </select> -->
+                </div>
+
+                <!-- عنوان متنی طرف حساب (در صورت نبود شخص) -->
+                <div class="col-md-4">
+                    <label for="transaction-counterparty" class="form-label">نام متنی فروشگاه / طرف حساب</label>
+                    <input type="text" class="form-control" id="transaction-counterparty" name="Counterparty" placeholder="مثلاً: افق کوروش، دیجی‌کالا..." />
+                </div>
+
+                <!-- دسته‌بندی سربرگ -->
+                <div class="col-md-4">
+                     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="CategoryId">دسته‌بندی کلی</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+
+       <div class="adminData">
+      
+
+
+
+
+
+<div id="link-builder-CategoryId" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="CategoryId" 
+     data-picker-url="/transactions/categories-list-modal.html">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="CategoryId" 
+           name="CategoryId" 
+           class="picker-value" 
+           value="">
+
+    
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="CategoryIdTitle" 
+                        name="CategoryIdTitle" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('CategoryId');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear " 
+                            onclick="entityPickerClear('CategoryId');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+                    <!-- <label for="transaction-category-id" class="form-label">دسته‌بندی کلی</label>
+                    <select class="form-select" id="transaction-category-id" name="CategoryId">
+                        <option value="">-- انتخاب دسته‌بندی --</option>
+                    </select> -->
+                </div>
+
+                <!-- برچسب‌ها -->
+                <div class="col-md-4">
+                    <label for="transaction-tags" class="form-label">برچسب‌ها</label>
+                    <input type="text" class="form-control" id="transaction-tags" name="Tags" placeholder="#تغذیه #هفتگی" />
+                </div>
+                <div class="col-md-4">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="UserNote">یادداشت کاربر</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="توضیحات را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+      
+
+
+<textarea class="form-control" data-val="true" data-val-length="" data-val-length-max="4100" data-val-length-min="0" 
+    id="UserNote" name="UserNote" rows="">
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="UserNote" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+                </div>
+                <!-- وضعیت تطبیق بانکی -->
+                <div class="col-md-4 d-flex align-items-center pt-md-4">
+                    <div class="form-check form-switch mt-2">
+                        <input class="form-check-input" type="checkbox" id="transaction-is-reconciled" name="IsReconciled">
+                        <label class="form-check-label fw-bold" for="transaction-is-reconciled">تطبیق داده شده با بانک</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- سوئیچ فعال‌سازی اقلام فاکتور -->
+<div class="card mb-3 border bg-light">
+    <div class="card-body py-2 px-3 d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-receipt-cutoff text-primary fs-5"></i>
+            <div>
+                <strong>ثبت جزئیات و اقلام فاکتور</strong>
+                <small class="text-muted d-block">اگر این خرید/دریافت دارای چند قلم، کالا، خدمت یا تخفیف سطری است فعال کنید.</small>
+            </div>
+        </div>
+        <div class="form-check form-switch m-0">
+            <input class="form-check-input fs-5" type="checkbox" id="toggle-has-items" role="switch">
+        </div>
+    </div>
+</div>
+<div id="items-card-container" class="d-none"></div>
+    <!-- بخش ۲: اقلام تفصیلی با AG Grid Enterprise -->
+    <div class="card mb-3 border">
+        <div class="card-header bg-white d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div>
+                <strong class="text-dark">
+                    <i class="bi bi-list-check text-primary"></i> اقلام تفصیلی فاکتور
+                </strong>
+                <small class="text-muted d-block mt-1">
+                    جهت ثبت کالاها، خدمات، کارمزدها یا تخفیفات سطر‌به‌سطر. (تراکنش‌های تک‌قلمی نیاز به ثبت اقلام در این بخش ندارند)
+                </small>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <button type="button" class="btn btn-sm btn-outline-primary" id="btn-add-item">
+                    <i class="bi bi-plus-circle"></i> افزودن سطر قلم
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger" id="btn-remove-selected-items">
+                    <i class="bi bi-trash"></i> حذف انتخاب‌شده‌ها
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body p-0">
+            <div id="transactionItemsGrid" class="ag-theme-alpine" style="width: 100%; height: 380px;"></div>
+        </div>
+
+        <div class="card-footer bg-light py-2">
+            <div class="row g-2 align-items-center text-center text-md-start">
+                <div class="col-6 col-md-3">
+                    <span class="text-muted small">تعداد ردیف‌ها:</span>
+                    <strong id="items-row-count" class="ms-1">۰</strong>
+                </div>
+                <div class="col-6 col-md-3">
+                    <span class="text-muted small">جمع ناخالص:</span>
+                    <strong id="items-gross-total" class="ms-1 text-dark">۰</strong> <small class="text-muted">ریال</small>
+                </div>
+                <div class="col-6 col-md-3">
+                    <span class="text-muted small">جمع تخفیف اقلام:</span>
+                    <strong id="items-discount-total" class="ms-1 text-danger">۰</strong> <small class="text-muted">ریال</small>
+                </div>
+                <div class="col-6 col-md-3">
+                    <span class="text-muted small">جمع خالص اقلام:</span>
+                    <strong id="items-net-total" class="ms-1 text-success">۰</strong> <small class="text-muted">ریال</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- بخش ۳: تعدیلات سربرگ و مبلغ نهایی فاکتور -->
+    <div class="card mb-3 border">
+        <div class="card-header bg-light fw-bold">
+            <i class="bi bi-calculator me-1"></i> محاسبات کلی و مبالغ سربرگ
+        </div>
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <label for="header-discount" class="form-label">تخفیف کلی سربرگ</label>
+                    <input type="number" min="0" step="any" class="form-control text-end text-danger" id="header-discount" name="HeaderDiscountAmount" placeholder="0" />
+                </div>
+                <div class="col-6 col-md-3">
+                    <label for="header-tax" class="form-label">مالیات / ارزش افزوده</label>
+                    <input type="number" min="0" step="any" class="form-control text-end" id="header-tax" name="TaxAmount" placeholder="0" />
+                </div>
+                <div class="col-6 col-md-3">
+                    <label for="header-shipping" class="form-label">هزینه ارسال / حمل</label>
+                    <input type="number" min="0" step="any" class="form-control text-end" id="header-shipping" name="ShippingFee" placeholder="0" />
+                </div>
+                <div class="col-6 col-md-3">
+                    <label for="header-fee" class="form-label">کارمزد بانکی / تراکنش</label>
+                    <input type="number" min="0" step="any" class="form-control text-end" id="header-fee" name="FeeAmount" placeholder="0" />
+                </div>
+
+                <!-- مبلغ نهایی قابل پرداخت / دریافتی -->
+                <!-- <div class="col-12 mt-3 pt-3 border-top">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <label for="transaction-amount" class="form-label fs-6 fw-bold required text-success">
+                                مبلغ نهایی تراکنش (ریال)
+                            </label>
+                            <input type="number" min="0" step="any" class="form-control form-control-lg text-end fw-bold border-success text-success" id="transaction-amount" name="Amount" required />
+                            <div class="form-text">
+                                در صورت ثبت اقلام، این مبلغ براساس فرمول <code>(جمع اقلام + مالیات + حمل + کارمزد - تخفیف کلی)</code> خودکار بروز می‌شود.
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- دکمه‌های عملیاتی فرم -->
+    <div class="d-flex justify-content-end align-items-center gap-2 mb-4">
+        <a href="/finance/transactions/list.html" class="btn btn-outline-secondary" id="btn-cancel">
+            انصراف
+        </a>
+        <button type="submit" class="btn btn-primary px-4" id="btn-submit">
+            <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true"></span>
+            <i class="bi bi-check2-circle me-1"></i> ذخیره تراکنش
+        </button>
+    </div>
+</form>
+
+<style>
+    #transactionItemsGrid {
+        min-height: 340px;
+    }
+    #transactionItemsGrid .ag-header-cell-label {
+        justify-content: center;
+    }
+    #transactionItemsGrid .ag-cell.number-cell {
+        direction: ltr;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+    #transactionItemsGrid .ag-cell.total-cell {
+        font-weight: 700;
+        color: #15803d;
+    }
+    #transactionItemsGrid .ag-cell.discount-cell {
+        color: #b91c1c;
+    }
+    #transactionItemsGrid .ag-row.item-discount-row {
+        background-color: #fff7ed !important;
+    }
+    #transactionItemsGrid .ag-row.item-fee-row {
+        background-color: #eff6ff !important;
+    }
+    .required::after {
+        content: " *";
+        color: #dc3545;
+    }
+</style>

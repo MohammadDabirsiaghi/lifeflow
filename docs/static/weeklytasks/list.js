@@ -1,5 +1,5 @@
-// weekly-tree.js
-
+// متغیر سراسری برای دسترسی به API گرید
+let gridApi = null; 
 // ۱. تابع کمکی استخراج DisplayOrder با Fallback ایمن
 function getDisplayOrder(data) {
     if (!data) return 999999;
@@ -69,7 +69,46 @@ function renderPriorityBadge(val) {
     const item = map[p] || { label: val, bg: "#f1f5f9", text: "#475569", icon: "•" };
     return `<span style="display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:9999px; font-size:11.5px; font-weight:500; background:${item.bg}; color:${item.text};">${item.icon} ${item.label}</span>`;
 }
+function projectActionsRenderer(params) {
+    const sprintItem = params.data;
 
+    if (!sprintItem) return "";
+
+    const container = document.createElement("div");
+
+    container.className = "d-flex align-items-center gap-1";
+
+    container.innerHTML = `
+        <button
+            type="button"
+            class="btn btn-sm btn-light-primary js-sprint-item-add-child"
+            data-sprint-item-id="${escapeHtml(sprintItem.id)}"
+            
+            title="افزودن زیرحساب">
+            <i class="fas fa-plus"></i>
+        </button>
+
+     
+
+        <button
+            type="button"
+            class="btn btn-sm btn-light-danger js-sprint-item-delete"
+            data-sprint-item-id="${escapeHtml(sprintItem.id)}"
+            title="حذف حساب">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+
+    return container;
+}
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 // ۵. تابع اصلاح‌شده ساخت مسیر درختی با ریشه مجازی روتین‌ها و گروه‌بندی روزانه
 function mapTreeData(items) {
     const map = new Map();
@@ -247,6 +286,14 @@ async function initWeeklyTreeGrid(targetWeekId = "") {
                 headerName: "سطح انرژی", 
                 width: 110,
                 sortable: true
+            },
+              {
+                headerName: "عملیات",
+                width: 190,
+                sortable: false,
+                filter: false,
+                resizable: false,
+                cellRenderer: projectActionsRenderer
             }
         ],
 
@@ -258,13 +305,19 @@ async function initWeeklyTreeGrid(targetWeekId = "") {
     };
 
     // ایجاد گرید
-    const gridApi = agGrid.createGrid(gridDiv, gridOptions);
-
-    try {
+     gridApi = agGrid.createGrid(gridDiv, gridOptions);
+  // ۴. دریافت و لود اولیه داده‌ها
+    await refreshGrid();
+  
+}
+async function refreshGrid() {
+      const gridDiv = document.querySelector('#myGrid');
+  try {
         gridDiv.dataset.loading = "true";
 
         const response = await window.ApiClient1.get({
-            action: "getWeeklyTreePlan"
+            action: "getWeeklyTreePlan",
+            sprintId:"01e16267-e402-4448-8dbe-e59a42068879"
         });
 
         let rawItems = [];
@@ -286,8 +339,8 @@ async function initWeeklyTreeGrid(targetWeekId = "") {
     } finally {
         gridDiv.dataset.loading = "false";
     }
-}
 
+}
 // اتصال به افزونه کروم تایمر
 window.startLifeFlowTimer = function(planId, taskId, projectId, encodedTitle) {
     const title = decodeURIComponent(encodedTitle);
@@ -309,4 +362,142 @@ window.startLifeFlowTimer = function(planId, taskId, projectId, encodedTitle) {
 
 document.addEventListener('DOMContentLoaded', () => {
     initWeeklyTreeGrid("1403-W25"); 
+        initButtons();
 });
+function initButtons() {
+    document.getElementById('AddItem')?.addEventListener('click', handleAddAccount);
+    //document.getElementById('btnAddChildAccount')?.addEventListener('click', handleAddChildAccount);
+   
+     const gridDiv = document.getElementById("myGrid");
+      gridDiv?.addEventListener("click", function (event) {
+        // ممکن است کلیک روی خود i داخل دکمه باشد
+        const editButton = event.target.closest(".js-project-edit");
+
+        if (editButton) {
+           // handleEditAccount(editButton, event);
+            return;
+        }
+
+        const addChildButton = event.target.closest(".js-sprint-item-add-child");
+
+        if (addChildButton) {
+            handleAddChildProject(addChildButton, event);
+            return;
+        }
+
+        const deleteButton = event.target.closest(".js-sprint-item-delete");
+
+        if (deleteButton) {
+            handleDeleteAccount(deleteButton, event);
+        }
+    });
+}
+
+async function handleAddAccount(event) {
+     event.preventDefault();
+
+    openPopup({
+        url: window.appUrl('/weeklytasks/select-task-project-modal.html'),
+                    large: true,
+            flex: true,
+            backdrop: 'static',
+            scrollable: false,
+       onMessage: async function (data) {
+            if (data && data.type === 'SPRINT_ITEMS_ADDED') {
+                closePopup();
+                await refreshGrid();
+            }
+        }
+    });
+}
+function handleAddChildProject(button, event) {
+     event.preventDefault();
+debugger;
+    const projectId = button.dataset.sprintItemId;
+   // const projectTitle = button.dataset.projectTitle || '';
+
+     const query = new URLSearchParams({
+            parentId: projectId
+            }).toString();
+    openPopup({
+        url: window.appUrl(`/weeklytasks/select-task-project-modal.html?${query}`),
+          large: true,
+            flex: true,
+            backdrop: 'static',
+            scrollable: false,
+        onMessage: async function (data) {
+            if (data && data.type === 'SPRINT_ITEMS_ADDED') {
+                closePopup();
+                await refreshGrid();
+            }
+        }
+    });
+}
+function handleEditAccount(button, event) {
+    event.preventDefault();
+    const projectId = button.dataset.projectId;
+    openPopup({
+        url: window.appUrl(`/projects/edit.html?id=${encodeURIComponent(projectId)}`),
+        onMessage: async function (data) {
+             closePopup();
+                await refreshGrid();
+            // if (data && data.type === 'ACCOUNT_SAVED') {
+            //     closePopup();
+            //     await refreshGrid();
+            // }
+        }
+    });
+}
+
+
+async function handleDeleteAccount(button, event) {
+    event.preventDefault();
+
+  const confirmed = confirm("آیا از حذف اطمینان دارید؟");
+  if (!confirmed) return;
+   const sprintItemId = button.dataset.sprintItemId;
+  try {
+    const response = await window.ApiClient1.post(
+      "deleteSprintItem",
+      { Id: sprintItemId },
+      {
+        requestPrefix: "task",
+        endpoint: "/tasks/delete"
+      }
+    );
+
+    if (!response || response.ok === false) {
+      throw new Error(response?.error || response?.message || "خطا در حذف تسک.");
+    }
+
+    else {
+      displayNotification("تسک با موفقیت حذف شد.", "success");
+          refreshGrid();
+    }
+
+    // اگر در AG Grid هستید، ردیف را بدون رفرش صفحه از حافظه حذف کنید:
+    // if (typeof gridApi !== "undefined" && gridApi) {
+    //   const rowNode = gridApi.getRowNode(String(taskId)) || gridApi.getRowNode("task_" + String(taskId));
+    //   if (rowNode) {
+    //     gridApi.applyTransaction({ remove: [rowNode.data] });
+    //   }
+    // }
+
+    // // ارسال رویداد حذف به صفحه والد در صورت نیاز
+    // const notifyPayload = {
+    //   type: "TASK_DELETED",
+    //   id: taskId
+    // };
+
+    // if (window.parent && window.parent !== window) {
+    //   window.parent.postMessage(notifyPayload, "*");
+    // }
+    // if (window.opener && !window.opener.closed) {
+    //   window.opener.postMessage(notifyPayload, "*");
+    // }
+
+  } catch (error) {
+    console.error("[Delete Task Error]:", error);
+    alert(error.message || "خطا در فرآیند حذف تسک.");
+  }
+}

@@ -9,7 +9,7 @@ import { fileURLToPath } from "url";
 import dynamicAssets from "./shared1/includes/dynamic-asset-manager.js";
 import  fs  from "fs";
 const buildVersion = Date.now().toString();
-const isGitHubPages =true;// process.env.DEPLOY_TARGET === "github";
+const isGitHubPages =false;// process.env.DEPLOY_TARGET === "github";
 
 /** @type {import('@11ty/eleventy').LocalConfig} */
 export default function (eleventyConfig) {
@@ -155,7 +155,7 @@ eleventyConfig.path
 		const seconds = ((value % 60000) / 1000).toFixed(0);
 		return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 	});
-
+ 	eleventyConfig.addFilter("from_json", (value) => JSON.parse(value));
 	eleventyConfig.addFilter("relative", (page) => {
 		const segments = (page.url || '').replace(/^\//).split('/');
 		if (segments.length === 1) {

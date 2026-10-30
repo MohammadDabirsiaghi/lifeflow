@@ -8,9 +8,9 @@ window.APP_CONFIG = Object.freeze({
 // https://script.google.com/macros/s/AKfycbykl_pfchi6YsUe_5ybA7jEhc9AW633Zds_BJj-DxNSihZ3o5a7mT3TNbaSZHT2c6XAIw/exec
 window.APP_CONFIG1 = Object.freeze({
     API_URL:
-        "https://script.google.com/macros/s/AKfycbyxrj7zvnCDoL-Pdx_ClXF6-AkXxvkkMzrfmvWnXFhotYghuBHtUypYPtEe1fB5waGcXw/exec",
+        "https://script.google.com/macros/s/AKfycbyNjlg0ygyvvDe0Xy7b_1LnxAF-m857qiO-J5CnVWgVFbzY5ifBR0ttCFtaMMEGPZyh6g/exec",
     API_URL_ASPNET:
-        "https://localhost:44358/api",
+        "https://localhost:44305/api",
     API_PROVIDER: "apps-script",
 
     API_TIMEOUT_MS: 30000,

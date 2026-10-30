@@ -54,16 +54,61 @@ function renderStatusBadge(val) {
     const item = map[s] || { label: val, bg: "#f1f5f9", text: "#334155" };
     return `<span style="display:inline-flex; align-items:center; padding:2px 8px; border-radius:9999px; font-size:11.5px; font-weight:500; background:${item.bg}; color:${item.text};">${item.label}</span>`;
 }
+function projectActionsRenderer(params) {
+    const project = params.data;
 
+    if (!project) return "";
+
+    const container = document.createElement("div");
+
+    container.className = "d-flex align-items-center gap-1";
+
+    container.innerHTML = `
+        <button
+            type="button"
+            class="btn btn-sm btn-light-primary js-project-add-child"
+            data-project-id="${escapeHtml(project.Id)}"
+            data-project-title="${escapeHtml(project.Title)}"
+            title="افزودن زیرحساب">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <button
+            type="button" 
+            class="btn btn-sm btn-light-warning js-project-edit"
+            data-project-id="${escapeHtml(project.Id)}"
+            title="ویرایش حساب">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-sm btn-light-danger js-project-delete"
+            data-project-id="${escapeHtml(project.Id)}"
+            title="حذف حساب">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+
+    return container;
+}
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 // ۱. تابع نگاشت و ساخت سلسله‌مراتب درختی
 function mapTreeData(items) {
     const map = new Map();
 
     items.forEach(item => {
-        const rawParent = item.parent_project_id ?? item.parentProjectId ?? item.parentId ?? item.parent_id;
+        const rawParent = item.ParentId ;
         const isRoot = rawParent === "" || rawParent === null || rawParent === undefined || rawParent === 0 || rawParent === "0" || rawParent === "NULL";
         
-        map.set(String(item.id), {
+        map.set(String(item.Id), {
             ...item,
             _normalizedParentId: isRoot ? null : String(rawParent)
         });
@@ -72,11 +117,11 @@ function mapTreeData(items) {
     return items.map(item => {
         const path = [];
         const visited = new Set();
-        let curr = map.get(String(item.id));
+        let curr = map.get(String(item.Id));
 
-        while (curr && !visited.has(String(curr.id))) {
-            visited.add(String(curr.id));
-            const label = curr.title || curr.name || `پروژه #${curr.id}`;
+        while (curr && !visited.has(String(curr.Id))) {
+            visited.add(String(curr.Id));
+            const label = curr.Title;
             path.unshift(label);
 
             curr = curr._normalizedParentId ? map.get(curr._normalizedParentId) : null;
@@ -162,9 +207,9 @@ async function initTreeGrid() {
                     const colorDot = color ? `<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background-color:${color}; margin-left:6px;"></span>` : "";
                     
                     if (isGroup) {
-                        return `<span class="group-cell-label">${colorDot}<span class="badge-icon">📁</span> <strong>${params.data.id}-${params.value}</strong></span>`;
+                        return `<span class="group-cell-label">${colorDot}<span class="badge-icon">📁</span> <strong>${params.value}</strong></span>`;
                     } else {
-                        return `<span class="action-cell-label">${colorDot}<span class="badge-icon">🚀</span> ${params.data.id}-${params.value}</span>`;
+                        return `<span class="action-cell-label">${colorDot}<span class="badge-icon">🚀</span> ${params.value}</span>`;
                     }
                 }
             }
@@ -199,6 +244,7 @@ async function initTreeGrid() {
             //     valueGetter: (params) => getDisplayOrder(params.data) === 999999 ? "—" : getDisplayOrder(params.data),
             //     sortable: true
             // },
+            
             {
                 headerName: "نوع",
                 width: 130,
@@ -211,32 +257,40 @@ async function initTreeGrid() {
                 }
             },
             { 
-                field: "priority", 
+                field: "PriorityIdTitle", 
                 headerName: "اولویت", 
                 width: 120,
-                valueGetter: (params) => params.data?.Priority ?? params.data?.priority,
-                cellRenderer: (params) => renderPriorityBadge(params.value),
+                 rowGroup: true, 
+                // valueGetter: (params) => params.data?.Priority ?? params.data?.priority,
+                // cellRenderer: (params) => renderPriorityBadge(params.value),
                 sortable: true
             },
             { 
-                field: "status", 
+                field: "StatusIdTitle", 
                 headerName: "وضعیت", 
                 width: 130,
-                valueGetter: (params) => params.data?.Status ?? params.data?.status,
-                cellRenderer: (params) => renderStatusBadge(params.value),
+               
                 sortable: true
             },
             { 
-                field: "description", 
-                headerName: "توضیحات", 
+                field: "AreaIdTitle", 
+                headerName: "حوزه مسئولیت", 
                 flex: 1,
-                valueGetter: (params) => params.data?.Description ?? params.data?.description ?? "—"
+                //valueGetter: (params) => params.data?.Description ?? params.data?.description ?? "—"
             },
             { 
-                field: "due_date", 
+                field: "DueDateShamsi", 
                 headerName: "تاریخ سررسید", 
                 width: 130,
-                valueGetter: (params) => params.data?.DueDate ?? params.data?.dueDate ?? params.data?.due_date ?? "—"
+                valueGetter: (params) => params.data?.DueDateShamsi ?? params.data?.DueDateShamsi ?? params.data?.DueDateShamsi ?? "—"
+            },
+            {
+                headerName: "عملیات",
+                width: 190,
+                sortable: false,
+                filter: false,
+                resizable: false,
+                cellRenderer: projectActionsRenderer
             }
         ],
 
@@ -253,28 +307,46 @@ async function initTreeGrid() {
     await refreshGrid();
    
 }
+// ارسال نتیجه به والد (پنجره اصلی)
+ function sendSelection(id, title) {
+
+   // ارسال رویداد جهت رفرش دراپ‌داون‌ها و لیست‌ها در صفحه والد
+      const notifyPayload = {
+        type: "ENTITY_PICKED",
+        data: { id: id, title: title }
+      };
+
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage(notifyPayload, "*");
+      }
+
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage(notifyPayload, "*");
+      }
+}
 document.addEventListener('DOMContentLoaded',  () => {
     initTreeGrid();
     initButtons();
+    abp.notify.success("fffffffffffffffffffff");
 });
 function initButtons() {
-    document.getElementById('btnAddAccount')?.addEventListener('click', handleAddAccount);
+    document.getElementById('AddProject')?.addEventListener('click', handleAddAccount);
     document.getElementById('btnAddChildAccount')?.addEventListener('click', handleAddChildAccount);
    
      const gridDiv = document.getElementById("myGrid");
       gridDiv?.addEventListener("click", function (event) {
         // ممکن است کلیک روی خود i داخل دکمه باشد
-        const editButton = event.target.closest(".js-account-edit");
+        const editButton = event.target.closest(".js-project-edit");
 
         if (editButton) {
             handleEditAccount(editButton, event);
             return;
         }
 
-        const addChildButton = event.target.closest(".js-account-add-child");
+        const addChildButton = event.target.closest(".js-project-add-child");
 
         if (addChildButton) {
-            handleAddChildAccount(addChildButton, event);
+            handleAddChildProject(addChildButton, event);
             return;
         }
 
@@ -290,11 +362,11 @@ async function handleAddAccount(event) {
      event.preventDefault();
 
     openPopup({
-        url: window.appUrl('/financial/accounts/create.html'),
+        url: window.appUrl('/projects/create.html'),
         onMessage: async function (data) {
             console.log('داده دریافتی از پاپ‌آپ:', data);
 
-            if (data && data.type === 'ACCOUNT_SAVED') {
+            if (data && data.type === 'PROJECT_SAVED') {
                 // ۱. بستن مدال پاپ‌آپ
                 closePopup(); // یا اگر شناسه خاصی دادید: closePopup('modal-id')
 
@@ -307,14 +379,20 @@ async function handleAddAccount(event) {
         }
     });
 }
-function handleAddChildAccount(button, event) {
+function handleAddChildProject(button, event) {
      event.preventDefault();
 
-    const accountId = button.dataset.accountId;
+    const projectId = button.dataset.projectId;
+    const projectTitle = button.dataset.projectTitle || '';
+
+     const query = new URLSearchParams({
+            parentId: projectId,
+            parentIdTitle: projectTitle
+            }).toString();
     openPopup({
-        url: window.appUrl(`/financial/accounts/create.html?parent_id=${encodeURIComponent(accountId)}`),
+        url: window.appUrl(`/projects/create.html?${query}`),
         onMessage: async function (data) {
-            if (data && data.type === 'ACCOUNT_SAVED') {
+            if (data && data.type === 'PROJECT_SAVED') {
                 closePopup();
                 await refreshGrid();
             }
@@ -323,10 +401,9 @@ function handleAddChildAccount(button, event) {
 }
 function handleEditAccount(button, event) {
     event.preventDefault();
-
-    const accountId = button.dataset.accountId;
+    const projectId = button.dataset.projectId;
     openPopup({
-        url: window.appUrl(`/financial/accounts/edit.html?id=${encodeURIComponent(accountId)}`),
+        url: window.appUrl(`/projects/edit.html?id=${encodeURIComponent(projectId)}`),
         onMessage: async function (data) {
              closePopup();
                 await refreshGrid();

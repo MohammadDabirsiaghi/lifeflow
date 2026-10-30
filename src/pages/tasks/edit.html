@@ -1,0 +1,27 @@
+---
+title: ویرایش کار ها
+layout: adminlayout
+permalink: /tasks/edit.html
+bodyClasses:
+  - spa-layout1
+---
+{% addJs "/static/tasks/form.js", "scripts", "page"  %} 
+
+<form id="task-form" name="taskForm" class="card-body">
+
+
+
+
+{% capture section-header-options %}
+   {% include "ui/buttons/btn-save.html"
+			name= "save" 
+				%} 
+	
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="ویرایش حساب"
+				%} 
+{% include "./src/pages/tasks/_createorupdate.html" %}
+          </form>
+   

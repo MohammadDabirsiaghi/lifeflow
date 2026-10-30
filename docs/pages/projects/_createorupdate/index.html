@@ -1,0 +1,1194 @@
+
+
+<input type="hidden" id="project-id" name="Id">
+
+
+
+
+<div class="adminContent">
+  <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Title">عنوان</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+    
+        
+
+
+
+ <input type="text" id="Title" name="Title" class="form-control" data-val="true" data-val-length="" data-val-length-max="400" 
+    data-val-length-min="0"   value="" placeholder="" dir="" />
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+    <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Title">پدر</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+<div id="link-builder-ParentId" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="ParentId" 
+     data-picker-url="/projects/list-modal.html">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="ParentId" 
+           name="ParentId" 
+           class="picker-value" 
+           value="">
+
+    
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="ParentIdTitle" 
+                        name="ParentIdTitle" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('ParentId');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear " 
+                            onclick="entityPickerClear('ParentId');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+<div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="PriorityId">اهمیت</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="اولویت کار را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+     
+
+
+
+
+
+
+
+    
+
+
+
+
+  
+
+    
+      
+    
+
+
+
+  
+
+
+<select         id="PriorityId"
+        name="PriorityId"
+  class="form-control form-control-sm autowidth"   
+  
+  
+  
+  
+>
+
+
+  
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+ 
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="PriorityId" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+<div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="StatusId">وضعیت</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="اولویت کار را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+     
+
+
+
+
+
+
+
+    
+
+
+
+
+  
+
+    
+      
+    
+
+
+
+  
+
+
+<select         id="StatusId"
+        name="StatusId"
+  class="form-control form-control-sm autowidth"   
+  
+  
+  
+  
+>
+
+
+  
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+ 
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="StatusId" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="AreaId">حوزه مسئولیت</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+<div id="link-builder-AreaId" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="AreaId" 
+     data-picker-url="/areas/list-modal.html">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="AreaId" 
+           name="AreaId" 
+           class="picker-value" 
+           value="">
+
+    
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="AreaIdTitle" 
+                        name="AreaIdTitle" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('AreaId');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear " 
+                            onclick="entityPickerClear('AreaId');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="AreaId" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+    <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Type">نوع</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="نوع پروژه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+     
+
+
+
+
+
+
+
+    
+
+
+
+
+  
+
+    
+      
+    
+
+
+
+  
+
+
+<select         id="Type"
+        name="Type"
+  class="form-control form-control-sm autowidth"   
+  
+  
+  
+  
+>
+
+
+  
+    <option
+      value="1"
+      
+      
+    >پروژه</option>
+  
+    <option
+      value="2"
+      
+      
+    >دسته</option>
+  
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+ 
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Type" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+    <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="DueDateShamsi">زمان کار</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان تسک را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+    
+        
+
+
+
+ <input type="text" id="DueDateShamsi" name="DueDateShamsi" class="form-control" data-val="true" data-val-length="" data-val-length-max="400" 
+    data-val-length-min="0"   value="" placeholder="" dir="" />
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="DueDateShamsi" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Description">توضیحات</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="توضیحات را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+      
+
+
+<textarea class="form-control" data-val="true" data-val-length="" data-val-length-max="4100" data-val-length-min="0" 
+    id="Description" name="Description" rows="">
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+    <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="DoneDefinition">نتیجه مورد انتظار</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="توضیحات را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+      
+
+
+<textarea class="form-control" data-val="true" data-val-length="" data-val-length-max="4100" data-val-length-min="0" 
+    id="DoneDefinition" name="DoneDefinition" rows="">
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="DoneDefinition" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+   <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Checklist">چک لیست</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="توضیحات را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+      
+
+
+<textarea class="form-control" data-val="true" data-val-length="" data-val-length-max="4100" data-val-length-min="0" 
+    id="Checklist" name="Checklist" rows="">
+</textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="Checklist" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="DisplayOrder">جایگاه</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="جایگاه را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+    
+        
+
+
+<div class="numberinput-group input-group edit-control numberinput-default" data-editor="number">
+    <input type="number" step="1" placeholder="Empty" data-decimals="0" class="form-control numberinput" data-val="true" data-val-required="" id="DisplayOrder" name="DisplayOrder" value="0" data-editor="numberinput" required aria-required="true" />
+    <input name="__Invariant" type="hidden" value="DisplayOrder" />
+    <span class='numberinput-formatted'></span>
+    <a href='javascript:;' class='numberinput-stepper numberinput-down' tabindex='-1' aria-hidden='true'>
+        <i class='fas fa-chevron-down'></i>
+    </a>
+    <a href='javascript:;' class='numberinput-stepper numberinput-up' tabindex='-1' aria-hidden='true'>
+        <i class='fas fa-chevron-up'></i>
+    </a>
+</div>    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="DisplayOrder" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+   <div class="adminRow">
+     <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="IsActive">فعال</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="فعال را وارد نمائید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+     </div>
+     <div class="adminData">
+      
+
+
+
+
+
+
+
+    
+        
+
+
+
+
+<div class="form-check form-check-solo form-check-warning form-switch form-switch-lg">
+
+    <input
+        type="checkbox" data-val="true" data-val-required=""
+        id="IsActive"
+        name="IsActive"
+        value="true"
+        class="form-check-input"
+    />
+
+    <input
+        name="IsActive"
+        type="hidden"
+        value="false"
+    />
+</div>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+        
+
+
+<span class="field-validation-valid" data-valmsg-for="IsActive" data-valmsg-replace="true" role="alert">
+
+</span>
+     </div>
+  </div>
+</div>

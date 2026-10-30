@@ -12,22 +12,10 @@ bodyClasses:
 
 
 {% capture section-header-options %}
-   {% include "ui/buttons/button.html"
-			name= "save" 
-			type="submit"
-			value="save"
-			color="danger"
-			icon="check"
-			text="ذخیییره"
-				%} 
-	{% include "ui/buttons/button.html"
-			name= "save" 
-			type="submit"
-			value="save"
-			color="primary"
-			icon="check"
-			text="ذخبببیره"
-				%} 
+   {% include "ui/buttons/btn-add.html" 
+   		name= "AddItem" 
+		%}  
+	
 {% endcapture  %}
 
 {% include "partials/section-header.html"

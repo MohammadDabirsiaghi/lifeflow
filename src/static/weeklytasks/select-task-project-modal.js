@@ -1,0 +1,475 @@
+// متغیر سراسری برای دسترسی به API گرید
+let gridApi = null; 
+let parentId = null; 
+// تابع کمکی برای استخراج مقدار DisplayOrder با در نظر گرفتن سناریوهای مختلف نام‌گذاری
+function getDisplayOrder(data) {
+    if (!data) return 999999;
+    const order = data.DisplayOrder ?? data.displayOrder ?? data.display_order;
+    const num = Number(order);
+    return isNaN(num) ? 999999 : num;
+}
+
+// تابع کمکی برای تشخیص سرگروه بودن
+function isProjectGroup(data) {
+    if (!data) return false;
+    const type = data.Type ?? data.type;
+    return type === 2 || type === "2" || type === null || type === undefined || type === "";
+}
+
+// تابع کمکی رندر بج اولویت (Priority)
+function renderPriorityBadge(val) {
+    if (val === null || val === undefined || val === "") return "—";
+    
+    const p = String(val).toLowerCase().trim();
+    const map = {
+        "1": { label: "فوری", bg: "#fee2e2", text: "#991b1b", icon: "🔴" },
+        "urgent": { label: "فوری", bg: "#fee2e2", text: "#991b1b", icon: "🔴" },
+        "2": { label: "بالا", bg: "#ffedd5", text: "#9a3412", icon: "🟠" },
+        "high": { label: "بالا", bg: "#ffedd5", text: "#9a3412", icon: "🟠" },
+        "3": { label: "متوسط", bg: "#fef9c3", text: "#854d0e", icon: "🟡" },
+        "medium": { label: "متوسط", bg: "#fef9c3", text: "#854d0e", icon: "🟡" },
+        "4": { label: "پایین", bg: "#f1f5f9", text: "#475569", icon: "⚪" },
+        "low": { label: "پایین", bg: "#f1f5f9", text: "#475569", icon: "⚪" }
+    };
+
+    const item = map[p] || { label: val, bg: "#f1f5f9", text: "#475569", icon: "•" };
+    return `<span style="display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:9999px; font-size:11.5px; font-weight:500; background:${item.bg}; color:${item.text};">${item.icon} ${item.label}</span>`;
+}
+
+// تابع کمکی رندر بج وضعیت (Status)
+function renderStatusBadge(val) {
+    if (val === null || val === undefined || val === "") return "—";
+    
+    const s = String(val).toLowerCase().trim();
+    const map = {
+        "completed": { label: "تکمیل شده", bg: "#dcfce7", text: "#166534" },
+        "done": { label: "تکمیل شده", bg: "#dcfce7", text: "#166534" },
+        "in_progress": { label: "در حال انجام", bg: "#dbeafe", text: "#1e40af" },
+        "active": { label: "در جریان", bg: "#dbeafe", text: "#1e40af" },
+        "waiting": { label: "در انتظار", bg: "#fef3c7", text: "#92400e" },
+        "pending": { label: "معلق", bg: "#fef3c7", text: "#92400e" },
+        "backlog": { label: "ایده / بعداً", bg: "#f3e8ff", text: "#6b21a8" }
+    };
+
+    const item = map[s] || { label: val, bg: "#f1f5f9", text: "#334155" };
+    return `<span style="display:inline-flex; align-items:center; padding:2px 8px; border-radius:9999px; font-size:11.5px; font-weight:500; background:${item.bg}; color:${item.text};">${item.label}</span>`;
+}
+function projectActionsRenderer(params) {
+    const project = params.data;
+
+    if (!project) return "";
+
+    const container = document.createElement("div");
+
+    container.className = "d-flex align-items-center gap-1";
+
+    container.innerHTML = `
+        <button
+            type="button"
+            class="btn btn-sm btn-light-primary js-project-add-child"
+            data-project-id="${escapeHtml(project.Id)}"
+            data-project-title="${escapeHtml(project.Title)}"
+            title="افزودن زیرحساب">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <button
+            type="button" 
+            class="btn btn-sm btn-light-warning js-project-edit"
+            data-project-id="${escapeHtml(project.Id)}"
+            title="ویرایش حساب">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-sm btn-light-danger js-project-delete"
+            data-project-id="${escapeHtml(project.Id)}"
+            title="حذف حساب">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+
+    return container;
+}
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+// ۱. تابع نگاشت و ساخت سلسله‌مراتب درختی
+function mapTreeData(items) {
+    const map = new Map();
+
+    items.forEach(item => {
+        const rawParent = item.ParentId ;
+        const isRoot = rawParent === "" || rawParent === null || rawParent === undefined || rawParent === 0 || rawParent === "0" || rawParent === "NULL";
+        
+        map.set(String(item.Id), {
+            ...item,
+            _normalizedParentId: isRoot ? null : String(rawParent)
+        });
+    });
+
+    return items.map(item => {
+        const path = [];
+        const visited = new Set();
+        let curr = map.get(String(item.Id));
+
+        while (curr && !visited.has(String(curr.Id))) {
+            visited.add(String(curr.Id));
+            const label = curr.Title;
+            path.unshift(label);
+
+            curr = curr._normalizedParentId ? map.get(curr._normalizedParentId) : null;
+        }
+
+        return {
+            ...item,
+            orgHierarchy: path
+        };
+    });
+}
+// تابع مستقل برای دریافت مجدد داده‌ها و بروزرسانی گرید
+async function refreshGrid() {
+        const gridDiv = document.querySelector('#myGrid');
+     try {
+        gridDiv.dataset.loading = "true";
+
+        const response = await window.ApiClient1.get({
+            action: "getProjectAndTaskList",
+        });
+
+        let rawItems = Array.isArray(response) ? response : [];
+      
+        // مرتب‌سازی اولیه داده‌های خام قبل از تبدیل درختی
+        rawItems.sort((a, b) => getDisplayOrder(a) - getDisplayOrder(b));
+
+        const treeReadyData = mapTreeData(rawItems);
+        gridApi.setGridOption("rowData", treeReadyData);
+
+    } catch (error) {
+        console.error("خطا در بارگذاری ساختار درختی پروژه‌ها:", error);
+    } finally {
+        gridDiv.dataset.loading = "false";
+    }
+
+
+}
+async function initTreeGrid() {
+    const gridDiv = document.querySelector('#myGrid');
+    if (!gridDiv) return;
+
+    // ۲. پیکربندی AG Grid Enterprise
+    const gridOptions = {
+        treeData: true,
+        animateRows: true,
+        enableRtl: true,
+        getDataPath: (data) => data.orgHierarchy,
+        groupDefaultExpanded: 0,
+ // --- تنظیمات جدید برای انتخاب چندگانه ---
+        rowSelection: 'multiple', 
+        rowMultiSelectWithClick: true,
+        suppressRowClickSelection: false, // اگر می‌خواهید با کلیک روی ردیف هم انتخاب شود
+        
+        // مرتب‌سازی اختصاصی درون هر سطح بر اساس DisplayOrder
+        postSortRows: (params) => {
+            const rowNodes = params.nodes;
+            rowNodes.sort((rowNodeA, rowNodeB) => {
+                const orderA = getDisplayOrder(rowNodeA.data);
+                const orderB = getDisplayOrder(rowNodeB.data);
+
+                // ابتدا بر اساس DisplayOrder کوچک به بزرگ
+                if (orderA !== orderB) {
+                    return orderA - orderB;
+                }
+                // اگر برابر بودند بر اساس شناسه
+                return (Number(rowNodeA.data?.id) || 0) - (Number(rowNodeB.data?.id) || 0);
+            });
+        },
+
+        // اعمال کلاس‌های CSS برای تمایز کل ردیف
+        rowClassRules: {
+            'grid-row-group': (params) => isProjectGroup(params.data),
+            'grid-row-actionable': (params) => !isProjectGroup(params.data)
+        },
+
+        // ستون اصلی درختی (با آیکون تفکیک‌شده و نشانگر رنگ در صورت وجود)
+  autoGroupColumnDef: {
+    headerName: "عنوان پروژه / تسک",
+    minWidth: 320,
+    flex: 2,
+    cellRendererParams: {
+        checkbox: true, // چک‌باکس انتخاب روی هر ردیف
+        suppressCount: true,
+        innerRenderer: (params) => {
+            if (!params.data) return params.value;
+            
+            const entityType = params.data.EntityType;
+            const isGroup = isProjectGroup(params.data);
+            const color = params.data?.Color ?? params.data?.color;
+            const colorDot = color ? `<span style="display:inline-block; width:8px; height:8px; border-radius:50%; background-color:${color}; margin-left:6px;"></span>` : "";
+
+            if (entityType === "TASK") {
+                return `<span class="task-cell-label"><span class="badge-icon">✅</span> ${params.value}</span>`;
+            } else if (isGroup) {
+                return `<span class="group-cell-label">${colorDot}<span class="badge-icon">📁</span> <strong>${params.value}</strong></span>`;
+            } else {
+                return `<span class="action-cell-label">${colorDot}<span class="badge-icon">🚀</span> ${params.value}</span>`;
+            }
+        }
+    }
+},
+
+        // سایر ستون‌ها
+        columnDefs: [
+            { 
+                field: "ProjectPriorityIdTitle", 
+                headerName: "اهمیت پروژه", 
+                width: 160,
+                sortable: true 
+            },
+             { 
+                field: "ProjectStatusIdTitle", 
+                headerName: "وضعیت پروژه", 
+                width: 160,
+                sortable: true 
+            },
+                { 
+                field: "TaskPriorityIdTitle", 
+                headerName: "اهمیت وظیفه", 
+                width: 160,
+                sortable: true 
+            },
+              { 
+                field: "TaskStatusIdTitle", 
+                headerName: "وضعیت وظیفه", 
+                width: 160,
+                sortable: true 
+            },
+            // {
+            //     // ستون دایره رنگ شاخص
+            //     headerName: "رنگ",
+            //     width: 70,
+            //     sortable: false,
+            //     cellRenderer: (params) => {
+            //         const color = params.data?.Color ?? params.data?.color;
+            //         if (!color) return `<span style="color:#cbd5e1;">—</span>`;
+            //         return `<div style="display:flex; align-items:center; justify-content:center; height:100%;">
+            //                     <span title="${color}" style="display:inline-block; width:16px; height:16px; border-radius:50%; background-color:${color}; border:1px solid rgba(0,0,0,0.15); box-shadow:0 1px 2px rgba(0,0,0,0.05);"></span>
+            //                 </div>`;
+            //     }
+            // },
+            // {
+            //     // ستون ترتیب نمایش
+            //     field: "DisplayOrder",
+            //     headerName: "ترتیب",
+            //     width: 85,
+            //     valueGetter: (params) => getDisplayOrder(params.data) === 999999 ? "—" : getDisplayOrder(params.data),
+            //     sortable: true
+            // },
+             {
+        headerName: "",
+        width: 90,
+        sortable: false,
+        filter: false,
+        cellRenderer: (params) => {
+            // دکمه انتخاب برای هر ردیف
+            return `<button type="button" class="btn btn-xs btn-primary btn-select-row">انتخاب</button>`;
+        },
+        onCellClicked: (params) => {
+            // موقع کلیک روی دکمه، انتخاب انجام می‌شود
+            sendSelection(params.data.Id, params.data.Title);
+        }
+    }
+           
+            
+        ],
+
+        defaultColDef: {
+            resizable: true,
+            sortable: true,
+            filter: true
+        }
+    };
+
+    // ۳. راه‌اندازی گرید
+    gridApi = agGrid.createGrid(gridDiv, gridOptions);
+    // ۴. دریافت و لود اولیه داده‌ها
+    await refreshGrid();
+   
+}
+// ارسال نتیجه به والد (پنجره اصلی)
+ function sendSelection(id, title) {
+
+   // ارسال رویداد جهت رفرش دراپ‌داون‌ها و لیست‌ها در صفحه والد
+      const notifyPayload = {
+        type: "ENTITY_PICKED",
+        data: { id: id, title: title }
+      };
+
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage(notifyPayload, "*");
+      }
+
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage(notifyPayload, "*");
+      }
+}
+document.addEventListener('DOMContentLoaded',  () => {
+    initTreeGrid();
+    initButtons();
+
+        const params = new URLSearchParams(window.location.search);
+
+     parentId = params.get("parentId");
+});
+function initButtons() {
+    document.getElementById('btnConfirmSelection')?.addEventListener('click', handleConfirmSelection);
+    document.getElementById('btnAddChildAccount')?.addEventListener('click', handleAddChildAccount);
+   
+     const gridDiv = document.getElementById("myGrid");
+      gridDiv?.addEventListener("click", function (event) {
+        // ممکن است کلیک روی خود i داخل دکمه باشد
+        const editButton = event.target.closest(".js-project-edit");
+
+        if (editButton) {
+            handleEditAccount(editButton, event);
+            return;
+        }
+
+        const addChildButton = event.target.closest(".js-project-add-child");
+
+        if (addChildButton) {
+            handleAddChildProject(addChildButton, event);
+            return;
+        }
+
+        const deleteButton = event.target.closest(".js-account-delete");
+
+        if (deleteButton) {
+            handleDeleteAccount(deleteButton, event);
+        }
+    });
+}
+
+async function handleConfirmSelection(event) {
+  if (event) event.preventDefault();
+
+  const selectedNodes = gridApi.getSelectedNodes();
+
+  if (!selectedNodes || selectedNodes.length === 0) {
+    alert("لطفاً حداقل یک پروژه یا تسک را انتخاب کنید.");
+    return;
+  }
+
+  // آماده‌سازی داده‌ها برای ارسال
+  const selectedItems = selectedNodes.map(node => ({
+    ParentId: parentId, // شناسه اسپرینت یا والد مورد نظر شما
+    TaskId: node.data.EntityType === "TASK" ? node.data.RawId : "",
+    ProjectId: node.data.EntityType === "PROJECT" ? node.data.RawId : "",
+    NodeType: node.data.EntityType // 'PROJECT' یا 'TASK'
+  }));
+
+  const confirmBtn = document.querySelector("#btnConfirmSelection") || event.target;
+  let prevText = "";
+
+  // مدیریت وضعیت دکمه (Loading)
+  if (confirmBtn) {
+    confirmBtn.disabled = true;
+    prevText = confirmBtn.textContent;
+    confirmBtn.textContent = "در حال ذخیره...";
+  }
+
+  try {
+    // ارسال به بک‌اند از طریق ApiClient1
+    const response = await window.ApiClient1.post(
+      "createSprintItems",
+     { items: selectedItems,
+        SprintId:"01e16267-e402-4448-8dbe-e59a42068879"
+
+      },
+      {
+        requestPrefix: "sprint",
+        endpoint: "/sprint-items"
+      }
+    );
+
+    if (!response || response.ok === false) {
+      throw new Error(response?.error || response?.message || "خطا در ثبت آیتم‌ها در اسپرینت.");
+    }
+
+    if (typeof displayNotification === "function") {
+      displayNotification("آیتم‌های انتخابی با موفقیت به اسپرینت افزوده شدند.", "success");
+    }
+
+
+
+
+    // ارسال رویداد جهت رفرش صفحه والد/لیست تسک‌های اسپرینت
+    const notifyPayload = {
+      type: "SPRINT_ITEMS_ADDED"
+      //items: response.data?.items || selectedItems
+    };
+
+   if (window.parent && window.parent !== window) {
+        window.parent.postMessage(notifyPayload, "*");
+      }
+
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage(notifyPayload, "*");
+      }
+
+
+
+  } catch (error) {
+    console.error("[SprintItems Submit Error]:", error);
+    alert(error.message || "خطا در ذخیره‌سازی داده‌ها.");
+  } finally {
+    // بازگرداندن وضعیت دکمه
+    if (confirmBtn) {
+      confirmBtn.disabled = false;
+      confirmBtn.textContent = prevText || "تأیید و انتخاب موارد";
+    }
+  }
+}
+
+function handleAddChildProject(button, event) {
+     event.preventDefault();
+
+    const projectId = button.dataset.projectId;
+    const projectTitle = button.dataset.projectTitle || '';
+
+     const query = new URLSearchParams({
+            parentId: projectId,
+            parentIdTitle: projectTitle
+            }).toString();
+    openPopup({
+        url: window.appUrl(`/projects/create.html?${query}`),
+        onMessage: async function (data) {
+            if (data && data.type === 'PROJECT_SAVED') {
+                closePopup();
+                await refreshGrid();
+            }
+        }
+    });
+}
+function handleEditAccount(button, event) {
+    event.preventDefault();
+    const projectId = button.dataset.projectId;
+    openPopup({
+        url: window.appUrl(`/projects/edit.html?id=${encodeURIComponent(projectId)}`),
+        onMessage: async function (data) {
+             closePopup();
+                await refreshGrid();
+            // if (data && data.type === 'ACCOUNT_SAVED') {
+            //     closePopup();
+            //     await refreshGrid();
+            // }
+        }
+    });
+}
+

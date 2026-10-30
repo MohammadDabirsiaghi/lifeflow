@@ -1,0 +1,32 @@
+---
+title: حساب ها
+layout: adminlayout
+permalink: /contacts/edit.html
+bodyClasses:
+  - popup
+---
+{% addJs "/static/contacts/form.js", "scripts", "page"  %} 
+
+<form id="account-form" name="accountForm" class="card-body">
+
+
+
+
+{% capture section-header-options %}
+   {% include "ui/buttons/button.html"
+			name= "save" 
+			type="submit"
+			value="save"
+			color="warning"
+			icon="check"
+			text="ثبت"
+				%} 
+	
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="ویرایش حساب"
+				%} 
+{% include "./src/pages/accounts/_createorupdate.html" %}
+          </form>
+   

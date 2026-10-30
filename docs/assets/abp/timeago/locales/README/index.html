@@ -1,0 +1,20 @@
+<h1>Locale override examples for timeago</h1>
+<p>You can represent time statements in most western languages where
+a prefix and/or suffix is used.</p>
+<p>The default case is to use suffix only (as in English), which you
+do by providing the <code>suffixAgo</code> and <code>suffixFromNow</code> settings in
+the strings hash (earlier versions of timeago used the deprecated
+<code>ago</code> and <code>fromNow</code> options). If present, they are used.</p>
+<p>2 minutes [suffixAgo]
+2 minutes [suffixFromNow]</p>
+<p>In case you want to use prefix only instead of
+suffix (e.g. Greek), you provide the <code>prefixAgo</code> and
+<code>prefixFromNow</code> options in the strings hash and leave <code>suffixAgo</code>
+and <code>suffixFromNow</code> empty or null.</p>
+<p>[prefixAgo] 2 minutes
+[prefixFromNow] 2 minutes</p>
+<p>For languages where you want to use a prefix only for future
+tense and prefix/suffix for past tense (for example swedish), you
+can combine the prefix and suffixes as needed.</p>
+<p>[prefixAgo] 2 minutes [suffixAgo]
+[prefixFromNow] 2 minutes</p>

@@ -1,0 +1,65 @@
+---
+title: ایمپورت صورتحساب بانکی
+layout: adminlayout
+permalink: /transactions/import-statement-modal.html
+bodyClasses: [popup]
+---
+
+{% addJs "/static/transactions/import-statement-modal.js", "scripts", "page" %}
+
+<form id="import-statement-form" enctype="multipart/form-data" class="p-3">
+    <div class="alert alert-info py-2 small d-flex align-items-center mb-3">
+        <i class="bi bi-info-circle fs-5 me-2 flex-shrink-0"></i>
+        <div>فایل خروجی اکسل (<code>.xlsx</code>) یا <code>.csv</code> صورت‌حساب بانکی خود را انتخاب کنید تا تراکنش‌ها به صورت خودکار استخراج و ثبت شوند.</div>
+    </div>
+
+    <!-- انتخاب حساب مالی مقصد (با استفاده از کامپوننت انتخابی درختی حساب‌ها) -->
+    <div class="mb-3">
+        <label class="form-label required small fw-bold">حساب بانکی مقصد</label>
+        {% include "ui/test2.html"
+            name= "ImportAccountId"
+            pickerUrl="/transactions/accounts-list-modal.html"
+        %}
+        <div class="form-text small">تمام تراکنش‌های این فایل به عنوان گردش این حساب ثبت خواهند شد.</div>
+    </div>
+
+    <!-- انتخاب قالب بانک / نرم‌افزار -->
+    <div class="mb-3">
+        <label for="statement-bank-type" class="form-label small fw-bold">قالب بانک / نرم‌افزار</label>
+        <select class="form-select form-select-sm" id="statement-bank-type" name="BankFormat" required>
+            <option value="" selected disabled>قالب صورت‌حساب را انتخاب کنید</option>
+            <optgroup label="بانک ملت">
+                <option value="20">ملت — اینترنت‌ بانک</option>
+                <!-- <option value="21">ملت — اپلیکیشن موبایل</option> -->
+            </optgroup>
+
+            <!-- <option value="20">بانک ملت_اینترنت بانک</option>
+            <option value="saman_mobillet">بانک سامان (موبایلت)</option>
+            <option value="meli_bam">بانک ملی (بام)</option>
+            <option value="resalat">قرض‌الحسنه رسالت</option>
+            <option value="generic_csv">قالب استاندارد (CSV عمومی)</option>
+            <option value="auto" selected>تشخیص خودکار از روی ساختار فایل</option> -->
+        </select>
+    </div>
+
+    <!-- آپلود فایل -->
+    <div class="mb-3">
+        <label for="statement-file-input" class="form-label required small fw-bold">فایل صورت‌حساب</label>
+        <input class="form-control form-control-sm" type="file" id="statement-file-input" name="File" accept=".xlsx, .xls, .csv" required>
+    </div>
+
+    <!-- تنظیمات اضافی -->
+    <div class="form-check form-switch mt-3 mb-4">
+        <input class="form-check-input" type="checkbox" id="skip-duplicates" name="SkipDuplicates" checked>
+        <label class="form-check-label small" for="skip-duplicates">نادیده گرفتن تراکنش‌های تکراری (بر اساس تاریخ و شماره پیگیری)</label>
+    </div>
+
+    <!-- دکمه‌های عملیاتی فوتر -->
+    <div class="modal-footer bg-light px-0 py-2 border-top d-flex justify-content-end gap-2 mt-4">
+        <button type="button" class="btn btn-sm btn-outline-secondary px-3" onclick="window.closePopup()">انصراف</button>
+        <button type="submit" class="btn btn-sm btn-success px-4" id="btn-submit-import">
+            <span class="spinner-border spinner-border-sm d-none me-1" id="import-spinner" role="status"></span>
+            <i class="bi bi-cloud-arrow-up me-1"></i> پردازش و ایمپورت
+        </button>
+    </div>
+</form>

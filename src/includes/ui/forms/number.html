@@ -1,6 +1,9 @@
+{% assign name = include.name %}
+{% assign id = include.id | default: name %}
+{% assign decimals = include.decimals | default: 0 %}
 <div class="numberinput-group input-group edit-control numberinput-default" data-editor="number">
-    <input type="number" step="1" placeholder="Empty" class="form-control numberinput" data-val="true" data-val-required="" id="DisplayOrder" name="DisplayOrder" value="-100" data-editor="numberinput" required aria-required="true" />
-    <input name="__Invariant" type="hidden" value="DisplayOrder" />
+    <input type="number" step="1" placeholder="Empty" data-decimals="{{decimals}}" class="form-control numberinput" data-val="true" data-val-required="" id="{{id}}" name="{{name}}" value="0" data-editor="numberinput" required aria-required="true" />
+    <input name="__Invariant" type="hidden" value="{{name}}" />
     <span class='numberinput-formatted'></span>
     <a href='javascript:;' class='numberinput-stepper numberinput-down' tabindex='-1' aria-hidden='true'>
         <i class='fas fa-chevron-down'></i>

@@ -1,0 +1,321 @@
+{% capture prioritieslist_json %}
+[
+  { "text": "نرمال", "value": "1" },
+  { "text": "بالا", "value": "2" }
+]
+{% endcapture %}
+{% assign prioritiesList = prioritieslist_json | from_json  %}
+
+
+{% capture statuslist_json %}
+[
+  { "text": "جدید", "value": "1" },
+  { "text": "در مرحله انجام", "value": "2" },
+    { "text": "انجام شده", "value": "3" }
+]
+{% endcapture %}
+{% assign statusList = statuslist_json | from_json  %}
+
+
+{% capture contextlist_json %}
+[
+  { "text": "تعمیر وسایل", "value": "1" },
+  { "text": "خرید", "value": "2" },
+  { "text": "تماس تلفنی", "value": "3" }
+]
+{% endcapture %}
+{% assign contextList = contextlist_json | from_json  %}
+
+
+{% capture energylevellist_json %}
+[
+  { "text": "اوج تمرکز", "value": "1" },
+  { "text": "بدون پیچیدگی", "value": "2" },
+  { "text": "برون‌سیستمی", "value": "3" }
+]
+{% endcapture %}
+{% assign energylevelList = energylevellist_json | from_json  %}
+<input type="hidden" id="task-id" name="Id">
+
+
+
+
+<div class="adminContent">
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Title"
+        text="عنوان"
+        hint="عنوان تسک را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Title"
+        type="text"
+        element="input"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Title"
+				%}
+     </div>
+  </div>
+    <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "ProjectId"
+        text="پروژه"
+        hint="عنوان پروژه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/test2.html"
+      name= "ProjectId"
+      pickerUrl="/projects/list-modal.html"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "ProjectId"
+				%}
+     </div>
+  </div>
+
+
+<div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "PriorityId"
+        text="اهمیت"
+        hint="اولویت کار را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+     {% include "ui/forms/form-control.html"
+				element= "select" 
+			  name= "PriorityId"
+				custom-class= "autowidth"
+				control-size="small"
+
+  				custom-style= "width: 150px" 
+				%} 
+        {% include "ui/forms/field-validation.html"
+        name= "PriorityId"
+				%}
+     </div>
+  </div>
+<div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "StatusId"
+        text="وضعیت"
+        hint="اولویت کار را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+     {% include "ui/forms/form-control.html"
+				element= "select" 
+			  name= "StatusId"
+				custom-class= "autowidth"
+				control-size="small"
+
+  				custom-style= "width: 150px" 
+				%} 
+        {% include "ui/forms/field-validation.html"
+        name= "StatusId"
+				%}
+     </div>
+  </div>
+
+    <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "AreaId"
+        text="حوزه مسئولیت"
+        hint="عنوان پروژه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/test2.html"
+      name= "AreaId"
+      pickerUrl="/areas/list-modal.html"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "AreaId"
+				%}
+     </div>
+  </div>
+    <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Context"
+        text="زمینه"
+        hint="اولویت کار را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+     {% include "ui/forms/form-control.html"
+				element= "select" 
+			  name= "Context"
+				custom-class= "autowidth"
+        multiple=true
+				control-size="small"
+       	  data-select=true
+     			data-select-lazy=true
+    			data-select-init-text= "parentCategoryBreadcrumb"
+    			data-select-url = "getContextList"
+  				custom-style= "width: 150px" 
+				%} 
+        {% include "ui/forms/field-validation.html"
+        name= "Type"
+				%}
+     </div>
+  </div>
+
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "EnergyLevel"
+        text="نوع انرژی مورد نیاز"
+        hint="اولویت کار را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+     {% include "ui/forms/form-control.html"
+				element= "select" 
+			  name= "EnergyLevel"
+				custom-class= "autowidth"
+				control-size="small"
+        options= energylevelList 
+  				custom-style= "width: 150px" 
+				%} 
+        {% include "ui/forms/field-validation.html"
+        name= "Type"
+				%}
+     </div>
+  </div>
+
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Description"
+        text="توضیحات"
+        hint="توضیحات را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Description"
+        element="textarea"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Description"
+				%}
+     </div>
+  </div>
+
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "DoneDefinition"
+        text="نتیجه مورد انتظار"
+        hint="توضیحات را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "DoneDefinition"
+        element="textarea"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "DoneDefinition"
+				%}
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "EstimatedHours"
+        text="ساعت تخمین"
+        hint="جایگاه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "EstimatedHours"
+        element="input"
+        type="number"
+				%}
+        {% include "ui/forms/field-validation.html" name= "EstimatedHours" %}
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "DueDateShamsi"
+        text="زمان کار"
+        hint="عنوان تسک را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "DueDateShamsi"
+        type="text"
+        element="input"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "DueDateShamsi"
+				%}
+     </div>
+  </div>
+   <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "TargetPomodoros"
+        text="چند پرومودور"
+        hint="جایگاه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "TargetPomodoros"
+        element="input"
+        type="number"
+				%}
+        {% include "ui/forms/field-validation.html" name= "TargetPomodoros" %}
+     </div>
+  </div>
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "DisplayOrder"
+        text="جایگاه"
+        hint="جایگاه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "DisplayOrder"
+        element="input"
+        type="number"
+				%}
+        {% include "ui/forms/field-validation.html" name= "DisplayOrder" %}
+     </div>
+  </div>
+   <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "IsActive"
+        text="فعال"
+        hint="فعال را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "IsActive"
+        element="input"
+        type="checkbox"
+        sm_switch=true
+				%}
+        {% include "ui/forms/field-validation.html" name= "IsActive" %}
+     </div>
+  </div>
+</div>

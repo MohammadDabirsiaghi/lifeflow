@@ -1,0 +1,28 @@
+---
+title: ویرایش تراکنش
+layout: adminlayout
+permalink: /transactions/edit.html
+bodyClasses: [popup]
+---
+
+{% addJs "/static/transactions/form.js", "scripts", "page" %}
+
+<form id="transaction-form" name="transactionForm" class="card-body">
+
+{% capture section-header-options %}
+   {% include "ui/buttons/button.html"
+			name= "save" 
+			type="submit"
+			value="save"
+			color="warning"
+			icon="check"
+			text="ثبت"
+				%} 
+	
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="ویرایش تراکنش"
+				%} 
+    {% include "./src/pages/transactions/_createorupdate.html" %}
+</form>

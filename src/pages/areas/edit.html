@@ -1,0 +1,32 @@
+---
+title: حساب ها
+layout: adminlayout
+permalink: /areas/edit.html
+bodyClasses:
+  - popup
+---
+{% addJs "/static/areas/form.js", "scripts", "page"  %} 
+
+<form id="area-form" name="areaForm" class="card-body">
+
+
+
+
+{% capture section-header-options %}
+   {% include "ui/buttons/button.html"
+			name= "save" 
+			type="submit"
+			value="save"
+			color="warning"
+			icon="check"
+			text="ثبت"
+				%} 
+	
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="ویرایش حساب"
+				%} 
+{% include "./src/pages/areas/_createorupdate.html" %}
+          </form>
+   

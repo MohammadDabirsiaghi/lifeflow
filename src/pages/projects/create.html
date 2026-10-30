@@ -1,34 +1,29 @@
 ---
 title: حساب ها
 layout: adminlayout
-permalink: /financial/accounts/create.html
+permalink: /projects/create.html
 bodyClasses:
   - popup
 ---
-{% addJs "/static/financial/accounts/form.js", "scripts", "page" %} 
+{% addJs "/static/projects/form.js", "scripts", "page"  %} 
 
 
 
 
-  <form id="accountForm" class="card-body">
+<form id="project-form" name="projectForm" class="card-body">
 
 
 
 
 {% capture section-header-options %}
-   {% include "ui/buttons/button.html"
+   {% include "ui/buttons/btn-save.html"
 			name= "save" 
-			type="submit"
-			value="save"
-			color="primary"
-			icon="check"
-			text="ثبت"
 				%} 
 	
 {% endcapture  %}
 
 {% include "partials/section-header.html"
-			title="ثبت حساب جدید"
+			title="ثبت پروژه جدید"
 				%} 
-{% include "./src/pages/financial/accounts/_createorupdate.html" %}
+{% include "./src/pages/projects/_createorupdate.html" %}
           </form>

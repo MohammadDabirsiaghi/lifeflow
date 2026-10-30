@@ -1,0 +1,57 @@
+---
+title: سلام
+layout: adminlayout
+page-libs: [admin-common]
+permalink: /areas/list.html
+bodyClasses:
+  - spa-layout1
+---
+
+
+
+{% addJs "/static/areas/list.js", "scripts", "page" %} 
+
+
+{% capture section-header-options %}
+    {% include "ui/buttons/btn-add.html" 
+		name= "AddArea" 			 %} 
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="کار ها"
+
+				%} 
+<style>
+	/* استایل بج‌های اولویت و وضعیت */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    font-size: 11.5px;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+/* تگ پروژه والد */
+.project-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background-color: #f1f5f9;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #e2e8f0;
+}
+
+/* افکت ردیف‌های تکمیل شده */
+.ag-theme-alpine .ag-row.task-row-completed {
+    background-color: #f8fafc !important;
+    color: #94a3b8;
+}
+
+</style>
+<!-- <div id="myGrid" class="ag-theme-alpine" style="width: 100%; height: calc(100vh - 60px);"></div> -->
+<div id="tasksGrid" class="ag-theme-alpine" style="height: 100vh; width: 100%;"></div>

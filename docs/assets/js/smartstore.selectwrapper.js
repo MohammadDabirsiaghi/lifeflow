@@ -15,12 +15,13 @@
 
     var lists = [];
 
-    function load(url, selectedId, callback) {
+    function loadOld(url, selectedId, callback) {
           window.ApiClient1.get({
             action: url,
             selectedId: selectedId || 0
         })
         .then(function (response) {
+            debugger;
             // هندل کردن هر دو فرمت خروجی مرسوم: دیتای مستقیم یا ساختار { ok: true, data: [...] }
             var data = Array.isArray(response) ? response : (response.data || response.results || []);
             lists[url] =  data
@@ -28,13 +29,13 @@
         return item.Id !== null &&
                item.Id !== undefined &&
                String(item.Id).trim() !== '';
-    })
+                })
             .map(function (item) {
-    return {
-        id: String(item.Id ?? ''),
-        text: String(item.Name ?? '')
-    };
-});;
+                return {
+                    id: String(item.Id ?? ''),
+                    text: String(item.Name ?? '')
+                };
+        });;
             callback( lists[url] );
         })
         .catch(function (err) {
@@ -51,6 +52,125 @@
         //         callback(data);
         //     }
         // });
+    }
+
+// تابع کمکی برای پردازش داده‌ها: اگر ساختار درختی باشد دندانه‌دار می‌کند، در غیر این صورت فلت باقی می‌ماند
+    function processDropdownData(data) {
+        if (!Array.isArray(data)) return [];
+
+        // فیلتر رکوردهای معتبر
+        var validItems = data.filter(function (item) {
+            if (!item) return false;
+            var id = item.Id ?? item.id;
+            return id !== null && id !== undefined && String(id).trim() !== '';
+        });
+
+        // بررسی وجود ساختار درختی واقعی
+        var hasTree = validItems.some(function (item) {
+            var pid = item.ParentId ?? item.parentId;
+            return pid !== null && pid !== undefined && String(pid).trim() !== '' && String(pid) !== 'null' && String(pid) !== '0';
+        });
+
+        if (!hasTree) {
+            return validItems.map(function (item) {
+                var id = String(item.Id ?? item.id ?? '');
+                var text = String(item.Title ?? item.title ?? item.Name ?? item.name ?? item.text ?? '');
+                return { id: id, text: text, originalText: text };
+            });
+        }
+
+        var itemMap = {};
+        var roots = [];
+
+        // ۱. ساخت مپ اولیه
+        validItems.forEach(function (item) {
+            var id = String(item.Id ?? item.id ?? '');
+            var title = String(item.Title ?? item.title ?? item.Name ?? item.name ?? item.text ?? '');
+            var rawParentId = item.ParentId ?? item.parentId ?? null;
+            
+            var parentId = (rawParentId !== null && rawParentId !== undefined && String(rawParentId).trim() !== '' && String(rawParentId) !== 'null' && String(rawParentId) !== '0') 
+                ? String(rawParentId) 
+                : null;
+
+            itemMap[id] = {
+                id: id,
+                title: title,
+                parentId: parentId,
+                children: []
+            };
+        });
+
+        // ۲. اتصال فرزندان به والدها
+        validItems.forEach(function (item) {
+            var id = String(item.Id ?? item.id ?? '');
+            var node = itemMap[id];
+            if (node.parentId && itemMap[node.parentId]) {
+                itemMap[node.parentId].children.push(node);
+            } else {
+                roots.push(node);
+            }
+        });
+
+        // ۳. پیمایش بازگشتی دقیق برای ساخت تورفتگی (دندانه‌گذاری چند سطحی)
+        var result = [];
+        function traverse(nodes, depth) {
+            nodes.forEach(function (node) {
+                // برای depth = 0 هیچ پیشوندی نیست
+                // برای depth = 1 پیشوند:  └─ 
+                // برای depth = 2 پیشوند:      └─ 
+                var indent = depth > 0 ? '\u00A0\u00A0\u00A0\u00A0'.repeat(depth - 1) + '└── ' : '';
+                
+                result.push({
+                    id: node.id,
+                    text: indent + node.title,
+                    originalText: node.title,
+                    level: depth
+                });
+
+                if (node.children && node.children.length > 0) {
+                    traverse(node.children, depth + 1);
+                }
+            });
+        }
+
+        traverse(roots, 0);
+        return result;
+    }
+
+ function load(url, selectedId, callback) {
+
+    var parts = (url || '').split('?');
+    var action = parts[0];
+    var queryParams = {};
+
+    if (parts.length > 1) {
+        var searchParams = new URLSearchParams(parts[1]);
+        searchParams.forEach(function (value, key) {
+            queryParams[key] = value;
+        });
+    }
+
+    // ۲. ترکیب پارامترها
+    var requestData = Object.assign({
+        action: action,
+        selectedId: selectedId || 0
+    }, queryParams);
+
+        window.ApiClient1.get(requestData)
+        .then(function (response) {
+            
+            // پشتیبانی از پاسخ مستقیم آرایه، ساختار { ok: true, data: [...] } یا ساختار ABP { items: [...] }
+            var data = Array.isArray(response) 
+                ? response 
+                : (response.data || response.results || response.items || []);
+
+            lists[url] = processDropdownData(data);
+            callback(lists[url]);
+        })
+        .catch(function (err) {
+            console.error("خطا در دریافت اطلاعات دراپ‌داون:", err);
+            callback([]);
+        });
     }
 
     function initLoad(select, url) {

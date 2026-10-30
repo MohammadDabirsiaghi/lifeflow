@@ -1,0 +1,74 @@
+<div id="link-builder-1170983826" 
+    class="link-builder edit-control" 
+    data-field-id="ExternalLink" 
+    data-editor="link" 
+    data-current-type="">
+
+    <input type="hidden" 
+    value="" data-val="true" 
+    data-val-length="" 
+    data-val-length-max="255" 
+    data-val-length-min="0" 
+    id="ExternalLink" 
+    name="ExternalLink">
+
+    <div class="row flex-nowrap g-2">
+
+            <div class="link-control col hide" data-type="product" style="display: block;">
+                    <div class="input-group">
+                        <input type="text" class="form-control resettable product-picker-input bg-white text-muted" value="" readonly="">
+                        <div class="input-group-append">
+                            <script data-origin="EntityPicker">
+                                $(function() 
+                                { 
+                                    $('#entpicker-toggle-30714492').entityPicker({
+                                        "entityType":"product",
+                                        "url": window.appUrl(`/projects/list.html`),
+                                        "caption":"Select product",
+                                        "thumbZoomer":false,
+                                        "highligtSearchTerm":true,
+                                        "returnField":"id",
+                                        "delim":",",
+                                        "appendMode":false,
+                                        "maxItems":1,"onSelectionCompleted":
+                                        "lbPickerSelectionCompleted1170983826"
+                                        }); 
+                                        })
+                                        </script>
+                            <button id="entpicker-toggle-30714492" type="button" class="btn btn-secondary"><span>…</span></button>
+                        </div>
+                         <div class="input-group-append">
+
+                            <button id="entpicker-toggle-30714492s" type="button" class="btn btn-secondary btn-icon btn-to-danger btn-reset">
+                                
+                                <span>
+                                    <i class="fa fa-unlink"></i>
+
+                                </span>
+                            
+                            
+                            </button>
+                        </div>
+                    </div>
+            </div>
+
+
+       
+    </div>
+</div>
+<script>
+        function lbPickerSelectionCompleted1170983826(ids, selectedItems) {
+            var cnt = $("#link-builder-1170983826");
+            var val = 'product:' + ids[0];
+            var qs = cnt.find(".query-string").val() || '';
+            while (qs.startsWith('?')) {
+                qs = qs.substring(1);
+            }
+            if (!_.isEmpty(qs)) {
+                val = val + '?' + qs;
+            }
+            $('#ExternalLink').val(val).trigger("change");
+            cnt.find(".product-picker-input").val(selectedItems[0].name);
+            return true;
+        }
+    </script>

@@ -1,0 +1,13 @@
+{% assign name = include.name %}
+{% assign text = include.text | default: "ثبت" %}
+{% assign icon = include.icon | default: "check" %}
+{% assign type = include.type | default: "submit" %}
+
+
+
+{% include "ui/buttons/button.html"
+			name= name
+			icon=icon
+			text=text
+            color="warning"
+				%}  

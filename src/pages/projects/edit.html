@@ -1,13 +1,13 @@
 ---
 title: حساب ها
 layout: adminlayout
-permalink: /financial/accounts/edit.html
+permalink: /projects/edit.html
 bodyClasses:
   - popup
 ---
-{% addJs "/static/financial/accounts/form.js", "scripts", "page" %} 
+{% addJs "/static/projects/form.js", "scripts", "page"  %} 
 
-  <form id="accountForm" class="card-body">
+<form id="project-form" name="projectForm" class="card-body">
 
 
 
@@ -27,6 +27,6 @@ bodyClasses:
 {% include "partials/section-header.html"
 			title="ویرایش حساب"
 				%} 
-{% include "./src/pages/financial/accounts/_createorupdate.html" %}
+{% include "./src/pages/projects/_createorupdate.html" %}
           </form>
    

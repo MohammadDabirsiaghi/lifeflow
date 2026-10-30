@@ -1,0 +1,29 @@
+---
+title: حساب ها
+layout: adminlayout
+permalink: /accounts/create.html
+bodyClasses:
+  - popup
+---
+{% addJs "/static/accounts/form.js", "scripts", "page"  %} 
+
+
+
+
+<form id="account-form" name="accountForm" class="card-body">
+
+
+
+
+{% capture section-header-options %}
+   {% include "ui/buttons/btn-save.html"
+			name= "save" 
+				%} 
+	
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="ثبت حساب جدید"
+				%} 
+{% include "./src/pages/accounts/_createorupdate.html" %}
+          </form>

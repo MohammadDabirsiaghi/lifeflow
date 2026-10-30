@@ -15,6 +15,9 @@
   window.lifeFlowConfig = {
     pathPrefix: "{{ pathPrefix }}"
   };
+    // تنظیم سراسری برای ABP
+  window.abp = window.abp || {};
+  window.abp.appPath = 'http://192.168.1.2/';
 </script>
    {% include "partials/client-res.html" %} 
 
@@ -24,14 +27,32 @@
     {% addCss "/assets/lib/pnotify/css/pnotify.mobile.css", "layout" %}
     {% addCss "/assets/lib/pnotify/css/pnotify.buttons.css", "layout" %}
 
+
+
+     {% addCss "/assets/abp/aspnetcore-mvc-ui-theme-shared/toast/abp-toast.css", "layout" %}
+
     {% addCss "/assets/admin/theme.css", "layout" %} 
     {% addCss "/assets/admin/theme-rtl.css", "layout" %} 
 
     {% addJs "/static/lifeflow-config.js", "head_scripts", "layout" %} 
     
-    {% addJs "/assets/lib/jquery/jquery-3.7.1.js", "head_scripts", "layout" %} 
-    {% addJs "/assets/lib/vue/vue.js", "head_scripts", "layout" %} 
-    {% addJs "/assets/lib/aggrid/ag-grid-enterprise.js", "head_scripts", "layout" %} 
+<!-- Util -->
+    {% addJs "/assets/abp/abp/utils/abp-utils.umd.min.js", "scripts", "layout" %} 
+<!-- Core -->
+    {% addJs "/assets/abp/abp/core/abp.js", "scripts", "layout" %} 
+<!-- JQuery -->
+    {% addJs "/assets/abp/jquery/jquery.js", "scripts", "layout" %} 
+    {% addJs "/assets/abp/abp/jquery/abp.jquery.js", "scripts", "layout" %} 
+
+
+<!-- SharedTheme -->
+    {% addJs "/assets/abp/aspnetcore-mvc-ui-theme-shared/toast/abp-toast.js", "scripts", "layout" %} 
+
+
+
+  
+    {% addJs "/assets/lib/vue/vue.js", "scripts", "layout" %} 
+    {% addJs "/assets/lib/aggrid/ag-grid-enterprise.js", "scripts", "layout" %} 
 
 
     {% addJs "/assets/admin/js/jquery-shims.js", "scripts", "layout" %} 
@@ -89,6 +110,8 @@
     {% addJs "/assets/admin/js/admin.ai.js", "scripts", "layout" %} 
 
 
+    {% addJs "/assets/entity-picker.js", "scripts", "layout" %} 
+
     <!-- ۱. فایل تنظیمات -->
 {% addJs "/assets/config.js", "scripts", "layout" %} 
 
@@ -97,6 +120,10 @@
 
 <!-- ۳. پرووایدرها -->
 {% addJs "/assets/ApiClient1.AppsScript.js", "scripts", "layout" %} 
+
+{% addJs "/assets/js/app-proxy.js", "scripts", "layout" %} 
+
+
 {% addJs "/assets/ApiClient1.AspNet.js", "scripts", "layout" %} 
 
 
@@ -116,6 +143,105 @@
      
    {% renderScripts "scripts","layout" %}   
            {% renderScripts "scripts","page" %}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+Util
+<script src="/libs/abp/utils/abp-utils.umd.min.js?_v=639275541288050000"></script>
+Core
+<script src="/libs/abp/core/abp.js?_v=639275541285100000"></script>
+JQuery
+<script src="/libs/jquery/jquery.js?_v=639002954659690000"></script>
+<script src="/libs/abp/jquery/abp.jquery.js?_v=639275541283000000"></script>
+Bootstrap
+<script src="/libs/bootstrap/js/bootstrap.bundle.js?_v=639002954634260000"></script>
+Lodash
+<script src="/libs/lodash/lodash.min.js?_v=639173487071640000"></script>
+JQueryValidation
+<script src="/libs/jquery-validation/jquery.validate.js?_v=639173487072060000"></script>
+<script src="/libs/jquery-validation/abp.jquery.validate.js?_v=639275541287070000"></script>
+JQueryValidationUnobtrusive
+<script src="/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js?_v=639002954653680000"></script>
+Select2
+<script src="/libs/select2/js/select2.min.js?_v=639173487071480000"></script>
+DatatablesNet
+<script src="/libs/datatables.net/js/dataTables.min.js?_v=639173487104380000"></script>
+DatatablesNetBs5
+<script src="/libs/datatables.net-bs5/js/dataTables.bootstrap5.js?_v=639173487071820000"></script>
+SweetAlert2
+<script src="/libs/sweetalert2/sweetalert2.all.min.js?_v=639173487104380000"></script>
+
+<script src="/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js?_v=639002954694310000"></script>
+Luxon
+<script src="/libs/luxon/luxon.min.js?_v=639002954658380000"></script>
+<script src="/libs/abp/luxon/abp.luxon.js?_v=639275541274010000"></script>
+
+
+<script src="/libs/timeago/jquery.timeago.js?_v=639002954688860000"></script>
+
+BootstrapDatepicker
+<script src="/libs/bootstrap-datepicker/bootstrap-datepicker.min.js?_v=639002954640770000"></script>
+Moment
+<script src="/libs/moment/moment.min.js?_v=639271973797770000"></script>
+BootstrapDaterangepicker
+<script src="/libs/bootstrap-daterangepicker/daterangepicker.js?_v=639275541281370000"></script>
+
+SharedTheme
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/ui-extensions.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/jquery-extensions.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery-form/jquery-form-extensions.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/widget-manager.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/dom-event-handlers.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/modal-manager.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-extensions.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/sweetalert2/abp-sweetalert2.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/toast/abp-toast.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/date-range-picker/date-range-picker-extensions.js?_v=639249639700000000"></script>
+<script src="/libs/abp/aspnetcore-mvc-ui-theme-shared/authentication-state/authentication-state-listener.js?_v=639249639700000000"></script>
+
+Abp MultiTenancy Module
+<script src="/Pages/Abp/MultiTenancy/tenant-switch.js?_v=639249639700000000"></script>
+
+Theme
+<script src="/Themes/LeptonXLite/Global/side-menu/js/lepton-x.bundle.min.js?_v=639249818320000000"></script>
+<script src="/Themes/LeptonXLite/Global/scripts/leptonx-mvc-ui-initializer.js?_v=639249818320000000"></script>
+
+
+<script src="/global-scripts.js?_v=639275539102059001"></script>
+<script src="/dev-login-helper.js?_v=639275539102053887"></script>
+<script src="/libs/timeago/locales/jquery.timeago.en.js?_v=639002954688860000"></script>
+
+
+
+
+
+
+<script src="/Abp/ApplicationLocalizationScript?cultureName=en"></script>
+<script type="text/javascript" src="/Abp/ApplicationConfigurationScript"></script>
+<script type="text/javascript" src="/Abp/ServiceProxyScript"></script>
+
+	
+@await RenderSectionAsync("scripts", false)
+<script src="/client-proxies/settingManagement-proxy.js?_v=639249640440000000"></script>
+<script src="/Pages/SettingManagement/Index.js?_v=639249640440000000"></script>
+ -->
+
+
+
 </body>
 
     

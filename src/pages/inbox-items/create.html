@@ -1,0 +1,26 @@
+---
+title: کار ها
+layout: adminlayout
+permalink: /inbox-items/create.html
+bodyClasses:
+  - popup
+---
+{% addJs "/static/inbox-items/form.js", "scripts", "page"  %} 
+
+<form id="inbox-item-form" name="inboxItemForm" class="card-body">
+
+
+
+
+{% capture section-header-options %}
+   {% include "ui/buttons/btn-save.html"
+			name= "save" 
+				%} 
+	
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+			title="ثبت کار جدید"
+				%} 
+{% include "./src/pages/inbox-items/_createorupdate.html" %}
+          </form>

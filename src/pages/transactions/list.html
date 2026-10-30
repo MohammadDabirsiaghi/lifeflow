@@ -1,0 +1,81 @@
+---
+title: تراکنش‌ها
+layout: adminlayout
+page-libs: [admin-common]
+permalink: /transactions/list.html
+bodyClasses:
+  - spa-layout1
+---
+
+{% addJs "/static/transactions/list.js", "scripts", "page" %}
+
+
+{% capture section-header-options %}
+   {% include "ui/buttons/btn-add.html" 
+   		name= "AddTransaction" 
+        text: "تراکنش جدید"
+		%} 
+	{% include "ui/buttons/btn-add.html" 
+   		name= "ImportStatement" 
+        text: "ایمپورت صورت‌حساب"
+		%} 
+{% endcapture  %}
+
+{% include "partials/section-header.html"
+		title: "مدیریت تراکنش‌های مالی"
+				%} 
+
+<!-- کارت‌های خلاصه (Summary) -->
+<div class="row g-3 mb-3" id="summary-cards">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-muted small">جمع هزینه‌ها</div>
+        <div class="fs-4 fw-bold text-danger" id="summary-expense">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-muted small">جمع درآمدها</div>
+        <div class="fs-4 fw-bold text-success" id="summary-income">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-muted small">تعداد تراکنش‌ها</div>
+        <div class="fs-4 fw-bold" id="summary-count">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- نوار فیلتر -->
+<div class="card mb-3">
+  <div class="card-body row g-2">
+    <div class="col-md-3">
+      <input type="text" class="form-control" id="txt-filter" placeholder="جستجو (شرح، طرف حساب، یادداشت...)">
+    </div>
+    <div class="col-md-2">
+      <select class="form-select" id="sel-type">
+        <option value="">همه انواع</option>
+        <option value="1">هزینه</option>
+        <option value="2">درآمد</option>
+        <option value="3">انتقال</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="txt-from" placeholder="از تاریخ (1405/01/01)">
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" id="txt-to" placeholder="تا تاریخ">
+    </div>
+    <div class="col-md-2">
+      <button id="btn-apply-filter" class="btn btn-outline-primary w-100">اعمال فیلتر</button>
+    </div>
+  </div>
+</div>
+<div id="transactionsGrid" class="ag-theme-alpine" style="height: 680px; width: 100%;"></div>

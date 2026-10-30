@@ -1,0 +1,57 @@
+
+{% assign url = include.pickerUrl | default: "/projects/list.html" %}
+
+
+{% assign name = include.name %}
+{% assign controlId = include.id | default: name %}
+<div id="link-builder-{{ controlId }}" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="{{ name }}" 
+     data-picker-url="{{ url | url }}">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="{{ controlId }}" 
+           name="{{ name }}" 
+           class="picker-value" 
+           value="{{ value }}">
+
+    {% if label %}
+        <label class="form-label" for="display-{{ controlId }}">{{ label }}</label>
+    {% endif %}
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="{{ controlId }}Title" 
+                        name="{{ name }}Title" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="{{ displayText }}" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('{{ controlId }}');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear {% unless value and value != '' %}{% endunless %}" 
+                            onclick="entityPickerClear('{{ controlId }}');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

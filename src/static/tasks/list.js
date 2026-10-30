@@ -131,6 +131,45 @@ function isTaskCompleted(data) {
     const status = String(data.Status ?? data.status ?? "").toLowerCase().trim();
     return status === "completed" || status === "done" || status === "3";
 }
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+function taskActionsRenderer(params) {
+    const task = params.data;
+
+    if (!task) return "";
+
+    const container = document.createElement("div");
+
+    container.className = "d-flex align-items-center gap-1";
+
+    container.innerHTML = `
+       
+
+        <button
+            type="button" 
+            class="btn btn-sm btn-light-warning js-task-edit"
+            data-task-id="${escapeHtml(task.Id)}"
+            title="ویرایش کار">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-sm btn-light-danger js-task-delete"
+            data-task-id="${escapeHtml(task.Id)}"
+            title="حذف کار">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+
+    return container;
+}
 async function refreshGrid() {
         const gridDiv = document.querySelector('#tasksGrid');
        try {
@@ -163,7 +202,7 @@ async function initTasksGrid() {
     const gridOptions = {
         animateRows: true,
         enableRtl: true,
-        pagination: true,
+        pagination: false,
         paginationPageSize: 20,
         paginationPageSizeSelector: [10, 20, 50, 100],
         rowHeight: 46,
@@ -174,18 +213,18 @@ async function initTasksGrid() {
         },
 
         columnDefs: [
-            {
-                field: "Id",
-                headerName: "شناسه",
-                width: 85,
-                valueGetter: (params) => params.data?.Id ?? params.data?.id,
-                sortable: true
-            },
+            // {
+            //     field: "Id",
+            //     headerName: "شناسه",
+            //     width: 85,
+            //     valueGetter: (params) => params.data?.Id ?? params.data?.id,
+            //     sortable: true
+            // },
             {
                 field: "Title",
                 headerName: "عنوان تسک",
                 flex: 2,
-                minWidth: 220,
+                minWidth: 300,
                 valueGetter: (params) => params.data?.Title ?? params.data?.title ?? "—",
                 cellRenderer: (params) => {
                     const done = isTaskCompleted(params.data);
@@ -196,8 +235,8 @@ async function initTasksGrid() {
             },
             {
                 field: "Context",
-                headerName: "دسته‌بندی (کانتکست)",
-                width: 160,
+                headerName: "کانتکست",
+                width: 170,
                 valueGetter: (params) => {
                     return params.data?.Context ?? params.data?.context ??
                            params.data?.ContextId ?? params.data?.contextId ?? 
@@ -213,41 +252,45 @@ async function initTasksGrid() {
                 filter: true
             },
             {
-                field: "ProjectId",
+                field: "ProjectIdTitle",
                 headerName: "پروژه والد",
-                width: 130,
-                valueGetter: (params) => {
-                    const pId = params.data?.ProjectId ?? params.data?.projectId ?? params.data?.project_id;
-                    return (pId !== undefined && pId !== null && pId !== "") ? pId : null;
-                },
+                width: 150,
+                
                 cellRenderer: (params) => {
                     if (!params.value) return `<span style="color:#94a3b8;">بدون پروژه</span>`;
                     return `<span class="project-tag">📁 #${params.value}</span>`;
                 }
             },
-            {
-                field: "Priority",
-                headerName: "اولویت",
+        
+                    { 
+                field: "PriorityIdTitle", 
+                headerName: "اولویت", 
                 width: 120,
-                valueGetter: (params) => params.data?.Priority ?? params.data?.priority,
-                cellRenderer: (params) => renderPriorityBadge(params.value),
+                // valueGetter: (params) => params.data?.Priority ?? params.data?.priority,
+                // cellRenderer: (params) => renderPriorityBadge(params.value),
                 sortable: true
             },
-            {
-                field: "Status",
-                headerName: "وضعیت",
+            { 
+                field: "StatusIdTitle", 
+                headerName: "وضعیت", 
                 width: 130,
-                valueGetter: (params) => params.data?.Status ?? params.data?.status,
-                cellRenderer: (params) => renderStatusBadge(params.value),
+               
                 sortable: true
             },
-            {
-                field: "Description",
-                headerName: "توضیحات",
-                flex: 3,
-                minWidth: 200,
-                valueGetter: (params) => params.data?.Description ?? params.data?.description ?? "",
-                valueFormatter: (params) => params.value ? params.value : "—"
+            { 
+                field: "AreaIdTitle", 
+                headerName: "حوزه مسئولیت", 
+                flex: 1,
+                //valueGetter: (params) => params.data?.Description ?? params.data?.description ?? "—"
+            },
+           
+             {
+                headerName: "عملیات",
+                width: 190,
+                sortable: false,
+                filter: false,
+                resizable: false,
+                cellRenderer: taskActionsRenderer
             }
         ],
 
@@ -267,6 +310,35 @@ async function initTasksGrid() {
 }
 document.addEventListener('DOMContentLoaded',  () => {
     initTasksGrid();
-    //initButtons();
+    initButtons();
 });
+function initButtons() {
+
+     const gridDiv = document.getElementById("tasksGrid");
+      gridDiv?.addEventListener("click", function (event) {
+        // ممکن است کلیک روی خود i داخل دکمه باشد
+        const editButton = event.target.closest(".js-task-edit");
+
+        if (editButton) {
+            handleEditTask(editButton, event);
+            return;
+        }
+
+       
+
+        const deleteButton = event.target.closest(".js-task-delete");
+
+        if (deleteButton) {
+            //handleDeleteTask(deleteButton, event);
+        }
+    });
+}
+
+
+function handleEditTask(button, event) {
+    event.preventDefault();
+    const taskId = button.dataset.taskId;
+     window.location.href = window.appUrl(`/tasks/edit.html?id=${encodeURIComponent(taskId)}`);
+}
+
 

@@ -1,0 +1,56 @@
+<h1>malihu custom scrollbar plugin</h1>
+<p>Highly customizable custom scrollbar jQuery plugin (<a href="http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/complete_examples.html">Demo</a>). Features include:</p>
+<ul>
+<li>Vertical and/or horizontal scrollbar(s)</li>
+<li>Adjustable scrolling momentum</li>
+<li>Mouse-wheel, keyboard and touch support</li>
+<li>Ready-to-use themes and customization via CSS</li>
+<li>RTL direction support</li>
+<li>Option parameters for full control of scrollbar functionality</li>
+<li>Methods for triggering actions like scroll-to, update, destroy etc.</li>
+<li>User-defined callbacks</li>
+<li>Selectable/searchable content</li>
+</ul>
+<p><strong><a href="http://manos.malihu.gr/jquery-custom-content-scroller/">Plugin homepage and documentation</a></strong> (<a href="http://manos.malihu.gr/jquery-custom-content-scroller/2/">Changelog</a>)</p>
+<h4>Installation</h4>
+<p>npm: <code>npm install malihu-custom-scrollbar-plugin</code></p>
+<p>Bower: <code>bower install malihu-custom-scrollbar-plugin</code></p>
+<p><a href="http://manos.malihu.gr/jquery-custom-content-scroller/#get-started-section">Manual</a></p>
+<h4>Usage</h4>
+<p>Manual: <code>$(selector).mCustomScrollbar();</code></p>
+<p><a href="http://browserify.org/">Browserify</a>:</p>
+<p>var $ = require('jquery');
+require('malihu-custom-scrollbar-plugin')($);</p>
+<p><a href="https://webpack.github.io/">webpack</a>:</p>
+<p>npm install imports-loader
+npm install jquery-mousewheel
+npm install malihu-custom-scrollbar-plugin</p>
+<p>module.exports = {
+module: {
+loaders: [
+{ test: /jquery-mousewheel/, loader: &quot;imports?define=&gt;false&amp;this=&gt;window&quot; },
+{ test: /malihu-custom-scrollbar-plugin/, loader: &quot;imports?define=&gt;false&amp;this=&gt;window&quot; }
+]
+}
+};</p>
+<p>var $ = require('jquery');
+require(&quot;jquery-mousewheel&quot;)($);
+require('malihu-custom-scrollbar-plugin')($);</p>
+<h2>Requirements</h2>
+<p>jQuery version <strong>1.6.0</strong> or higher</p>
+<h2>Browser compatibility</h2>
+<ul>
+<li>Internet Explorer 8+</li>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Opera</li>
+<li>Safari</li>
+<li>iOS</li>
+<li>Android</li>
+<li>Windows Phone</li>
+</ul>
+<h2>License</h2>
+<p>MIT License (MIT)</p>
+<p>http://opensource.org/licenses/MIT</p>
+<h2>Donate</h2>
+<p>https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=UYJ5G65M6ZA28</p>

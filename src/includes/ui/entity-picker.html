@@ -1,0 +1,63 @@
+{% comment %}
+پارامترهای ورودی:
+- name: نام فیلد اصلی برای ارسال فرم (مثلاً ParentId یا CategoryId)
+- id: شناسه یکتا برای کنترل (اختیاری، پیش‌فرض name)
+- label: عنوان برچسب فیلد
+- value: مقدار اولیه Id (در زمان Edit)
+- displayText: عنوان نمایشی اولیه (در زمان Edit)
+- pickerUrl: آدرس صفحه پاپ‌آپ گرید (مثلاً /pickers/project-picker/)
+- placeholder: متن راهنما
+- popupTitle: عنوان پنجره پاپ‌آپ
+- disabled: غیرفعال بودن
+{% endcomment %}
+
+
+{% assign controlPlaceholder = placeholder | default: "انتخاب نشده است..." %}
+
+
+{% assign name = include.name %}
+{% assign id = include.id | default: name %}
+
+
+<div class="mb-3 entity-picker-wrapper" 
+     id="wrapper-{{ id }}"
+     data-picker-url="{{ pickerUrl }}"
+     data-popup-title="{{ popupTitle | default: 'انتخاب آیتم' }}">
+    
+    {% if label %}
+        <label for="display-{{ id }}" class="form-label">{{ label }}</label>
+    {% endif %}
+
+    <div class="input-group">
+        <!-- فیلد نمایشی عنوان -->
+        <input type="text"
+               id="display-{{ id }}"
+               class="form-control picker-display"
+               value="{{ displayText }}"
+               placeholder="{{ controlPlaceholder }}"
+               readonly
+               tabindex="-1" />
+
+        <!-- دکمه باز کردن پاپ‌آپ -->
+        <button type="button"
+                class="btn btn-outline-secondary btn-picker-open"
+                title="انتخاب">
+            <i class="fa fa-search"></i>
+            <span>انتخاب</span>
+        </button>
+
+        <!-- دکمه حذف/پاک کردن مقدار -->
+        <button type="button"
+                class="btn btn-outline-danger btn-picker-clear {% unless value and value != '' %}d-none{% endunless %}"
+                title="حذف انتخاب">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+
+    <!-- فیلد مخفی اصلی که به سرور ارسال می‌شود -->
+    <input type="hidden"
+           name="{{ name }}"
+           id="{{ id }}"
+           class="picker-value"
+           value="{{ value }}" />
+</div>

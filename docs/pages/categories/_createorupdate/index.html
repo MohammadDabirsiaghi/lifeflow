@@ -1,0 +1,410 @@
+<input type="hidden" id="category-id" name="Id">
+
+<input
+  type="hidden"
+  id="category-concurrency-stamp"
+  name="ConcurrencyStamp"
+>
+
+<div class="adminContent">
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Title">عنوان</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عنوان دسته‌بندی، مانند خواربار، اجاره یا حقوق">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      <input
+        id="Title"
+        name="Title"
+        type="text"
+        class="form-control"
+        maxlength="150"
+        required
+        autocomplete="off"
+        placeholder="مثلاً خواربار"
+      >
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="TransactionType">نوع تراکنش</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="نوع تراکنش‌هایی که در این دسته‌بندی ثبت می‌شوند">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      <select
+        id="TransactionType"
+        name="TransactionType"
+        class="form-select"
+        required
+      >
+        <option value="">انتخاب کنید</option>
+        <option value="1">هزینه</option>
+        <option value="2">درآمد</option>
+        <option value="3">انتقال</option>
+      </select>
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="TransactionType" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="ParentId">دسته‌بندی والد</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="برای ایجاد دسته‌بندی در سطح اول، این فیلد را خالی بگذارید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      
+
+
+
+
+
+<div id="link-builder-ParentId" 
+     class="link-builder edit-control entity-picker-control" 
+     data-field-id="ParentId" 
+     data-picker-url="/categories/list-modal.html">
+
+    <!-- اینپوت مخفی اصلی برای ارسال به سرور -->
+    <input type="hidden" 
+           id="ParentId" 
+           name="ParentId" 
+           class="picker-value" 
+           value="">
+
+    
+
+    <div class="row flex-nowrap g-2">
+        <div class="link-control col" style="display: block;">
+            <div class="input-group">
+                <!-- اینپوت نمایشی (عنوان آیتم انتخاب‌شده) -->
+                <input type="text" 
+                        id="ParentIdTitle" 
+                        name="ParentIdTitle" 
+                       class="form-control resettable product-picker-input bg-white text-muted picker-display" 
+                       value="" 
+                       readonly 
+                       placeholder="انتخاب کنید...">
+
+                <!-- دکمه باز کردن پاپ‌آپ انتخاب -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-picker-open" 
+                            onclick="entityPickerOpen('ParentId');">
+                        <span>…</span>
+                    </button>
+                </div>
+
+                <!-- دکمه حذف/لغو لینک -->
+                <div class="input-group-append">
+                    <button type="button" 
+                            class="btn btn-secondary btn-icon btn-to-danger btn-reset btn-picker-clear " 
+                            onclick="entityPickerClear('ParentId');">
+                        <span>
+                            <i class="fa fa-unlink"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="ParentId" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="IsGroup">دسته‌بندی گروهی</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="برای گروه‌بندی دسته‌های زیرمجموعه فعال کنید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      
+
+
+
+
+
+
+
+    
+        
+
+
+
+
+<div class="form-check form-check-solo form-check-warning form-switch form-switch-lg">
+
+    <input
+        type="checkbox" data-val="true" data-val-required=""
+        id="IsGroup"
+        name="IsGroup"
+        value="true"
+        class="form-check-input"
+    />
+
+    <input
+        name="IsGroup"
+        type="hidden"
+        value="false"
+    />
+</div>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="IsGroup" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Icon">آیکون</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="نام کلاس Bootstrap Icons؛ مانند bi-basket">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      <input
+        id="Icon"
+        name="Icon"
+        type="text"
+        class="form-control"
+        maxlength="50"
+        dir="ltr"
+        autocomplete="off"
+        placeholder="bi-basket"
+      >
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="Icon" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="ColorHex">رنگ</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="کد رنگ شش‌رقمی؛ برای استفاده از رنگ پیش‌فرض خالی بگذارید">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      <input
+        id="ColorHex"
+        name="ColorHex"
+        type="text"
+        class="form-control"
+        maxlength="7"
+        pattern="#[0-9a-fA-F]{6}"
+        title="کد رنگ را به شکل #22C55E وارد کنید"
+        dir="ltr"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="#22C55E"
+      >
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="ColorHex" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="DisplayOrder">ترتیب نمایش</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="عدد کوچک‌تر، زودتر نمایش داده می‌شود">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      <input
+        id="DisplayOrder"
+        name="DisplayOrder"
+        type="number"
+        class="form-control"
+        value="0"
+        min="-2147483648"
+        max="2147483647"
+        step="1"
+        required
+      >
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="DisplayOrder" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      
+
+
+<div class="ctl-label">
+    <label for="Description">توضیحات</label>
+    <a class="hint" href="#" onclick="return false;" tabindex="-1" title="توضیحات تکمیلی درباره کاربرد دسته‌بندی">
+        <i class="fa fa-question-circle"></i>
+    </a>
+</div>
+    </div>
+
+    <div class="adminData">
+      <textarea
+        id="Description"
+        name="Description"
+        class="form-control"
+        rows="3"
+        maxlength="500"
+        placeholder="توضیحات دسته‌بندی"
+      ></textarea>
+
+      
+
+
+<span class="field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true" role="alert">
+
+</span>
+    </div>
+  </div>
+
+</div>

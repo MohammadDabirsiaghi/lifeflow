@@ -1,0 +1,19 @@
+---
+title: ثبت تراکنش جدید
+layout: adminlayout
+permalink: /transactions/create.html
+bodyClasses: [popup]
+---
+
+{% addJs "/static/transactions/form.js", "scripts", "page" %}
+
+<form id="transaction-form" name="transactionForm" class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        {% include "partials/section-header.html", title: "ثبت تراکنش مالی جدید" %}
+        <div>
+            {% include "ui/buttons/btn-save.html", name: "save", text: "ذخیره تراکنش" %}
+        </div>
+    </div>
+
+    {% include "./src/pages/transactions/_createorupdate.html" %}
+</form>

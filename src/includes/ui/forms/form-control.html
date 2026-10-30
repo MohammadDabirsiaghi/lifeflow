@@ -20,25 +20,30 @@
 {% elsif element == "textarea" %}
       {% include "ui/forms/textarea.html",
     name= name
+    rows=include.rows
   %}
 {% elsif element == "input" %}
     {% if type == "checkbox" and as_switch %}
-        {% include "ui/forms/switch.html", include: include %}
+        {% include "ui/forms/switch.html"
+            name= include.name
+        %}
     {% elsif type == "checkbox" or type == "radio" %}
         {% include "ui/forms/check-radio.html", include: include %}
     {% elsif type == "number" %}
         {% include "ui/forms/number.html"
           name= name
-        
+        decimals=include.decimals
         %}    
     {% elsif type != "file" and type != "hidden" %}
         {% include "ui/forms/input.html"
             type= type
             name= name
             value= include.value
+            placeholder=include.placeholder
+            dir=include.dir
         %}
     {% else %}
-        <input type="{{ type }}" name="{{ include.name }}" value="{{ include.value }}">
+        <input type="{{ type }}" placeholder="{{ include.placeholder }}" dir="{{ include.dir }}" name="{{ include.name }}" value="{{ include.value }}">
     {% endif %}
 {% endif %}
 

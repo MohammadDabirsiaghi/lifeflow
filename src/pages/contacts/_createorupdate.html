@@ -1,0 +1,102 @@
+<input type="hidden" id="account-id" name="Id">
+
+
+
+
+<div class="adminContent">
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Title"
+        text="عنوان"
+        hint="عنوان پروژه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Title"
+        type="text"
+        element="input"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Title"
+				%}
+     </div>
+  </div>
+    <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "ParentId"
+        text="پدر"
+        hint="عنوان پروژه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/test2.html"
+      name= "ParentId"
+      pickerUrl="/accounts/list-modal.html"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Title"
+				%}
+     </div>
+  </div>
+
+
+
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "Description"
+        text="توضیحات"
+        hint="توضیحات را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "Description"
+        element="textarea"
+				%}
+        {% include "ui/forms/field-validation.html"
+        name= "Description"
+				%}
+     </div>
+  </div>
+ 
+
+  <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "DisplayOrder"
+        text="جایگاه"
+        hint="جایگاه را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "DisplayOrder"
+        element="input"
+        type="number"
+				%}
+        {% include "ui/forms/field-validation.html" name= "DisplayOrder" %}
+     </div>
+  </div>
+   <div class="adminRow">
+     <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name= "IsActive"
+        text="فعال"
+        hint="فعال را وارد نمائید"
+				%}
+     </div>
+     <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name= "IsActive"
+        element="input"
+        type="checkbox"
+        sm_switch=true
+				%}
+        {% include "ui/forms/field-validation.html" name= "IsActive" %}
+     </div>
+  </div>
+</div>

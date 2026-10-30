@@ -3,12 +3,27 @@
 
 {% assign type = include.type | default: "button" %}
 
-
+{% assign href = include.href %}
 {% assign text = include.text | default: "ثبت" %}
 {% assign color = include.color | default: "primary" %}
 {% assign class = include.class | default: "" %}
 {% assign icon = include.icon | default: "" %}
 {% assign disabled = include.disabled | default: false %}
+
+
+{% if href and href != "" %}
+  {% comment %} رندر به صورت لینک {% endcomment %}
+  <a 
+    href="{{ href | url }}"
+    {% if id != "" %}id="{{ id }}"{% endif %}
+    class="btn btn-{{color}} {{ class }}"
+    {% if disabled %}style="pointer-events: none; opacity: 0.6;"{% endif %}
+  >
+    {% if icon != "" %}<i class="fa fa-{{icon}}" aria-hidden="true"></i>{% endif %}
+    {% if text != "" %}<span>{{ text }}</span>{% endif %}
+  </a>
+{% else %}
+
 <button
   type="{{ type }}"
   {% if name != "" %}name="{{ name }}"{% endif %}
@@ -25,3 +40,4 @@
     <span>{{ text }}</span>
   {% endif %}
 </button>
+{% endif %}

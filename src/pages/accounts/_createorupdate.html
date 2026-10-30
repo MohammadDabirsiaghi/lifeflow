@@ -1,0 +1,218 @@
+<input type="hidden" id="account-id" name="Id">
+
+<div class="adminContent">
+  
+  <!-- بخش اول: اطلاعات پایه و ساختار -->
+  <div class="card mb-3 p-3">
+    <h5 class="card-title text-primary mb-3">اطلاعات پایه و ساختار</h5>
+    
+    <!-- عنوان حساب -->
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="Title" text="عنوان حساب" hint="مثلاً: حساب جاری بانک ملت یا کیف پول اسنپ" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="Title" type="text" element="input" %}
+        {% include "ui/forms/field-validation.html" name="Title" %}
+       </div>
+    </div>
+
+    <!-- والد (Parent) -->
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="ParentId" text="حساب والد (سرگروه)" hint="انتخاب سرگروه یا پوشه مادر" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/test2.html" name="ParentId" pickerUrl="/accounts/list-modal.html" %}
+        {% include "ui/forms/field-validation.html" name="ParentId" %}
+       </div>
+    </div>
+
+    <!-- نوع حساب (AccountType) -->
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="AccountType" text="نوع حساب" hint="بانکی، کیف پول، صندوق و ..." %}
+       </div>
+       <div class="adminData">
+        <select name="AccountType" class="form-control">
+          <option value="0">سایر / عمومی</option>
+          <option value="1">حساب بانکی (جاری/پس‌انداز)</option>
+          <option value="2">کارت بانکی</option>
+          <option value="3">کیف پول دیجیتال (اسنپ، تپسی، دیجی‌کالا و...)</option>
+          <option value="4">تنخواه‌گردان / وجه نقد</option>
+          <option value="5">کارت اعتباری / اسنپ‌پی</option>
+        </select>
+       </div>
+    </div>
+
+    <!-- هدف استفاده (UsageIntent) -->
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="UsageIntent" text="کاربری حساب" hint="شخصی، کاری، سرمایه‌گذاری" %}
+       </div>
+       <div class="adminData">
+        <select name="UsageIntent" class="form-control">
+          <option value="0">شخصی</option>
+          <option value="1">تجاری / کسب‌وکار</option>
+          <option value="2">پس‌انداز / سرمایه‌گذاری</option>
+        </select>
+       </div>
+    </div>
+
+    <!-- نام مؤسسه / بانک -->
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="InstitutionName" text="نام مؤسسه / بانک" hint="مثلاً: ملت، اسنپ، تپسی" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="InstitutionName" type="text" element="input" %}
+       </div>
+    </div>
+
+    <!-- آیا گروه است؟ (IsGroup) -->
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="IsGroup" text="حساب گروهی (پوشه تجمیعی)" hint="تراکنش مستقیماً روی آن ثبت نمی‌شود" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="IsGroup" element="input" type="checkbox" sm_switch=true %}
+       </div>
+    </div>
+  </div>
+
+
+  <!-- بخش دوم: شناسه‌های بانکی و ابزارهای تطبیق -->
+  <div class="card mb-3 p-3">
+    <h5 class="card-title text-primary mb-3">شناسه‌های بانکی و پیامکی</h5>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="AccountNumber" text="شماره حساب" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="AccountNumber" type="text" element="input" %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="CardNumber" text="شماره کارت ۱۶ رقمی" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="CardNumber" type="text" element="input" maxlength="16" %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="Iban" text="شماره شبا (بدون IR)" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="Iban" type="text" element="input" maxlength="24" %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="SmsOriginator" text="فرستنده پیامک بانکی (SmsOriginator)" hint="شماره یا سرشماره پیامک بانک جهت اتوماسیون" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="SmsOriginator" type="text" element="input" %}
+       </div>
+    </div>
+  </div>
+
+
+  <!-- بخش سوم: موجودی‌ها و اعتبارات (به ریال) -->
+  <div class="card mb-3 p-3">
+    <h5 class="card-title text-primary mb-3">موجودی‌ها و اعتبارات (ریال)</h5>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="InitialBalance" text="موجودی اولیه" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="InitialBalance" type="number" element="input" %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="CreditLimit" text="سقف اعتبار (مثلاً اسنپ‌پی)" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="CreditLimit" type="number" element="input" %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="BlockedAmount" text="مبلغ مسدودی / ضمانت" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="BlockedAmount" type="number" element="input" %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="MinimumAlertBalance" text="حداقل موجودی هشدار کسری" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="MinimumAlertBalance" type="number" element="input" %}
+       </div>
+    </div>
+  </div>
+
+
+  <!-- بخش چهارم: تنظیمات تجاری، مالیاتی و ظاهری -->
+  <div class="card mb-3 p-3">
+    <h5 class="card-title text-primary mb-3">تنظیمات تجاری و ظاهری</h5>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="IsCommercial" text="حساب تجاری (شاپرک)" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="IsCommercial" element="input" type="checkbox" sm_switch=true %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="TaxFileNumber" text="شماره پرونده مالیاتی" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="TaxFileNumber" type="text" element="input" %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="IncludeInNetWorth" text="محاسبه در خالص دارایی‌ها (Net Worth)" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="IncludeInNetWorth" element="input" type="checkbox" sm_switch=true %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="IsActive" text="فعال" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="IsActive" element="input" type="checkbox" sm_switch=true %}
+       </div>
+    </div>
+
+    <div class="adminRow">
+       <div class="adminTitle">
+        {% include "ui/forms/label.html" name="DisplayOrder" text="جایگاه نمایش" %}
+       </div>
+       <div class="adminData">
+        {% include "ui/forms/form-control.html" name="DisplayOrder" element="input" type="number" %}
+       </div>
+    </div>
+  </div>
+
+</div>

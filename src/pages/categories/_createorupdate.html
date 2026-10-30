@@ -1,0 +1,220 @@
+<input type="hidden" id="category-id" name="Id">
+
+<input
+  type="hidden"
+  id="category-concurrency-stamp"
+  name="ConcurrencyStamp"
+>
+
+<div class="adminContent">
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="Title"
+        text="عنوان"
+        hint="عنوان دسته‌بندی، مانند خواربار، اجاره یا حقوق"
+      %}
+    </div>
+
+    <div class="adminData">
+      <input
+        id="Title"
+        name="Title"
+        type="text"
+        class="form-control"
+        maxlength="150"
+        required
+        autocomplete="off"
+        placeholder="مثلاً خواربار"
+      >
+
+      {% include "ui/forms/field-validation.html"
+        name="Title"
+      %}
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="TransactionType"
+        text="نوع تراکنش"
+        hint="نوع تراکنش‌هایی که در این دسته‌بندی ثبت می‌شوند"
+      %}
+    </div>
+
+    <div class="adminData">
+      <select
+        id="TransactionType"
+        name="TransactionType"
+        class="form-select"
+        required
+      >
+        <option value="">انتخاب کنید</option>
+        <option value="1">هزینه</option>
+        <option value="2">درآمد</option>
+        <option value="3">انتقال</option>
+      </select>
+
+      {% include "ui/forms/field-validation.html"
+        name="TransactionType"
+      %}
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="ParentId"
+        text="دسته‌بندی والد"
+        hint="برای ایجاد دسته‌بندی در سطح اول، این فیلد را خالی بگذارید"
+      %}
+    </div>
+
+    <div class="adminData">
+      {% include "ui/test2.html"
+        name="ParentId"
+        pickerUrl="/categories/list-modal.html"
+      %}
+
+      {% include "ui/forms/field-validation.html"
+        name="ParentId"
+      %}
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="IsGroup"
+        text="دسته‌بندی گروهی"
+        hint="برای گروه‌بندی دسته‌های زیرمجموعه فعال کنید"
+      %}
+    </div>
+
+    <div class="adminData">
+      {% include "ui/forms/form-control.html"
+        name="IsGroup"
+        element="input"
+        type="checkbox"
+        sm_switch=true
+      %}
+
+      {% include "ui/forms/field-validation.html"
+        name="IsGroup"
+      %}
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="Icon"
+        text="آیکون"
+        hint="نام کلاس Bootstrap Icons؛ مانند bi-basket"
+      %}
+    </div>
+
+    <div class="adminData">
+      <input
+        id="Icon"
+        name="Icon"
+        type="text"
+        class="form-control"
+        maxlength="50"
+        dir="ltr"
+        autocomplete="off"
+        placeholder="bi-basket"
+      >
+
+      {% include "ui/forms/field-validation.html"
+        name="Icon"
+      %}
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="ColorHex"
+        text="رنگ"
+        hint="کد رنگ شش‌رقمی؛ برای استفاده از رنگ پیش‌فرض خالی بگذارید"
+      %}
+    </div>
+
+    <div class="adminData">
+      <input
+        id="ColorHex"
+        name="ColorHex"
+        type="text"
+        class="form-control"
+        maxlength="7"
+        pattern="#[0-9a-fA-F]{6}"
+        title="کد رنگ را به شکل #22C55E وارد کنید"
+        dir="ltr"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="#22C55E"
+      >
+
+      {% include "ui/forms/field-validation.html"
+        name="ColorHex"
+      %}
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="DisplayOrder"
+        text="ترتیب نمایش"
+        hint="عدد کوچک‌تر، زودتر نمایش داده می‌شود"
+      %}
+    </div>
+
+    <div class="adminData">
+      <input
+        id="DisplayOrder"
+        name="DisplayOrder"
+        type="number"
+        class="form-control"
+        value="0"
+        min="-2147483648"
+        max="2147483647"
+        step="1"
+        required
+      >
+
+      {% include "ui/forms/field-validation.html"
+        name="DisplayOrder"
+      %}
+    </div>
+  </div>
+
+  <div class="adminRow">
+    <div class="adminTitle">
+      {% include "ui/forms/label.html"
+        name="Description"
+        text="توضیحات"
+        hint="توضیحات تکمیلی درباره کاربرد دسته‌بندی"
+      %}
+    </div>
+
+    <div class="adminData">
+      <textarea
+        id="Description"
+        name="Description"
+        class="form-control"
+        rows="3"
+        maxlength="500"
+        placeholder="توضیحات دسته‌بندی"
+      ></textarea>
+
+      {% include "ui/forms/field-validation.html"
+        name="Description"
+      %}
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+---
+title: ثبت دسته‌بندی
+layout: adminlayout
+permalink: /categories/create.html
+bodyClasses:
+  - popup
+---
+
+{% addJs "/static/categories/form.js", "scripts", "page" %}
+
+<form
+  id="category-form"
+  name="categoryForm"
+  class="card-body"
+  data-mode="create"
+>
+  {% capture section-header-options %}
+    {% include "ui/buttons/btn-save.html"
+      name="save"
+    %}
+  {% endcapture %}
+
+  {% include "partials/section-header.html"
+    title="ثبت دسته‌بندی جدید"
+  %}
+
+  {% include "./src/pages/categories/_createorupdate.html" %}
+</form>
