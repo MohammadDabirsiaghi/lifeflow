@@ -6,7 +6,6 @@
     "update-api": "cd ../backend-api/src/LifeFlow.HttpApi.Host && abp generate-proxy -t js -u https://localhost:44305 -m app && copy \"wwwroot\\client-proxies\\app-proxy.js\" \"..\\..\\..\\web-client\\src\\assets\\js\\app-proxy.js\"",
     "build": "pnpm run clean && pnpm run html",
     "cap:sync": "cap sync android",
-    "android:prepare": "pnpm run build && cap sync android",
     "dev": "pnpm run clean && pnpm run watch",
     "watch": "concurrently \"pnpm run watch-html\"",
     "watch-html": "cross-env NODE_ENV=development eleventy --serve --port=3000 --incremental",

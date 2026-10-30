@@ -35,9 +35,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build web app
-        run: pnpm build
-
       - name: Sync web app to Android
         run: pnpm exec cap sync android
 

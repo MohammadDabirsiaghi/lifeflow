@@ -8,8 +8,10 @@ Requirements: Node.js 22+, pnpm 11, and Android Studio with Android SDK installe
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm run android:prepare
+pnpm run cap:sync
 ```
+
+Run the project's Eleventy build before syncing whenever `docs/` needs to be regenerated. Commit the resulting `docs/` output so GitHub Actions can package that version.
 
 Open the generated `android/` project in Android Studio to run it on a device or emulator. To build a debug APK from a terminal, run `./gradlew assembleDebug` from `android/` (on Windows, use `gradlew.bat assembleDebug`). The APK is written to `android/app/build/outputs/apk/debug/app-debug.apk`.
 
