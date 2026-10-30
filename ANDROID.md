@@ -20,3 +20,5 @@ Open the generated `android/` project in Android Studio to run it on a device or
 The **Build Android APK** workflow runs on every push and can also be started from the Actions tab with **Run workflow**. Download `lifeflow-debug-apk` from the completed run's artifacts.
 
 The workflow creates an unsigned debug APK for testing. A signed release build requires a release keystore and GitHub Actions secrets, which are not configured here.
+
+The IIS self-signed certificate for `192.168.1.2` is bundled as a public certificate and trusted only for that IP by Android's network security configuration. The matching private key is not included. This certificate expires on October 30, 2027; replace the bundled `.cer` and rebuild the app when renewing it. The API URL in `src/layouts/adminroot.html` must stay HTTPS and match the certificate IP.
